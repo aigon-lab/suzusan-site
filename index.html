@@ -7,9 +7,9 @@
   <style>
     :root {
       --primary: #0f172a;       /* 落ち着いたネイビー */
-      --accent-gold: #b45309;   /* 引き締まったゴールド/ブラウン */
+      --grad-bg: linear-gradient(135deg, #fafad2, #ff6347); /* 薄めオレンジグラデーション */
       --text-main: #1e293b;
-      --text-sub: #64748b;
+      --text-sub: #475569;
       --bg-base: #f8fafc;
       --card-bg: #ffffff;
       --border: #e2e8f0;
@@ -48,30 +48,33 @@
 
     /* キャッチコピー帯 */
     .hero-info-banner {
-      background: var(--primary);
-      color: #ffffff;
-      padding: 24px 20px;
+      background: var(--grad-bg);
+      color: #1e293b;
+      padding: 18px 20px;
       text-align: center;
-      border-bottom: 4px solid var(--accent-gold);
+      border-bottom: 3px solid #ff6347;
+      box-shadow: inset 0 2px 10px rgba(255,255,255,0.4);
     }
     .hero-catch {
       font-size: 15px;
       letter-spacing: 1px;
-      color: #38bdf8;
-      font-weight: 700;
-      margin-bottom: 6px;
+      color: #7c2d12;
+      font-weight: 800;
+      margin-bottom: 4px;
     }
     .hero-company-name {
       font-size: 24px;
       font-weight: 900;
       letter-spacing: 1px;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
+      color: #0f172a;
     }
     .hero-desc {
       font-size: 13px;
-      color: #cbd5e1;
+      color: #334155;
       max-width: 700px;
       margin: 0 auto;
+      font-weight: 600;
     }
 
     /* クイックアクションバー */
@@ -99,40 +102,44 @@
       font-weight: 800;
     }
     .quick-btn-tel { background: var(--primary); color: #fff; }
-    .quick-btn-contact { background: var(--accent-gold); color: #fff; }
+    .quick-btn-contact { background: var(--grad-bg); color: #0f172a; border: 1px solid #cbd5e1; }
 
-    /* ナビゲーション */
+    /* ナビゲーション（各ボタンに綺麗なグラデーションを均等に配置） */
     .nav-bar {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      background: var(--primary);
-      border-bottom: 3px solid var(--accent-gold);
+      background: #fff;
+      border-bottom: 3px solid #ff6347;
     }
     .nav-item {
-      color: #fff;
+      color: #0f172a;
       text-align: center;
-      padding: 12px 4px;
+      padding: 10px 4px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 900;
       text-decoration: none;
-      border-right: 1px solid rgba(255,255,255,0.1);
+      border-right: 1px solid rgba(15, 23, 42, 0.15);
+      background: var(--grad-bg);
+      box-shadow: inset 0 1px 4px rgba(255,255,255,0.3);
     }
-    .nav-item:hover, .nav-item.active { background: var(--accent-gold); }
+    .nav-item:last-child { border-right: none; }
+    .nav-item:hover, .nav-item.active { background: #ff6347; color: #ffffff; }
 
-    /* セクション共通 */
+    /* セクション共通見出し */
     .section {
       padding: 36px 24px;
       border-bottom: 1px solid var(--border);
     }
     .sec-title-bar {
-      background: var(--primary);
-      color: #fff;
-      padding: 10px 16px;
-      font-size: 15px;
-      font-weight: 800;
+      background: var(--grad-bg);
+      color: #0f172a;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 900;
       border-radius: 6px;
       margin-bottom: 20px;
-      border-left: 4px solid var(--accent-gold);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border-left: 4px solid #ff6347;
     }
 
     /* インフォメーションリスト */
@@ -217,14 +224,14 @@
     }
     .map-container iframe { width: 100%; height: 100%; border: none; }
 
-    /* お問い合わせフォームボタン */
+    /* お問い合わせフォーム送信ボタン */
     .form-submit-btn {
-      background: var(--accent-gold);
-      color: #fff;
-      border: none;
+      background: var(--grad-bg);
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
       padding: 12px 24px;
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 900;
       border-radius: 6px;
       cursor: pointer;
     }
@@ -232,11 +239,12 @@
 
     /* フッター */
     .footer {
-      background: var(--primary);
-      color: #94a3b8;
+      background: var(--grad-bg);
+      color: #1e293b;
       text-align: center;
       padding: 30px 20px;
       font-size: 12px;
+      border-top: 3px solid #ff6347;
     }
     .footer-links {
       display: flex;
@@ -245,9 +253,10 @@
       gap: 16px;
       margin-bottom: 16px;
     }
-    .footer-links a { color: #cbd5e1; text-decoration: none; }
-    .old-site-link { margin-top: 16px; font-size: 11px; color: #64748b; }
-    .old-site-link a { color: #94a3b8; text-decoration: underline; }
+    .footer-links a { color: #0f172a; font-weight: 700; text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    .old-site-link { margin-top: 16px; font-size: 11px; color: #334155; }
+    .old-site-link a { color: #0f172a; font-weight: 700; text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -259,11 +268,11 @@
     <img src="common/img/product_banner.png" alt="高天井用LED照明 BWHシリーズ" class="hero-product-img">
   </header>
 
-  <!-- キャッチコピー帯 -->
+  <!-- 薄めオレンジグラデーションのキャッチコピー帯 -->
   <div class="hero-info-banner">
-    <div class="hero-catch">水銀灯の在庫枯渇に備える。現場の明るさを守り、電気代を削る選択。</div>
+    <div class="hero-catch">SDGs 現場の明るさを守り、電気削減。</div>
     <h1 class="hero-company-name">株式会社SUZUSAN</h1>
-    <p class="hero-desc">次世代高天井用LED照明（BWHシリーズ）の製造・販売。工場・大型施設の省エネとコスト削減を強力に支援。（創業1973年）</p>
+    <p class="hero-desc">工場・大型施設の省エネとコスト削減を支援（創業1973年）</p>
   </div>
 
   <!-- クイックアクションバー -->
@@ -285,7 +294,7 @@
     <div class="sec-title-bar">インフォメーション / 最新情報</div>
     <div class="info-list">
       <div class="info-item"><span class="info-date">2016/8/1</span> 本社を移転いたしました。[cite: 2]</div>
-      <div class="info-item"><span class="info-date">2015/8/11</span> LED照明「BWHシリーズ」の資料を掲載しました。[cite: 2] <a href="#products" style="color:var(--accent-gold);">製品詳細はこちら[cite: 2]</a></div>
+      <div class="info-item"><span class="info-date">2015/8/11</span> LED照明「BWHシリーズ」の資料を掲載しました。[cite: 2] <a href="#products" style="color:#b45309; font-weight:700;">製品詳細はこちら[cite: 2]</a></div>
       <div class="info-item"><span class="info-date">2015/8/11</span> 弊社ホームページをリニューアルしました。[cite: 2]</div>
     </div>
   </section>
@@ -464,7 +473,7 @@
       <a href="#contact">お問合わせ[cite: 2]</a>
     </div>
     <p>&copy;2015-2026 株式会社SUZUSAN All Rights Reserved.[cite: 2]</p>
-    <p style="margin-top:4px; font-size:10px; color:#64748b;">Powered & Secured via GitHub Pages</p>
+    <p style="margin-top:4px; font-size:10px; color:#334155;">Powered & Secured via GitHub Pages</p>
     
     <div class="old-site-link">
       ※旧公式ホームページは<a href="http://www.suzusan.co.jp/index.html" target="_blank" rel="noopener noreferrer">こちら[cite: 2]</a>
