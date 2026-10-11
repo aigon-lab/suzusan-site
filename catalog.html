@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カタログ風ギャラリー</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f1f5f9;
+      margin: 0;
+      padding: 24px;
+      color: #0f172a;
+    }
+    
+    /* 全体のコンテナ：パソコンでは広く、スマホでは画面幅いっぱいに */
+    .catalog-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 24px;
+    }
+
+    /* ★ ここが肝心！タイル状に並べるグリッド設定 */
+    .grid-gallery {
+      display: grid;
+      /* 画面幅に合わせて自動で列数が変わる魔法の指定 (最小220px幅のカードを並べる) */
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px; /* タイル同士の間隔 */
+    }
+
+    /* 各タイルのカードデザイン */
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ホバーしたときに少し浮き上がる演出 */
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      background: #e2e8f0;
+    }
+
+    .card-body {
+      padding: 14px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+<div class="catalog-container">
+  <h1>作品・展示カタログ</h1>
+
+  <!-- タイルを並べるグリッドの箱 -->
+  <div class="grid-gallery">
+    
+    <!-- タイル1 -->
+    <a href="#" class="card">
+      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80" alt="サンプル1" class="card-img">
+      <div class="card-body">
+        <div class="card-title">特選 和牛の炭火焼き</div>
+        <div class="card-desc">職人の技が光る看板メニューのこだわりをご紹介します。</div>
+      </div>
+    </a>
+
+    <!-- タイル2 -->
+    <a href="#" class="card">
+      <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80" alt="サンプル2" class="card-img">
+      <div class="card-body">
+        <div class="card-title">地魚のお刺身盛り合わせ</div>
+        <div class="card-desc">早川港から毎朝直送される新鮮な海の幸。</div>
+      </div>
+    </a>
+
+    <!-- タイル3 -->
+    <a href="#" class="card">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80" alt="サンプル3" class="card-img">
+      <div class="card-body">
+        <div class="card-title">店内の雰囲気</div>
+        <div class="card-desc">お一人様からご家族まで落ち着いて過ごせる空間。</div>
+      </div>
+    </a>
+
+    <!-- タイル4 -->
+    <a href="#" class="card">
+      <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80" alt="サンプル4" class="card-img">
+      <div class="card-body">
+        <div class="card-title">季節の釜飯</div>
+        <div class="card-desc">炊き立て熱々、出汁の香りが広がる自慢の逸品。</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>

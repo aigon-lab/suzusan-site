@@ -32,22 +32,23 @@
       box-shadow: var(--shadow);
     }
 
-    /* 1. 本物の製品公式画像（product_banner.png）をヘッダーに配置 */
+    /* 1. ヘッダー製品バナー：余白をなくして横幅いっぱいに拡大 */
     .hero-product-header {
       background: #ffffff;
-      padding: 16px;
+      padding: 0; /* 余白をゼロにして幅いっぱいに */
       text-align: center;
       border-bottom: 2px solid var(--border);
+      overflow: hidden;
     }
     .hero-product-img {
       width: 100%;
-      max-width: 740px;
+      max-width: 100%; /* 最大幅まで目いっぱいに広げる */
       height: auto;
-      border-radius: 6px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      display: block;
+      border-radius: 0; /* 角の丸みもなくして綺麗にフィット */
     }
 
-    /* 2. 太めの帯：ご指定の順序で完璧に整理された構成 */
+    /* 2. 太めの帯 */
     .hero-info-banner {
       background: linear-gradient(135deg, #0f172a, #1e293b);
       color: #ffffff;
@@ -243,12 +244,12 @@
 
 <div class="wrapper">
 
-  <!-- ヘッダー製品バナー画像 -->
+  <!-- ヘッダー製品バナー画像（幅いっぱいに拡大） -->
   <header class="hero-product-header">
     <img src="common/img/product_banner.png" alt="高天井用LED照明 BWHシリーズ" class="hero-product-img">
   </header>
 
-  <!-- 太めの帯：ご指示の順番に整理された完璧な構成 -->
+  <!-- 太めの帯 -->
   <div class="hero-info-banner">
     <div class="hero-catch">水銀灯の在庫枯渇に備える。現場の明るさを守り、電気代を削る選択。</div>
     <h1 class="hero-company-name">株式会社SUZUSAN</h1>
