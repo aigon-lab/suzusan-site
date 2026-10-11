@@ -6,9 +6,8 @@
   <title>株式会社SUZUSAN | 業務用高天井用LED照明（BWHシリーズ）</title>
   <style>
     :root {
-      --primary: #0f172a;
-      --accent-blue: #0284c7;
-      --accent-gold: #d97706;
+      --primary: #0f172a;       /* 落ち着いたネイビー */
+      --accent-gold: #b45309;   /* 引き締まったゴールド/ブラウン */
       --text-main: #1e293b;
       --text-sub: #64748b;
       --bg-base: #f8fafc;
@@ -32,7 +31,7 @@
       box-shadow: var(--shadow);
     }
 
-    /* ヘッダー製品バナー画像：余白なしで幅いっぱい */
+    /* ヘッダー製品バナー画像 */
     .hero-product-header {
       background: #ffffff;
       padding: 0;
@@ -45,12 +44,11 @@
       max-width: 100%;
       height: auto;
       display: block;
-      border-radius: 0;
     }
 
-    /* 太めの帯 */
+    /* キャッチコピー帯 */
     .hero-info-banner {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background: var(--primary);
       color: #ffffff;
       padding: 24px 20px;
       text-align: center;
@@ -134,9 +132,8 @@
       font-weight: 800;
       border-radius: 6px;
       margin-bottom: 20px;
+      border-left: 4px solid var(--accent-gold);
     }
-    .sec-title-bar.red { background: #990000; }
-    .sec-title-bar.gold { background: #b45309; }
 
     /* インフォメーションリスト */
     .info-list {
@@ -220,6 +217,19 @@
     }
     .map-container iframe { width: 100%; height: 100%; border: none; }
 
+    /* お問い合わせフォームボタン */
+    .form-submit-btn {
+      background: var(--accent-gold);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 800;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .form-submit-btn:hover { opacity: 0.9; }
+
     /* フッター */
     .footer {
       background: var(--primary);
@@ -249,7 +259,7 @@
     <img src="common/img/product_banner.png" alt="高天井用LED照明 BWHシリーズ" class="hero-product-img">
   </header>
 
-  <!-- 太めの帯 -->
+  <!-- キャッチコピー帯 -->
   <div class="hero-info-banner">
     <div class="hero-catch">水銀灯の在庫枯渇に備える。現場の明るさを守り、電気代を削る選択。</div>
     <h1 class="hero-company-name">株式会社SUZUSAN</h1>
@@ -272,17 +282,17 @@
 
   <!-- ホームセクション -->
   <section id="home" class="section">
-    <div class="sec-title-bar red">インフォメーション / 最新情報</div>
+    <div class="sec-title-bar">インフォメーション / 最新情報</div>
     <div class="info-list">
       <div class="info-item"><span class="info-date">2016/8/1</span> 本社を移転いたしました。[cite: 2]</div>
-      <div class="info-item"><span class="info-date">2015/8/11</span> LED照明「BWHシリーズ」の資料を掲載しました。[cite: 2] <a href="#products" style="color:var(--accent-blue);">製品詳細はこちら[cite: 2]</a></div>
+      <div class="info-item"><span class="info-date">2015/8/11</span> LED照明「BWHシリーズ」の資料を掲載しました。[cite: 2] <a href="#products" style="color:var(--accent-gold);">製品詳細はこちら[cite: 2]</a></div>
       <div class="info-item"><span class="info-date">2015/8/11</span> 弊社ホームページをリニューアルしました。[cite: 2]</div>
     </div>
   </section>
 
   <!-- LED照明セクション -->
   <section id="products" class="section">
-    <div class="sec-title-bar gold">高天井用LED照明「BWHシリーズ」（水銀灯タイプLED照明）[cite: 2]</div>
+    <div class="sec-title-bar">高天井用LED照明「BWHシリーズ」（水銀灯タイプLED照明）[cite: 2]</div>
 
     <p style="font-size:13px; color:var(--text-sub); margin-bottom:16px;">
       用途：工場・施設向けの業務用[cite: 2]。倉庫・工場・店舗などの省エネ・コスト削減対策を支援します[cite: 2]。<br>
@@ -342,7 +352,7 @@
       </table>
     </div>
 
-    <div class="sec-title-bar" style="background:#475569; margin-top:24px;">各種資料ダウンロード[cite: 2]</div>
+    <div class="sec-title-bar" style="margin-top:24px;">各種資料ダウンロード[cite: 2]</div>
     <div class="docs-grid">
       <a href="led_catalog.pdf" target="_blank" class="doc-link">📁 BWHシリーズ パンフレット（PDF）[cite: 9]</a>
       <a href="led_plan.pdf" target="_blank" class="doc-link">📁 ＬＥＤ照明のご提案（PDF）[cite: 20]</a>
@@ -373,7 +383,7 @@
       <iframe src="https://maps.google.co.jp/maps?output=embed&q=神奈川県相模原市南区相南1-2-2" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
-    <div class="sec-title-bar" style="background:#475569; margin-top:24px;">沿革[cite: 2]</div>
+    <div class="sec-title-bar" style="margin-top:24px;">沿革[cite: 2]</div>
     <table class="company-table">
       <tr><th>1973年6月</th><td>有限会社鈴三物流設立。東芝物流・トヨタホーム・ミサワホームなどの物流事業を行う。[cite: 2]</td></tr>
       <tr><th>2008年12月</th><td>ミサワホーム株式会社と大型ＬＥＤ照明の開発に着手。[cite: 2]</td></tr>
@@ -390,7 +400,7 @@
 
   <!-- お問い合わせセクション -->
   <section id="contact" class="section">
-    <div class="sec-title-bar red">お問合わせ[cite: 2]</div>
+    <div class="sec-title-bar">お問合わせ[cite: 2]</div>
     <p style="font-size:13px; margin-bottom:16px;">お気軽にお問合せください。資料請求や詳しい説明のご依頼はこちらからどうぞ。</p>
     
     <form action="http://www.suzusan.co.jp/postmail/postmail.cgi" method="POST" target="_parent" style="background:#f8fafc; border:1px solid var(--border); padding:20px; border-radius:8px;">
@@ -439,7 +449,7 @@
       </div>
 
       <div style="text-align:center; display:flex; gap:10px; justify-content:center;">
-        <input type="submit" name="submit" value="上記の内容で送信する" style="background:#b45309; color:#fff; border:none; padding:12px 24px; font-size:14px; font-weight:800; border-radius:6px; cursor:pointer;">
+        <input type="submit" name="submit" value="上記の内容で送信する" class="form-submit-btn">
         <input type="reset" value="リセット" style="background:#cbd5e1; color:#334155; border:none; padding:12px 20px; font-size:14px; font-weight:700; border-radius:6px; cursor:pointer;">
       </div>
     </form>
