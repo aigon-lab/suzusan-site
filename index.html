@@ -159,10 +159,11 @@
     .info-item:last-child { border-bottom: none; }
     .info-date { font-size: 11px; color: var(--text-sub); margin-right: 8px; }
 
-    /* スペックテーブル */
+   /* スペックテーブル */
     .table-container {
       width: 100%;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch; /* スマホで滑らかにスクロール */
       margin-bottom: 24px;
       border-radius: 8px;
       border: 1px solid var(--border);
@@ -180,6 +181,20 @@
       text-align: center;
     }
     .spec-table th { background: #f1f5f9; color: var(--primary); font-weight: 700; }
+    
+    /* スマホ用のスクロール案内注記 */
+    .table-scroll-hint {
+      display: none;
+      font-size: 11px;
+      color: #64748b;
+      margin-bottom: 6px;
+      text-align: right;
+    }
+    @media (max-width: 768px) {
+      .table-scroll-hint {
+        display: block;
+      }
+    }
 
     /* 各種資料 */
     .docs-grid {
@@ -346,6 +361,7 @@
     </p>
 
     <h3 style="font-size:14px; font-weight:800; margin: 16px 0 8px; color:var(--primary);">■ E39ソケットタイプ</h3>
+   <p class="table-scroll-hint">※ 横にスクロールできます ⇄</p>
     <div class="table-container">
       <table class="spec-table">
         <tr>
