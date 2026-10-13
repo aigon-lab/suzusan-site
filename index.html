@@ -77,12 +77,12 @@
       font-weight: 600;
     }
 
-  /* クイックアクションバー */
+/* クイックアクションバー */
   .quick-action-bar {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    padding: 8px 12px;
+    padding: 6px 10px;
     background: #ffffff;
     border-bottom: 1px solid var(--border);
     position: sticky;
@@ -92,19 +92,20 @@
   }
   .quick-btn {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    padding: 8px 4px;
+    padding: 6px 4px;
     border-radius: 6px;
     text-decoration: none;
-    font-size: clamp(12px, 3.2vw, 14px);
-    font-weight: 800;
-    white-space: nowrap;
     text-align: center;
+    line-height: 1.2;
   }
   .quick-btn-tel { background: var(--primary); color: #fff; }
   .quick-btn-contact { background: var(--grad-bg); color: #0f172a; border: 1px solid #cbd5e1; }
+  
+  .btn-label { font-size: 13px; font-weight: 800; }
+  .btn-sub { font-size: 11px; font-weight: 700; opacity: 0.95; margin-top: 2px; }
     /* ナビゲーション（各ボタンに綺麗なグラデーションを均等に配置） */
     .nav-bar {
       display: grid;
@@ -286,10 +287,16 @@
       株式会社SUZUSAN
     </div>
   </div>
-  <!-- クイックアクションバー -->
+ <!-- クイックアクションバー -->
   <div class="quick-action-bar">
-    <a href="tel:0453811444" class="quick-btn quick-btn-tel"><span>📞</span> 電話で相談 (045-381-1444)</a>
-    <a href="#contact" class="quick-btn quick-btn-contact"><span>✉️</span> お問い合わせ</a>
+    <a href="tel:0453811444" class="quick-btn quick-btn-tel">
+      <span class="btn-label">📞 電話で相談</span>
+      <span class="btn-sub">045-381-1444</span>
+    </a>
+    <a href="#contact" class="quick-btn quick-btn-contact">
+      <span class="btn-label">✉️ お問い合わせ</span>
+      <span class="btn-sub">見積・資料請求</span>
+    </a>
   </div>
 
   <!-- ナビゲーション -->
