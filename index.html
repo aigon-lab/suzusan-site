@@ -286,6 +286,19 @@
         padding: 8px 10px;
       }
     }
+    /* 各セクション・ブロックの無駄な上下余白を一括カット */
+  .section {
+    padding: 24px 16px !important; /* 広すぎる上下余白をコンパクトに短縮 */
+  }
+  .company-table,
+  .table-container,
+  .docs-grid {
+    margin-bottom: 16px !important; /* 下側の広すぎる隙間を半分に */
+  }
+  .sec-title-bar {
+    margin-top: 16px !important;
+    margin-bottom: 12px !important;
+  }
   </style>
 </head>
 <body>
