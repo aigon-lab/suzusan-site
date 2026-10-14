@@ -6,7 +6,7 @@
   <title>高天井用LED照明 | 株式会社SUZUSAN（スズサン）公式</title>
   <meta name="description" content="工場・倉庫・店舗などの省エネ・コスト削減対策を支援。水銀灯代替の高天井用LED照明（E39口金・防水タイプ）。1台から直販対応・無料照度シミュレーション実施中。" />
 
-  <!-- Google Search Console 確認用メタタグ（コード取得後に content の中身を差し替え） -->
+  <!-- Google Search Console 確認用メタタグ -->
   <meta name="google-site-verification" content="GSC_VERIFICATION_CODE_HERE" />
 
   <!-- 検索AI・Google向け 構造化データ -->
@@ -34,41 +34,40 @@
     body {
       font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
       color: #333333;
-      background-color: #f8fafc;
+      background-color: #f1f5f9;
       line-height: 1.6;
     }
     .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
 
-    /* メインビジュアル（写真エリア） */
+    /* メインビジュアル（オレンジと黒の背景） */
     .hero-banner {
-      background: #111827;
-      background-image: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
       color: #ffffff;
-      padding: 40px 16px;
+      padding: 30px 16px;
       text-align: center;
       position: relative;
     }
     .hero-title {
-      font-size: 38px;
+      font-size: 34px;
       font-weight: 900;
       letter-spacing: 2px;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+      color: #ffffff;
     }
     .hero-subbadge {
       display: inline-block;
       background: #ffffff;
-      color: #111827;
-      font-size: 14px;
+      color: #0f172a;
+      font-size: 13px;
       font-weight: bold;
       padding: 4px 16px;
       border-radius: 20px;
       margin-bottom: 8px;
     }
     .hero-catch {
-      font-size: 15px;
-      color: #e2e8f0;
-      margin-bottom: 24px;
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 20px;
     }
 
     /* 製品画像3連並び */
@@ -76,54 +75,52 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      gap: 20px;
+      gap: 16px;
       flex-wrap: wrap;
-      margin: 20px 0;
+      margin: 15px 0;
     }
     .product-col {
       text-align: center;
       flex: 1;
-      min-width: 200px;
-      max-width: 280px;
+      min-width: 180px;
+      max-width: 260px;
     }
     .product-img-box {
       width: 100%;
-      height: 220px;
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .product-img-box img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
     }
     .product-badge-orange {
       display: inline-block;
       background: #f97316;
       color: #ffffff;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: bold;
-      padding: 5px 14px;
+      padding: 5px 12px;
       border-radius: 20px;
-      box-shadow: 0 2px 6px rgba(249,115,22,0.4);
     }
 
-    /* キャッチコピー帯 */
+    /* サブキャッチ帯（薄いオレンジ） */
     .sub-hero {
       background: #fed7aa;
-      padding: 16px;
+      padding: 14px;
       text-align: center;
     }
     .sub-hero h2 {
-      font-size: 20px;
-      color: #9a3412;
+      font-size: 18px;
+      color: #c2410c;
       font-weight: 900;
     }
     .sub-hero p {
-      font-size: 13px;
+      font-size: 12px;
       color: #431407;
       margin-top: 4px;
       font-weight: bold;
@@ -133,36 +130,35 @@
     .action-bar {
       display: flex;
       background: #0f172a;
-      border-top: 1px solid #334155;
     }
     .action-btn-tel {
       flex: 1;
       background: #0f172a;
       color: #ffffff;
-      padding: 14px;
+      padding: 12px 8px;
       text-align: center;
       text-decoration: none;
       border-right: 1px solid #334155;
     }
-    .action-btn-tel .label { font-size: 14px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; }
-    .action-btn-tel .number { font-size: 20px; font-weight: 900; letter-spacing: 1px; color: #38bdf8; }
-    .action-btn-tel .time { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+    .action-btn-tel .label { font-size: 13px; font-weight: bold; }
+    .action-btn-tel .number { font-size: 18px; font-weight: 900; color: #38bdf8; }
+    .action-btn-tel .time { font-size: 11px; color: #94a3b8; }
 
     .action-btn-mail {
       flex: 1;
       background: #fb923c;
       color: #ffffff;
-      padding: 14px;
+      padding: 12px 8px;
       text-align: center;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    .action-btn-mail .label { font-size: 16px; font-weight: 900; }
+    .action-btn-mail .label { font-size: 15px; font-weight: 900; }
     .action-btn-mail .sub { font-size: 11px; opacity: 0.9; }
 
-    /* ナビゲーション */
+    /* ナビゲーション（赤オレンジ） */
     .nav-tabs {
       background: #f87171;
       display: flex;
@@ -170,139 +166,142 @@
       padding: 10px 0;
       color: #ffffff;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 13px;
     }
     .nav-tabs a { color: #ffffff; text-decoration: none; }
 
-    /* 現場向けメッセージ帯 */
-    .intro-box {
+    /* メインコンテンツ枠 */
+    .main-body {
       background: #ffffff;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* 現場メッセージ帯 */
+    .intro-box {
       border: 2px solid #ef4444;
       border-radius: 8px;
-      padding: 20px;
-      margin: 30px auto;
+      padding: 16px;
+      margin-bottom: 24px;
       text-align: center;
-      max-width: 900px;
     }
-    .intro-title { font-size: 17px; font-weight: bold; color: #b91c1c; margin-bottom: 8px; }
+    .intro-title { font-size: 16px; font-weight: bold; color: #b91c1c; margin-bottom: 8px; }
 
-    /* 照度シミュレーション案内ボックス */
+    /* 照度シミュレーション案内 */
     .simulation-box {
       background: #eff6ff;
       border: 2px solid #3b82f6;
       border-radius: 8px;
-      padding: 20px;
-      margin: 24px auto;
-      max-width: 900px;
+      padding: 18px;
+      margin-bottom: 24px;
     }
-    .simulation-box h3 { font-size: 18px; color: #1e3a8a; margin-bottom: 8px; }
-    .simulation-box p { font-size: 14px; color: #1e40af; line-height: 1.6; }
+    .simulation-box h3 { font-size: 16px; color: #1e3a8a; margin-bottom: 6px; }
+    .simulation-box p { font-size: 13px; color: #1e40af; line-height: 1.6; }
 
     /* 写真送るだけバナー */
     .photo-cta {
       background: #f0fdf4;
       border: 2px dashed #16a34a;
       border-radius: 8px;
-      padding: 20px;
+      padding: 16px;
       text-align: center;
-      margin: 24px auto;
-      max-width: 900px;
+      margin-bottom: 24px;
     }
-    .photo-cta-title { font-size: 18px; font-weight: bold; color: #15803d; margin-bottom: 6px; }
-    .photo-cta-text { font-size: 14px; color: #334155; line-height: 1.5; }
+    .photo-cta-title { font-size: 16px; font-weight: bold; color: #15803d; margin-bottom: 6px; }
+    .photo-cta-text { font-size: 13px; color: #334155; }
 
     /* スペック表 */
-    .spec-section { background: #ffffff; padding: 24px; border-radius: 8px; border: 1px solid #e2e8f0; margin: 30px auto; max-width: 900px; }
-    .spec-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 14px; }
-    .spec-table th, .spec-table td { border: 1px solid #e2e8f0; padding: 12px; }
+    .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0 24px; }
+    .spec-table th, .spec-table td { border: 1px solid #e2e8f0; padding: 10px; }
     .spec-table th { background: #f8fafc; color: #1e293b; width: 30%; text-align: left; }
 
     /* FAQ */
-    .faq-section { background: #ffffff; padding: 24px; border-radius: 8px; border: 1px solid #e2e8f0; margin: 30px auto; max-width: 900px; }
-    .faq-title { font-size: 18px; color: #1e293b; border-bottom: 2px solid #ef4444; padding-bottom: 8px; margin-bottom: 16px; font-weight: bold; }
-    .faq-item { margin-bottom: 16px; }
-    .faq-q { font-weight: bold; color: #1e3a8a; font-size: 15px; }
-    .faq-a { font-size: 14px; color: #475569; margin-top: 4px; line-height: 1.6; }
+    .faq-title { font-size: 16px; color: #1e293b; border-bottom: 2px solid #ef4444; padding-bottom: 6px; margin-bottom: 14px; font-weight: bold; }
+    .faq-item { margin-bottom: 14px; }
+    .faq-q { font-weight: bold; color: #1e3a8a; font-size: 14px; }
+    .faq-a { font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.6; }
 
     /* お問い合わせフォーム */
     .contact-card {
-      background: #ffffff;
+      background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 8px;
-      padding: 26px;
-      margin: 30px auto;
-      max-width: 900px;
+      padding: 20px;
+      margin-top: 24px;
     }
-    .form-group { margin-bottom: 14px; text-align: left; }
-    .form-group label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 4px; }
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 12px; font-weight: bold; margin-bottom: 4px; }
     .form-group input, .form-group textarea {
       width: 100%;
-      padding: 10px;
+      padding: 8px 10px;
       border: 1px solid #cbd5e1;
-      border-radius: 6px;
-      font-size: 14px;
+      border-radius: 4px;
+      font-size: 13px;
     }
     .btn-submit {
       width: 100%;
       background: #ea580c;
       color: #ffffff;
-      padding: 14px;
+      padding: 12px;
       border: none;
-      border-radius: 6px;
-      font-size: 16px;
+      border-radius: 4px;
+      font-size: 15px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    /* フッター・法務 */
+    /* フッター */
     footer {
       background: #1e293b;
       color: #f8fafc;
-      padding: 36px 16px 20px;
+      padding: 30px 16px 20px;
       text-align: center;
-      margin-top: 40px;
+      margin-top: 30px;
     }
-    .footer-company { font-size: 14px; line-height: 1.8; margin-bottom: 24px; }
-    .legal-box { max-width: 700px; margin: 0 auto 20px; text-align: left; }
+    .footer-company { font-size: 13px; line-height: 1.8; margin-bottom: 20px; }
+    .legal-box { max-width: 600px; margin: 0 auto 16px; text-align: left; }
     .legal-box details {
       background: #334155;
-      border-radius: 6px;
-      padding: 10px 14px;
-      margin-bottom: 8px;
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin-bottom: 6px;
       font-size: 12px;
     }
     .legal-box summary { cursor: pointer; font-weight: bold; color: #f1f5f9; }
-    .legal-box .content { margin-top: 10px; line-height: 1.7; color: #cbd5e1; }
+    .legal-box .content { margin-top: 8px; line-height: 1.6; color: #cbd5e1; }
   </style>
 </head>
 <body>
 
-  <!-- メインビジュアル -->
+  <!-- メインビジュアル（写真エリア） -->
   <header class="hero-banner" id="home">
     <div class="container">
       <h1 class="hero-title">高天井用LED照明</h1>
       <div class="hero-subbadge">工場・施設向けの業務用</div>
       <p class="hero-catch">倉庫・工場・店舗などの省エネ・コスト削減対策を支援します。</p>
 
-      <!-- 製品写真の配置エリア -->
+      <!-- 製品写真（ファイル名が違っても自動表示する安全設定） -->
       <div class="product-row">
         <div class="product-col">
           <div class="product-img-box">
-            <img src="./images/lamp-socket.png" alt="ソケットタイプ LED照明" onerror="this.src='./images/product1.png'">
+            <img src="lamp-socket.png" alt="ソケットタイプ (E39)" onerror="this.onerror=null; this.src='images/lamp-socket.png';">
           </div>
           <div class="product-badge-orange">ソケットタイプ (E39)</div>
         </div>
 
         <div class="product-col">
           <div class="product-img-box">
-            <img src="./images/lamp-waterproof.png" alt="防水タイプ 高天井LED" onerror="this.src='./images/product2.png'">
+            <img src="lamp-waterproof.png" alt="防水タイプ" onerror="this.onerror=null; this.src='images/lamp-waterproof.png';">
           </div>
           <div class="product-badge-orange">防水タイプ</div>
         </div>
 
         <div class="product-col">
           <div class="product-img-box">
-            <img src="./images/lamp-highpower.png" alt="高輝度ソケットタイプ LED" onerror="this.src='./images/product3.png'">
+            <img src="lamp-highpower.png" alt="高輝度ソケットタイプ (E39)" onerror="this.onerror=null; this.src='images/lamp-highpower.png';">
           </div>
           <div class="product-badge-orange">高輝度ソケットタイプ (E39)</div>
         </div>
@@ -310,13 +309,13 @@
     </div>
   </header>
 
-  <!-- キャッチ帯 -->
+  <!-- サブキャッチ帯 -->
   <div class="sub-hero">
     <h2>現場の明るさ維持・電気代を劇的削減</h2>
     <p>工場・大型施設のLED化支援（創業1973年） 株式会社SUZUSAN</p>
   </div>
 
-  <!-- アクションボタンバー（電話受付時間反映済み） -->
+  <!-- アクションボタンバー（電話受付時間：反映済み） -->
   <div class="action-bar">
     <a href="tel:0453811444" class="action-btn-tel">
       <div class="label">📞 電話で相談</div>
@@ -337,37 +336,38 @@
     <a href="#contact">お問合わせ</a>
   </div>
 
+  <!-- メイン本文エリア -->
   <div class="container">
-    <!-- 現場の悩み解決枠 -->
-    <div class="intro-box" id="led">
-      <div class="intro-title">【現場の電気代・水銀灯交換でお困りの工場長・オーナー様へ】</div>
-      <p style="font-size: 14px; color: #475569; line-height: 1.7;">
-        「水銀灯が切れたが代わりの球が入手できない」「高所工事費用を抑えたい」「1台だけ交換して様子を見たい」<br>
-        株式会社SUZUSANでは、既存のE39ソケットを活かした高天井LEDを<strong>法人・事業者様向けに1台から全国直販</strong>対応いたします。
-      </p>
-    </div>
+    <div class="main-body">
+      <!-- 現場メッセージ -->
+      <div class="intro-box" id="led">
+        <div class="intro-title">【現場の電気代・水銀灯交換でお困りの工場長・オーナー様へ】</div>
+        <p style="font-size: 13px; color: #475569; line-height: 1.6;">
+          「水銀灯が切れたが代わりの球が入手できない」「高所工事費用を抑えたい」「1台だけ交換して様子を見たい」<br>
+          株式会社SUZUSANでは、既存のE39ソケットを活かした高天井LEDを<strong>法人・事業者様向けに1台から全国直販</strong>対応いたします。
+        </p>
+      </div>
 
-    <!-- 照度シミュレーション案内 -->
-    <div class="simulation-box">
-      <h3>📐 設置台数・照度（lux）シミュレーション無料実施中</h3>
-      <p>
-        「LEDに変えたら手元が暗くならないか不安…」という現場の声にお応えします。<br>
-        設置予定場所の寸法（<strong>幅 × 奥行き × 天井高さ</strong>）と作業内容をお伝えいただければ、最適な照度（lux）計算を行い、現場に必要な台数とお見積もりを迅速にご提示いたします。<br>
-        無駄な出張費を抑えるため、お電話・図面送付でのやり取りを基本とし、安心のメーカー直販価格を実現しています。
-      </p>
-    </div>
+      <!-- 照度シミュレーション案内 -->
+      <div class="simulation-box">
+        <h3>📐 設置台数・照度（lux）シミュレーション無料実施中</h3>
+        <p>
+          「LEDに変えたら手元が暗くならないか不安…」という現場の声にお応えします。<br>
+          設置予定場所の寸法（<strong>幅 × 奥行き × 天井高さ</strong>）と作業内容をお伝えいただければ、最適な照度（lux）計算を行い、現場に必要な台数とお見積もりを迅速にご提示いたします。<br>
+          無駄な出張費を抑えるため、お電話・図面送付でのやり取りを基本とし、安心のメーカー直販価格を実現しています。
+        </p>
+      </div>
 
-    <!-- スマホで写真送るだけCTA -->
-    <div class="photo-cta">
-      <div class="photo-cta-title">📷 【スマホで写真を送るだけ】適合判定・無料</div>
-      <p class="photo-cta-text">
-        「うちの水銀灯器具にそのまま取り付けられるか分からない…」という方は、現在の器具・ソケット部分をスマホで撮影してお送りください。専門スタッフが確認いたします。
-      </p>
-    </div>
+      <!-- 写真送るだけCTA -->
+      <div class="photo-cta">
+        <div class="photo-cta-title">📷 【スマホで写真を送るだけ】適合判定・無料</div>
+        <p class="photo-cta-text">
+          「うちの水銀灯器具にそのまま取り付けられるか分からない…」という方は、現在の器具・ソケット部分をスマホで撮影してお送りください。専門スタッフが確認いたします。
+        </p>
+      </div>
 
-    <!-- 製品基本仕様 -->
-    <div class="spec-section">
-      <h3 style="font-size: 18px; color: #1e293b; border-bottom: 2px solid #3b82f6; padding-bottom: 8px;">
+      <!-- 製品基本仕様 -->
+      <h3 style="font-size: 16px; color: #1e293b; border-bottom: 2px solid #3b82f6; padding-bottom: 6px;">
         高天井LEDランプ 基本仕様
       </h3>
       <table class="spec-table">
@@ -384,7 +384,7 @@
           <td>工場、倉庫、物流センター、作業場、大型店舗、体育館など</td>
         </tr>
         <tr>
-          <th>ご相談・販売対応</th>
+          <th>販売対応</th>
           <td>全国対応（お電話ヒアリング・照度計算のうえ出荷）</td>
         </tr>
         <tr>
@@ -392,10 +392,8 @@
           <td>法人・事業者向け直販（1台から全国発送対応）</td>
         </tr>
       </table>
-    </div>
 
-    <!-- よくある質問（FAQ） -->
-    <div class="faq-section">
+      <!-- よくある質問（FAQ） -->
       <div class="faq-title">よくあるご質問（FAQ）</div>
       
       <div class="faq-item">
@@ -412,36 +410,36 @@
           A. 当社の高天井LEDは水銀灯代替として設計されており、十分な全光束・照度を確保しております。設置場所の寸法（幅・奥行・天井高）をお伝えいただければ、事前に照度（lux）シミュレーションを行い、作業に最適な明るさと必要台数をご提案します。
         </div>
       </div>
-    </div>
 
-    <!-- お問い合わせフォーム -->
-    <div class="contact-card" id="contact">
-      <h3 style="font-size: 18px; color: #1e293b; text-align: center; margin-bottom: 16px;">
-        お問い合わせ・お見積もり・照度シミュレーション依頼
-      </h3>
-      <form action="https://formspree.io/f/placeholder" method="POST">
-        <div class="form-group">
-          <label>貴社名 / 屋号</label>
-          <input type="text" name="company" placeholder="例：鈴木工業株式会社" required />
-        </div>
-        <div class="form-group">
-          <label>ご担当者様名</label>
-          <input type="text" name="name" placeholder="例：鈴木 太郎" required />
-        </div>
-        <div class="form-group">
-          <label>お電話番号</label>
-          <input type="tel" name="tel" placeholder="例：045-381-1444" required />
-        </div>
-        <div class="form-group">
-          <label>メールアドレス</label>
-          <input type="email" name="email" placeholder="例：info@example.com" required />
-        </div>
-        <div class="form-group">
-          <label>お問い合わせ内容（天井高、広さ、検討台数など）</label>
-          <textarea name="message" rows="4" placeholder="天井高5m、15m×10mの倉庫。水銀灯400Wからの交換で照度計算と見積もり希望。" required></textarea>
-        </div>
-        <button type="submit" class="btn-submit">この内容で相談・問い合わせる</button>
-      </form>
+      <!-- お問い合わせフォーム -->
+      <div class="contact-card" id="contact">
+        <h3 style="font-size: 16px; color: #1e293b; text-align: center; margin-bottom: 12px;">
+          お問い合わせ・お見積もり・照度シミュレーション依頼
+        </h3>
+        <form action="https://formspree.io/f/placeholder" method="POST">
+          <div class="form-group">
+            <label>貴社名 / 屋号</label>
+            <input type="text" name="company" placeholder="例：鈴木工業株式会社" required />
+          </div>
+          <div class="form-group">
+            <label>ご担当者様名</label>
+            <input type="text" name="name" placeholder="例：鈴木 太郎" required />
+          </div>
+          <div class="form-group">
+            <label>お電話番号</label>
+            <input type="tel" name="tel" placeholder="例：045-381-1444" required />
+          </div>
+          <div class="form-group">
+            <label>メールアドレス</label>
+            <input type="email" name="email" placeholder="例：info@example.com" required />
+          </div>
+          <div class="form-group">
+            <label>お問い合わせ内容（天井高、広さ、検討台数など）</label>
+            <textarea name="message" rows="4" placeholder="天井高5m、15m×10mの倉庫。水銀灯400Wからの交換で照度計算と見積もり希望。" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">この内容で相談・問い合わせる</button>
+        </form>
+      </div>
     </div>
   </div>
 
