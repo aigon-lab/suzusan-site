@@ -1,489 +1,573 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>高天井用LED照明 | 株式会社SUZUSAN（スズサン）公式</title>
-  <meta name="description" content="工場・倉庫・店舗などの省エネ・コスト削減対策を支援。水銀灯代替の高天井用LED照明（E39口金・防水タイプ）。1台から直販対応・無料照度シミュレーション実施中。" />
-
-  <!-- Google Search Console 確認用メタタグ -->
-  <meta name="google-site-verification" content="GSC_VERIFICATION_CODE_HERE" />
-
-  <!-- 検索AI・Google向け 構造化データ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Manufacturer",
-    "name": "株式会社SUZUSAN",
-    "url": "https://aigon-lab.github.io/suzusan-site/",
-    "telephone": "045-381-1444",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "相南1-2-2 2F",
-      "addressLocality": "相模原市南区",
-      "addressRegion": "神奈川県",
-      "postalCode": "252-0312",
-      "addressCountry": "JP"
-    },
-    "description": "相模原市の高天井LED照明・水銀灯代替ランプ製造メーカー。工場・倉庫向けに1台から直販対応。"
-  }
-  </script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>株式会社SUZUSAN | 業務用高天井用LED照明（BWHシリーズ）</title>
   <style>
+    :root {
+      --primary: #0f172a;       /* 落ち着いたネイビー */
+      --grad-bg: linear-gradient(135deg, #fafad2, #ff6347); /* 薄めオレンジグラデーション */
+      --text-main: #1e293b;
+      --text-sub: #475569;
+      --bg-base: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-      color: #333333;
-      background-color: #f1f5f9;
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding-bottom: 80px;
     }
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      min-height: 100vh;
+      box-shadow: var(--shadow);
+    }
 
-    /* メインビジュアル（オレンジと黒の背景） */
-    .hero-banner {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      color: #ffffff;
-      padding: 30px 16px;
-      text-align: center;
-      position: relative;
-    }
-    .hero-title {
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-    .hero-subbadge {
-      display: inline-block;
+    /* ヘッダー製品バナー画像 */
+    .hero-product-header {
       background: #ffffff;
-      color: #0f172a;
-      font-size: 13px;
-      font-weight: bold;
-      padding: 4px 16px;
-      border-radius: 20px;
-      margin-bottom: 8px;
+      padding: 0;
+      text-align: center;
+      border-bottom: 2px solid var(--border);
+      overflow: hidden;
+    }
+    .hero-product-img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* キャッチコピー帯 */
+    .hero-info-banner {
+      background: var(--grad-bg);
+      color: #1e293b;
+      padding: 18px 20px;
+      text-align: center;
+      border-bottom: 3px solid #ff6347;
+      box-shadow: inset 0 2px 10px rgba(255,255,255,0.4);
     }
     .hero-catch {
+      font-size: 15px;
+      letter-spacing: 1px;
+      color: #7c2d12;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .hero-company-name {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      color: #0f172a;
+    }
+    .hero-desc {
+      font-size: 13px;
+      color: #334155;
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 600;
+    }
+
+/* クイックアクションバー */
+  .quick-action-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 6px 10px;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .quick-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 4px;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .quick-btn-tel { background: var(--primary); color: #fff; }
+  .quick-btn-contact { background: var(--grad-bg); color: #0f172a; border: 1px solid #cbd5e1; }
+  
+  .btn-label { font-size: 13px; font-weight: 800; }
+  .btn-sub { font-size: 11px; font-weight: 700; opacity: 0.95; margin-top: 2px; }
+    /* ナビゲーション（各ボタンに綺麗なグラデーションを均等に配置） */
+    .nav-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: #fff;
+      border-bottom: 3px solid #ff6347;
+    }
+    .nav-item {
+      color: #0f172a;
+      text-align: center;
+      padding: 10px 4px;
+      font-size: 12px;
+      font-weight: 900;
+      text-decoration: none;
+      border-right: 1px solid rgba(15, 23, 42, 0.15);
+      background: var(--grad-bg);
+      box-shadow: inset 0 1px 4px rgba(255,255,255,0.3);
+    }
+    .nav-item:last-child { border-right: none; }
+    .nav-item:hover, .nav-item.active { background: #ff6347; color: #ffffff; }
+
+    /* セクション共通見出し */
+    .section {
+      padding: 36px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sec-title-bar {
+      background: var(--grad-bg);
+      color: #0f172a;
+      padding: 8px 14px;
       font-size: 14px;
-      color: #cbd5e1;
+      font-weight: 900;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border-left: 4px solid #ff6347;
+    }
+
+    /* インフォメーションリスト */
+    .info-list {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 13px;
+    }
+    .info-item {
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .info-item:last-child { border-bottom: none; }
+    .info-date { font-size: 11px; color: var(--text-sub); margin-right: 8px; }
+
+   /* スペックテーブル */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch; /* スマホで滑らかにスクロール */
+      margin-bottom: 24px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      background: #fff;
+      white-space: nowrap;
+    }
+    .spec-table th, .spec-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .spec-table th { background: #f1f5f9; color: var(--primary); font-weight: 700; }
+    
+    /* スマホ用のスクロール案内注記 */
+    .table-scroll-hint {
+      display: none;
+      font-size: 11px;
+      color: #64748b;
+      margin-bottom: 6px;
+      text-align: right;
+    }
+    @media (max-width: 768px) {
+      .table-scroll-hint {
+        display: block;
+      }
+    }
+
+    /* 各種資料 */
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+    }
+    .doc-link {
+      display: block;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      border-radius: 6px;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .doc-link:hover { background: var(--primary); color: #fff; }
+
+    /* 会社概要・マップ */
+    .company-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
       margin-bottom: 20px;
     }
-
-    /* 製品画像3連並び */
-    .product-row {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin: 15px 0;
+    .company-table th, .company-table td {
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      vertical-align: top;
     }
-    .product-col {
-      text-align: center;
-      flex: 1;
-      min-width: 180px;
-      max-width: 260px;
-    }
-    .product-img-box {
-      width: 100%;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 8px;
-    }
-    .product-img-box img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-    .product-badge-orange {
-      display: inline-block;
-      background: #f97316;
-      color: #ffffff;
-      font-size: 12px;
-      font-weight: bold;
-      padding: 5px 12px;
-      border-radius: 20px;
-    }
-
-    /* サブキャッチ帯（薄いオレンジ） */
-    .sub-hero {
-      background: #fed7aa;
-      padding: 14px;
-      text-align: center;
-    }
-    .sub-hero h2 {
-      font-size: 18px;
-      color: #c2410c;
-      font-weight: 900;
-    }
-    .sub-hero p {
-      font-size: 12px;
-      color: #431407;
-      margin-top: 4px;
-      font-weight: bold;
-    }
-
-    /* アクションボタンバー */
-    .action-bar {
-      display: flex;
-      background: #0f172a;
-    }
-    .action-btn-tel {
-      flex: 1;
-      background: #0f172a;
-      color: #ffffff;
-      padding: 12px 8px;
-      text-align: center;
-      text-decoration: none;
-      border-right: 1px solid #334155;
-    }
-    .action-btn-tel .label { font-size: 13px; font-weight: bold; }
-    .action-btn-tel .number { font-size: 18px; font-weight: 900; color: #38bdf8; }
-    .action-btn-tel .time { font-size: 11px; color: #94a3b8; }
-
-    .action-btn-mail {
-      flex: 1;
-      background: #fb923c;
-      color: #ffffff;
-      padding: 12px 8px;
-      text-align: center;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .action-btn-mail .label { font-size: 15px; font-weight: 900; }
-    .action-btn-mail .sub { font-size: 11px; opacity: 0.9; }
-
-    /* ナビゲーション（赤オレンジ） */
-    .nav-tabs {
-      background: #f87171;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      color: #ffffff;
-      font-weight: bold;
-      font-size: 13px;
-    }
-    .nav-tabs a { color: #ffffff; text-decoration: none; }
-
-    /* メインコンテンツ枠 */
-    .main-body {
-      background: #ffffff;
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
+    .company-table th { background: #f8fafc; color: var(--text-sub); width: 25%; text-align: center; font-weight: 700; }
+    .map-container {
+      margin-top: 16px;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 280px;
     }
+    .map-container iframe { width: 100%; height: 100%; border: none; }
 
-    /* 現場メッセージ帯 */
-    .intro-box {
-      border: 2px solid #ef4444;
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    .intro-title { font-size: 16px; font-weight: bold; color: #b91c1c; margin-bottom: 8px; }
-
-    /* 照度シミュレーション案内 */
-    .simulation-box {
-      background: #eff6ff;
-      border: 2px solid #3b82f6;
-      border-radius: 8px;
-      padding: 18px;
-      margin-bottom: 24px;
-    }
-    .simulation-box h3 { font-size: 16px; color: #1e3a8a; margin-bottom: 6px; }
-    .simulation-box p { font-size: 13px; color: #1e40af; line-height: 1.6; }
-
-    /* 写真送るだけバナー */
-    .photo-cta {
-      background: #f0fdf4;
-      border: 2px dashed #16a34a;
-      border-radius: 8px;
-      padding: 16px;
-      text-align: center;
-      margin-bottom: 24px;
-    }
-    .photo-cta-title { font-size: 16px; font-weight: bold; color: #15803d; margin-bottom: 6px; }
-    .photo-cta-text { font-size: 13px; color: #334155; }
-
-    /* スペック表 */
-    .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0 24px; }
-    .spec-table th, .spec-table td { border: 1px solid #e2e8f0; padding: 10px; }
-    .spec-table th { background: #f8fafc; color: #1e293b; width: 30%; text-align: left; }
-
-    /* FAQ */
-    .faq-title { font-size: 16px; color: #1e293b; border-bottom: 2px solid #ef4444; padding-bottom: 6px; margin-bottom: 14px; font-weight: bold; }
-    .faq-item { margin-bottom: 14px; }
-    .faq-q { font-weight: bold; color: #1e3a8a; font-size: 14px; }
-    .faq-a { font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.6; }
-
-    /* お問い合わせフォーム */
-    .contact-card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 20px;
-      margin-top: 24px;
-    }
-    .form-group { margin-bottom: 12px; }
-    .form-group label { display: block; font-size: 12px; font-weight: bold; margin-bottom: 4px; }
-    .form-group input, .form-group textarea {
-      width: 100%;
-      padding: 8px 10px;
+    /* お問い合わせフォーム送信ボタン */
+    .form-submit-btn {
+      background: var(--grad-bg);
+      color: #0f172a;
       border: 1px solid #cbd5e1;
-      border-radius: 4px;
-      font-size: 13px;
-    }
-    .btn-submit {
-      width: 100%;
-      background: #ea580c;
-      color: #ffffff;
-      padding: 12px;
-      border: none;
-      border-radius: 4px;
-      font-size: 15px;
-      font-weight: bold;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 900;
+      border-radius: 6px;
       cursor: pointer;
     }
+    .form-submit-btn:hover { opacity: 0.9; }
 
     /* フッター */
-    footer {
-      background: #1e293b;
-      color: #f8fafc;
-      padding: 30px 16px 20px;
+    .footer {
+      background: var(--grad-bg);
+      color: #1e293b;
       text-align: center;
-      margin-top: 30px;
-    }
-    .footer-company { font-size: 13px; line-height: 1.8; margin-bottom: 20px; }
-    .legal-box { max-width: 600px; margin: 0 auto 16px; text-align: left; }
-    .legal-box details {
-      background: #334155;
-      border-radius: 4px;
-      padding: 8px 12px;
-      margin-bottom: 6px;
+      padding: 30px 20px;
       font-size: 12px;
+      border-top: 3px solid #ff6347;
     }
-    .legal-box summary { cursor: pointer; font-weight: bold; color: #f1f5f9; }
-    .legal-box .content { margin-top: 8px; line-height: 1.6; color: #cbd5e1; }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .footer-links a { color: #0f172a; font-weight: 700; text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    .old-site-link { margin-top: 16px; font-size: 11px; color: #334155; }
+    .old-site-link a { color: #0f172a; font-weight: 700; text-decoration: underline; }
+    /* スマホ用の会社概要テーブル調整 */
+    @media (max-width: 600px) {
+      .company-table th {
+        width: 30%;
+        font-size: 11px;
+        padding: 8px 6px;
+      }
+      .company-table td {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+    }
+    /* 各セクション・ブロックの無駄な上下余白を一括カット */
+  .section {
+    padding: 24px 16px !important; /* 広すぎる上下余白をコンパクトに短縮 */
+  }
+  .company-table,
+  .table-container,
+  .docs-grid {
+    margin-bottom: 16px !important; /* 下側の広すぎる隙間を半分に */
+  }
+  .sec-title-bar {
+    margin-top: 16px !important;
+    margin-bottom: 12px !important;
+  }
   </style>
 </head>
 <body>
 
-  <!-- メインビジュアル（写真エリア） -->
-  <header class="hero-banner" id="home">
-    <div class="container">
-      <h1 class="hero-title">高天井用LED照明</h1>
-      <div class="hero-subbadge">工場・施設向けの業務用</div>
-      <p class="hero-catch">倉庫・工場・店舗などの省エネ・コスト削減対策を支援します。</p>
+<div class="wrapper">
 
-      <!-- 製品写真（ファイル名が違っても自動表示する安全設定） -->
-      <div class="product-row">
-        <div class="product-col">
-          <div class="product-img-box">
-            <img src="lamp-socket.png" alt="ソケットタイプ (E39)" onerror="this.onerror=null; this.src='images/lamp-socket.png';">
-          </div>
-          <div class="product-badge-orange">ソケットタイプ (E39)</div>
-        </div>
-
-        <div class="product-col">
-          <div class="product-img-box">
-            <img src="lamp-waterproof.png" alt="防水タイプ" onerror="this.onerror=null; this.src='images/lamp-waterproof.png';">
-          </div>
-          <div class="product-badge-orange">防水タイプ</div>
-        </div>
-
-        <div class="product-col">
-          <div class="product-img-box">
-            <img src="lamp-highpower.png" alt="高輝度ソケットタイプ (E39)" onerror="this.onerror=null; this.src='images/lamp-highpower.png';">
-          </div>
-          <div class="product-badge-orange">高輝度ソケットタイプ (E39)</div>
-        </div>
-      </div>
-    </div>
+  <!-- ヘッダー製品バナー画像 -->
+  <header class="hero-product-header">
+    <img src="common/img/product_banner.png" alt="高天井用LED照明 BWHシリーズ" class="hero-product-img">
   </header>
 
-  <!-- サブキャッチ帯 -->
-  <div class="sub-hero">
-    <h2>現場の明るさ維持・電気代を劇的削減</h2>
-    <p>工場・大型施設のLED化支援（創業1973年） 株式会社SUZUSAN</p>
-  </div>
+<!-- 薄めオレンジグラデーションのキャッチコピー帯 -->
+  <div class="hero-info-banner" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 8px; min-height: auto; width: 100%; box-sizing: border-box;">
+    <!-- メインキャッチ：完全中央揃え -->
+    <div class="hero-catch" style="font-size: clamp(14px, 3.8vw, 20px); font-weight: 800; color: #7c2d12; margin: 0 auto; padding: 0; text-align: center; width: 100%; line-height: 1.3;">
+      現場の明るさ維持・電気代を劇的削減
+    </div>
+    
+   <!-- サブキャッチ：完全中央揃え -->
+    <p class="hero-desc" style="font-size: clamp(11px, 2.7vw, 14px); font-weight: 600; color: #1e3a8a; margin: 4px auto 0 auto; padding: 0; text-align: center; width: 100%; line-height: 1.2;">
+      工場・大型施設のLED化支援（創業1973年）
+    </p>
 
-  <!-- アクションボタンバー（電話受付時間：反映済み） -->
-  <div class="action-bar">
-    <a href="tel:0453811444" class="action-btn-tel">
-      <div class="label">📞 電話で相談</div>
-      <div class="number">045-381-1444</div>
-      <div class="time">受付 9:00〜18:00（土日祝休）</div>
+    <!-- 会社名：完全中央揃え -->
+    <div class="hero-company-name" style="font-size: 11px; font-weight: bold; color: #475569; margin: 4px auto 0 auto; padding: 0; text-align: center; width: 100%; line-height: 1.2;">
+      株式会社SUZUSAN
+    </div>
+  </div>
+ <!-- クイックアクションバー -->
+  <div class="quick-action-bar">
+    <a href="tel:0453811444" class="quick-btn quick-btn-tel">
+      <span class="btn-label">📞 電話で相談</span>
+      <span class="btn-sub">045-381-1444</span>
     </a>
-    <a href="#contact" class="action-btn-mail">
-      <div class="label">✉ お問い合わせ</div>
-      <div class="sub">照度見積・資料請求</div>
+    <a href="#contact" class="quick-btn quick-btn-contact">
+      <span class="btn-label">✉️ お問い合わせ</span>
+      <span class="btn-sub">見積・資料請求</span>
     </a>
   </div>
 
-  <!-- ナビゲーションバー -->
-  <div class="nav-tabs">
-    <a href="#home">ホーム</a>
-    <a href="#led">LED照明</a>
-    <a href="#company">会社概要</a>
-    <a href="#contact">お問合わせ</a>
+  <!-- ナビゲーション -->
+  <nav class="nav-bar">
+    <a href="#home" class="nav-item active">ホーム</a>
+    <a href="#products" class="nav-item">LED照明</a>
+    <a href="#company" class="nav-item">会社概要</a>
+    <a href="#contact" class="nav-item">お問合わせ</a>
+  </nav>
+<!-- 提案PDFへの誘導バナー -->
+<div style="max-width: 1000px; margin: 25px auto; padding: 0 15px; box-sizing: border-box;">
+  <div style="background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%); border: 2px solid #ff6b35; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+    <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: bold; color: #d9480f; letter-spacing: 1px;">
+      【現場の電気代・水銀灯交換でお困りの工場長・オーナー様へ】
+    </p>
+    <h2 style="margin: 0 0 15px 0; font-size: 20px; color: #2b2b2b; line-height: 1.4;">
+      水銀灯からLEDへ！電気代最大70%削減シミュレーション＆導入提案書
+    </h2>
+    <!-- 比較ビジュアル画像 -->
+    <div style="margin: 20px auto; max-width: 900px;">
+      <img src="led-compare.jpg" alt="水銀灯と高天井LEDの比較" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+    </div>
+    <a href="led_plan.pdf" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #ff5722; color: #ffffff; text-decoration: none; font-size: 18px; font-weight: bold; padding: 14px 32px; border-radius: 50px; box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4); transition: all 0.3s ease;">
+      📄 導入提案書スライド（PDF）を今すぐ見る
+    </a>
+    <p style="margin: 10px 0 0 0; font-size: 12px; color: #666;">
+      ※クリックすると新しいタブで資料（PDF）が開きます。ダウンロード・印刷も可能です。
+    </p>
   </div>
+</div>
+  <!-- ホームセクション -->
+ <section id="home" class="section" style="margin-bottom: 0px; padding-bottom: 0px;">
+    <div class="sec-title-bar">インフォメーション / 最新情報</div>
+    <div class="info-list">
+      <div class="info-item"><span class="info-date">2016/8/1</span> 本社を移転いたしました。</div>
+      <div class="info-item"><span class="info-date">2015/8/11</span> LED照明「BWHシリーズ」の資料を掲載しました。 <a href="#products" style="color:#b45309; font-weight:700;">製品詳細はこちら</a></div>
+      <div class="info-item"><span class="info-date">2015/8/11</span> 弊社ホームページをリニューアルしました。</div>
+    </div>
+  </section>
+　　<!-- LED照明セクション -->
+ <section id="products" class="section" style="margin-top: 0px; padding-top: 0px;">
+    <div class="sec-title-bar">高天井用LED照明「BWHシリーズ」（水銀灯タイプLED照明）</div>
 
-  <!-- メイン本文エリア -->
-  <div class="container">
-    <div class="main-body">
-      <!-- 現場メッセージ -->
-      <div class="intro-box" id="led">
-        <div class="intro-title">【現場の電気代・水銀灯交換でお困りの工場長・オーナー様へ】</div>
-        <p style="font-size: 13px; color: #475569; line-height: 1.6;">
-          「水銀灯が切れたが代わりの球が入手できない」「高所工事費用を抑えたい」「1台だけ交換して様子を見たい」<br>
-          株式会社SUZUSANでは、既存のE39ソケットを活かした高天井LEDを<strong>法人・事業者様向けに1台から全国直販</strong>対応いたします。
-        </p>
-      </div>
+    <p style="font-size:13px; color:var(--text-sub); margin-bottom:16px;">
+      用途：工場・施設向けの業務用。倉庫・工場・店舗などの省エネ・コスト削減対策を支援します。<br>
+      <strong>※電源内蔵タイプまたは電源外付けタイプをお選びいただけます。</strong>
+    </p>
 
-      <!-- 照度シミュレーション案内 -->
-      <div class="simulation-box">
-        <h3>📐 設置台数・照度（lux）シミュレーション無料実施中</h3>
-        <p>
-          「LEDに変えたら手元が暗くならないか不安…」という現場の声にお応えします。<br>
-          設置予定場所の寸法（<strong>幅 × 奥行き × 天井高さ</strong>）と作業内容をお伝えいただければ、最適な照度（lux）計算を行い、現場に必要な台数とお見積もりを迅速にご提示いたします。<br>
-          無駄な出張費を抑えるため、お電話・図面送付でのやり取りを基本とし、安心のメーカー直販価格を実現しています。
-        </p>
-      </div>
-
-      <!-- 写真送るだけCTA -->
-      <div class="photo-cta">
-        <div class="photo-cta-title">📷 【スマホで写真を送るだけ】適合判定・無料</div>
-        <p class="photo-cta-text">
-          「うちの水銀灯器具にそのまま取り付けられるか分からない…」という方は、現在の器具・ソケット部分をスマホで撮影してお送りください。専門スタッフが確認いたします。
-        </p>
-      </div>
-
-      <!-- 製品基本仕様 -->
-      <h3 style="font-size: 16px; color: #1e293b; border-bottom: 2px solid #3b82f6; padding-bottom: 6px;">
-        高天井LEDランプ 基本仕様
-      </h3>
+    <h3 style="font-size:14px; font-weight:800; margin: 16px 0 8px; color:var(--primary);">■ E39ソケットタイプ</h3>
+   <p class="table-scroll-hint">※ 横にスクロールできます ⇄</p>
+    <div class="table-container">
       <table class="spec-table">
         <tr>
-          <th>対応口金</th>
-          <td>E39口金（水銀灯400W〜700W代替）</td>
+          <th rowspan="2">型名</th>
+          <th rowspan="2">光源色</th>
+          <th colspan="2">サイズ(mm)</th>
+          <th rowspan="2">重量(kg)</th>
+          <th rowspan="2">配光角</th>
+          <th rowspan="2">定格出力(W)</th>
+          <th rowspan="2">全光束(lm)</th>
+          <th rowspan="2">定格寿命(h)</th>
+          <th rowspan="2">色温度(K)</th>
+          <th rowspan="2">相当電球</th>
         </tr>
-        <tr>
-          <th>タイプ</th>
-          <td>ソケットタイプ / 防水タイプ / 高輝度ソケットタイプ</td>
-        </tr>
-        <tr>
-          <th>対象施設</th>
-          <td>工場、倉庫、物流センター、作業場、大型店舗、体育館など</td>
-        </tr>
-        <tr>
-          <th>販売対応</th>
-          <td>全国対応（お電話ヒアリング・照度計算のうえ出荷）</td>
-        </tr>
-        <tr>
-          <th>販売形態</th>
-          <td>法人・事業者向け直販（1台から全国発送対応）</td>
-        </tr>
+        <tr><th>直径</th><th>高さ</th></tr>
+        <tr><td>BWH-WRN060</td><td rowspan="8">白色</td><td>φ200</td><td>268</td><td>1.45</td><td rowspan="8">120°</td><td>60</td><td>8400</td><td rowspan="8">40,000</td><td rowspan="8">6000</td><td>250W水銀灯</td></tr>
+        <tr><td>BWH-WRN090</td><td>φ200</td><td>268</td><td>1.45</td><td>90</td><td>12600</td><td>400W水銀灯</td></tr>
+        <tr><td>BWH-WRN100</td><td>φ200</td><td>268</td><td>1.45</td><td>100</td><td>13500</td><td>170Wメタハラ</td></tr>
+        <tr><td>BWH-WRN120</td><td>φ300</td><td>360</td><td>3.20</td><td>120</td><td>16800</td><td>500W水銀灯</td></tr>
+        <tr><td>BWH-WRN150</td><td>φ300</td><td>360</td><td>3.50</td><td>150</td><td>21000</td><td>700W水銀灯</td></tr>
+        <tr><td>BWH-WRN180</td><td>φ300</td><td>360</td><td>3.50</td><td>180</td><td>25200</td><td>1000W水銀灯</td></tr>
+        <tr><td>BWH-WRN200</td><td>φ300</td><td>360</td><td>3.50</td><td>200</td><td>28000</td><td>1000W水銀灯以上</td></tr>
+        <tr><td>BWH-WRN250</td><td>φ300</td><td>360</td><td>3.50</td><td>250</td><td>35000</td><td>1500W水銀灯</td></tr>
       </table>
-
-      <!-- よくある質問（FAQ） -->
-      <div class="faq-title">よくあるご質問（FAQ）</div>
-      
-      <div class="faq-item">
-        <div class="faq-q">Q. 高天井LED（E39口金）を1個・小口から直接購入できますか？</div>
-        <div class="faq-a">
-          A. はい。株式会社SUZUSANでは、工場・倉庫・大型施設用の高天井LED照明を法人・事業者様向けに1台からメーカー直販・全国出荷対応しております。<br>
-          <small style="color: #64748b;">※事務所での一般小売り・店頭展示は行っておりません。ご注文・お問い合わせはお電話またはWebフォームより承ります。</small>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Q. 水銀灯400W相当の明るさは確保できますか？手元が暗くなりませんか？</div>
-        <div class="faq-a">
-          A. 当社の高天井LEDは水銀灯代替として設計されており、十分な全光束・照度を確保しております。設置場所の寸法（幅・奥行・天井高）をお伝えいただければ、事前に照度（lux）シミュレーションを行い、作業に最適な明るさと必要台数をご提案します。
-        </div>
-      </div>
-
-      <!-- お問い合わせフォーム -->
-      <div class="contact-card" id="contact">
-        <h3 style="font-size: 16px; color: #1e293b; text-align: center; margin-bottom: 12px;">
-          お問い合わせ・お見積もり・照度シミュレーション依頼
-        </h3>
-        <form action="https://formspree.io/f/placeholder" method="POST">
-          <div class="form-group">
-            <label>貴社名 / 屋号</label>
-            <input type="text" name="company" placeholder="例：鈴木工業株式会社" required />
-          </div>
-          <div class="form-group">
-            <label>ご担当者様名</label>
-            <input type="text" name="name" placeholder="例：鈴木 太郎" required />
-          </div>
-          <div class="form-group">
-            <label>お電話番号</label>
-            <input type="tel" name="tel" placeholder="例：045-381-1444" required />
-          </div>
-          <div class="form-group">
-            <label>メールアドレス</label>
-            <input type="email" name="email" placeholder="例：info@example.com" required />
-          </div>
-          <div class="form-group">
-            <label>お問い合わせ内容（天井高、広さ、検討台数など）</label>
-            <textarea name="message" rows="4" placeholder="天井高5m、15m×10mの倉庫。水銀灯400Wからの交換で照度計算と見積もり希望。" required></textarea>
-          </div>
-          <button type="submit" class="btn-submit">この内容で相談・問い合わせる</button>
-        </form>
-      </div>
     </div>
-  </div>
 
-  <!-- フッター（古いサイトへのリンク排除済み） -->
-  <footer id="company">
-    <div class="container">
-      <div class="footer-company">
-        <strong>株式会社SUZUSAN</strong><br>
-        〒252-0312 神奈川県相模原市南区相南1-2-2 2F<br>
-        TEL: 045-381-1444 / 受付: 9:00〜18:00（土日祝休）<br>
-        事業内容: 高天井LED照明の製造および直販（全国対応）<br>
-        <small style="color: #94a3b8;">※事務所での一般小売り販売は行っておりません。</small>
+    <h3 style="font-size:14px; font-weight:800; margin: 20px 0 8px; color:var(--primary);">■ 防水（ステイ）タイプ</h3>
+    <div class="table-container">
+      <table class="spec-table">
+        <tr>
+          <th rowspan="2">型名</th>
+          <th rowspan="2">光源色</th>
+          <th colspan="2">サイズ(mm)</th>
+          <th rowspan="2">重量(kg)</th>
+          <th rowspan="2">配光角</th>
+          <th rowspan="2">定格出力(W)</th>
+          <th rowspan="2">全光束(lm)</th>
+          <th rowspan="2">定格寿命(h)</th>
+          <th rowspan="2">色温度(K)</th>
+          <th rowspan="2">相当電球</th>
+        </tr>
+        <tr><th>直径</th><th>高さ</th></tr>
+        <tr><td>BWH-WRN060WP</td><td rowspan="7">白色</td><td>φ200</td><td>260</td><td>2.78</td><td rowspan="7">120°</td><td>60</td><td>8400</td><td rowspan="7">40,000</td><td rowspan="7">6000</td><td>250W水銀灯</td></tr>
+        <tr><td>BWH-WRN090WP</td><td>φ200</td><td>260</td><td>2.78</td><td>90</td><td>12600</td><td>400W水銀灯</td></tr>
+        <tr><td>BWH-WRN120WP</td><td>φ300</td><td>360</td><td>4.0</td><td>120</td><td>16800</td><td>500W水銀灯</td></tr>
+        <tr><td>BWH-WRN150WP</td><td>φ300</td><td>360</td><td>4.2</td><td>150</td><td>21000</td><td>700W水銀灯</td></tr>
+        <tr><td>BWH-WRN180WP</td><td>φ300</td><td>360</td><td>4.2</td><td>180</td><td>25200</td><td>1000W水銀灯</td></tr>
+        <tr><td>BWH-WRN200WP</td><td>φ300</td><td>360</td><td>4.2</td><td>200</td><td>28000</td><td>1000W水銀灯以上</td></tr>
+        <tr><td>BWH-WRN250WP</td><td>φ300</td><td>360</td><td>4.2</td><td>250</td><td>35000</td><td>1500W水銀灯</td></tr>
+      </table>
+    </div>
+
+    <div class="sec-title-bar" style="margin-top:24px;">各種資料ダウンロード</div>
+    <div class="docs-grid">
+      <a href="led_catalog.pdf" target="_blank" class="doc-link">📁 BWHシリーズ パンフレット（PDF）</a>
+      <a href="led_plan.pdf" target="_blank" class="doc-link">📁 ＬＥＤ照明のご提案（PDF）</a>
+      <a href="led_plan2.pdf" target="_blank" class="doc-link">📁 コスト削減・償却資料（PDF）</a>
+      <a href="led_guidebook.pdf" target="_blank" class="doc-link">📁 ガイドブック（PDF）</a>
+      <a href="led_b-cube_data.pdf" target="_blank" class="doc-link">📁 直下照度資料（PDF）</a>
+    </div>
+  </section>
+
+<!-- 会社概要セクション -->
+  <section id="company" class="section">
+    <div class="sec-title-bar">会社概要</div>
+    <table class="company-table">
+      <tr><th>名称</th><td>株式会社SUZUSAN</td></tr>
+      <tr>
+        <th>所在地</th>
+        <td>
+          <strong>[営業所]</strong><br>
+          〒252-0312 神奈川県相模原市南区相南1-2-2-2F<br>
+          TEL：<a href="tel:0453811444" style="color: var(--primary); font-weight: bold; text-decoration: underline;">045-381-1444</a><br>
+          FAX：042-705-8659<br><br>
+          <strong>[本店]</strong><br>
+          〒240-0051 神奈川県横浜市保土ヶ谷区上菅田町1400番地1
+        </td>
+      </tr>
+      <tr><th>E-mail</th><td><a href="mailto:info@suzusan.co.jp" style="color: var(--primary); text-decoration: underline;">info@suzusan.co.jp</a></td></tr>
+      <tr><th>URL</th><td><a href="http://www.suzusan.co.jp" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: underline;">http://www.suzusan.co.jp</a></td></tr>
+      <tr><th>創業</th><td>1973年6月</td></tr>
+      <tr><th>資本金</th><td>500万円</td></tr>
+      <tr><th>代表者</th><td>鈴木 孝行</td></tr>
+      <tr><th>事業内容</th><td>ＬＥＤ照明製造・販売</td></tr>
+      <tr><th>取引銀行</th><td>川崎信用金庫 他</td></tr>
+      <tr><th>主要仕入先</th><td>Well Ray Technology Ltd. / Taiwan Epoch Chemtronics Corp. 他</td></tr>
+      <tr><th>主要取引先</th><td>株式会社ＩＨＩ、コイズミ照明株式会社、株式会社シミズオクト、宮脇鋼管株式会社 他</td></tr>
+    </table>
+
+    <div class="map-container">
+      <iframe src="https://maps.google.co.jp/maps?output=embed&q=神奈川県相模原市南区相南1-2-2" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <div class="sec-title-bar" style="margin-top:24px;">沿革</div>
+    <table class="company-table">
+      <tr><th>1973年6月</th><td>有限会社鈴三物流設立。東芝物流・トヨタホーム・ミサワホームなどの物流事業を行う。</td></tr>
+      <tr><th>2008年12月</th><td>ミサワホーム株式会社と大型ＬＥＤ照明の開発に着手。</td></tr>
+      <tr><th>2009年3月</th><td>ミサワホーム松本工場にて大型LED照明の開発に成功。BWHシリーズ完成。</td></tr>
+      <tr><th>2009年6月</th><td>実用新案登録「ＬＥＤ蛍光灯」登録第3153538号</td></tr>
+      <tr><th>2009年8月</th><td>Anteya Technology Corpにて委託生産開始。</td></tr>
+      <tr><th>2009年11月</th><td>ミサワホームと共同で意匠登録「発光ダイオード照明」</td></tr>
+      <tr><th>2010年4月</th><td>株式会社ＳＵＺＵＳＡＮに社名変更、LED照明事業本格参入。</td></tr>
+      <tr><th>2010年5〜12月</th><td>外付けコンバータ、分割蛍光灯型、リング状等の実用新案を多数登録。</td></tr>
+      <tr><th>2011〜2014年</th><td>ライティングジャパン、メッセナゴヤ等に出展。特許登録「ＬＥＤ蛍光灯」（特許第5558273号）</td></tr>
+      <tr><th>現在</th><td>現在に至る</td></tr>
+    </table>
+  </section>
+  <!-- お問い合わせセクション -->
+  <section id="contact" class="section">
+    <div class="sec-title-bar">お問合わせ</div>
+    <p style="font-size:13px; margin-bottom:16px;">お気軽にお問合せください。資料請求や詳しい説明のご依頼はこちらからどうぞ。</p>
+    
+    <form action="http://www.suzusan.co.jp/postmail/postmail.cgi" method="POST" target="_parent" style="background:#f8fafc; border:1px solid var(--border); padding:20px; border-radius:8px;">
+      <div style="margin-bottom:14px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">ご依頼内容</label>
+        <select name="内容" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+          <option value="未選択" selected>下記からお選びください。</option>
+          <option value="●資料請求を希望">●資料請求を希望</option>
+          <option value="●詳しい説明をしてほしい">●詳しい説明をしてほしい</option>
+        </select>
       </div>
 
-      <!-- 特定商取引法に基づく表記 & プライバシーポリシー（折りたたみ） -->
-      <div class="legal-box">
-        <details>
-          <summary>特定商取引法に基づく表記</summary>
-          <div class="content">
-            <p><strong>販売事業者名：</strong> 株式会社SUZUSAN</p>
-            <p><strong>所在地：</strong> 〒252-0312 神奈川県相模原市南区相南1-2-2 2F</p>
-            <p><strong>電話番号：</strong> 045-381-1444</p>
-            <p><strong>商品代金以外の必要料金：</strong> 配送料、消費税、銀行振込手数料（※該当する場合）</p>
-            <p><strong>お支払い方法：</strong> 銀行振込、請求書払い等（法人取引の慣例による）</p>
-            <p><strong>商品の引き渡し時期：</strong> ご注文・在庫確認後、通常営業日にて迅速に発送</p>
-            <p><strong>返品・不良品について：</strong> 初期不良の場合は迅速に良品と交換対応いたします。お客様都合による返品は原則不可となります。</p>
-          </div>
-        </details>
-
-        <details>
-          <summary>プライバシーポリシー（個人情報の取り扱い）</summary>
-          <div class="content">
-            <p><strong>個人情報の利用目的：</strong> お問い合わせへの回答、照度計算書・仕様書・見積書の送付、製品発送および納期連絡のために利用いたします。</p>
-            <p><strong>第三者提供の禁止：</strong> 法令に基づく場合を除き、取得した個人情報をご本人の同意なく第三者へ開示・提供することはありません。</p>
-            <p><strong>適正管理：</strong> お預かりした情報は漏洩・紛失を防ぐため、適切な安全対策を講じて管理いたします。</p>
-          </div>
-        </details>
+      <div style="margin-bottom:14px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">お名前（全角）</label>
+        <input type="text" name="_お名前" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
       </div>
 
-      <p style="font-size: 11px; color: #94a3b8;">
-        &copy; SUZUSAN Co., Ltd. All Rights Reserved.
-      </p>
+      <div style="margin-bottom:14px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">フリガナ（全角）</label>
+        <input type="text" name="フリガナ" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">郵便番号（半角数字 例：221-0064）</label>
+        <input type="text" name="郵便番号" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">ご住所</label>
+        <input type="text" name="_ご住所" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">電話番号（半角数字）</label>
+        <input type="text" name="電話番号" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">E-mail（半角英数字）</label>
+        <input type="text" name="_email" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">その他のお問い合せ</label>
+        <textarea name="その他" rows="5" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;"></textarea>
+      </div>
+
+      <div style="text-align:center; display:flex; gap:10px; justify-content:center;">
+        <input type="submit" name="submit" value="上記の内容で送信する" class="form-submit-btn">
+        <input type="reset" value="リセット" style="background:#cbd5e1; color:#334155; border:none; padding:12px 20px; font-size:14px; font-weight:700; border-radius:6px; cursor:pointer;">
+      </div>
+    </form>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#home">ホーム</a>
+      <a href="#products">LED照明</a>
+      <a href="#company">会社概要</a>
+      <a href="#contact">お問合わせ</a>
+    </div>
+    <p>&copy;2015-2026 株式会社SUZUSAN All Rights Reserved.</p>
+    <p style="margin-top:4px; font-size:10px; color:#334155;">Powered & Secured via GitHub Pages</p>
+    
+    <div class="old-site-link">
+      ※旧公式ホームページは<a href="http://www.suzusan.co.jp/index.html" target="_blank" rel="noopener noreferrer">こちら</a>
     </div>
   </footer>
+
+</div>
 
 </body>
 </html>
