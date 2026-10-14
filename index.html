@@ -569,33 +569,53 @@
     </form>
   </section>
 
-  <!-- フッター -->
-  <footer style="background: #1e293b; color: #94a3b8; text-align: center; padding: 32px 16px; font-size: 13px; line-height: 1.8;">
-  <div style="max-width: 800px; margin: 0 auto;">
-    <p style="margin-bottom: 8px; font-weight: bold; color: #f8fafc; font-size: 16px;">
-      株式会社SUZUSAN
-    </p>
-    <p style="margin: 0 0 12px 0; color: #cbd5e1;">
-      〒252-0243 神奈川県相模原市中央区上溝3-1-31<br>
-      TEL: 045-381-1444 / FAX: 045-381-1445<br>
-      <strong>営業時間:</strong> 平日 9:00〜18:00（定休日: 土曜・日曜・祝日）
-    </p>
+<footer>
+  <!-- ナビゲーションバー（そのまま維持） -->
+  <nav class="footer-nav" style="margin-bottom: 16px;">
+    <a href="#" style="margin: 0 12px; font-weight: bold; color: inherit; text-decoration: none;">ホーム</a>
+    <a href="#led" style="margin: 0 12px; font-weight: bold; color: inherit; text-decoration: none;">LED照明</a>
+    <a href="#company" style="margin: 0 12px; font-weight: bold; color: inherit; text-decoration: none;">会社概要</a>
+    <a href="#contact" style="margin: 0 12px; font-weight: bold; color: inherit; text-decoration: none;">お問合せ</a>
+  </nav>
 
-    <!-- サイト内リンク・規約エリア（古い外部サイトとの縁切り） -->
-    <div style="margin: 16px 0; padding-top: 12px; border-top: 1px solid #334155; font-size: 12px;">
-      <a href="#company" style="color: #94a3b8; text-decoration: none; margin: 0 8px;">会社概要</a> |
-      <a href="#contact" style="color: #94a3b8; text-decoration: none; margin: 0 8px;">お問い合わせ</a> |
-      <a href="#tokusho" style="color: #94a3b8; text-decoration: none; margin: 0 8px;">特定商取引法に基づく表記</a> |
-      <a href="#privacy" style="color: #94a3b8; text-decoration: none; margin: 0 8px;">プライバシーポリシー</a>
-    </div>
-
-    <p style="margin-top: 12px; font-size: 11px; color: #64748b;">
-      &copy; SUZUSAN Co., Ltd. All Rights Reserved.
-    </p>
+  <!-- 営業時間・定休日（追加） -->
+  <div style="font-size: 13px; margin-bottom: 16px; line-height: 1.6;">
+    <p style="margin: 0;">TEL: 045-381-1444 / FAX: 045-381-1445</p>
+    <p style="margin: 2px 0 0 0; font-weight: bold;">営業時間: 平日 9:00〜18:00（定休日: 土曜・日曜・祝日）</p>
   </div>
-</footer>
 
-</div>
+  <!-- 折りたたみ：特定商取引法に基づく表記 -->
+  <details style="margin: 10px auto; max-width: 600px; text-align: left; background: rgba(255, 255, 255, 0.6); border-radius: 6px; padding: 4px 8px; font-size: 12px;">
+    <summary style="cursor: pointer; font-weight: bold; padding: 4px; text-align: center;">
+      ▶ 特定商取引法に基づく表記
+    </summary>
+    <div style="padding: 10px; background: rgba(255, 255, 255, 0.9); border-radius: 4px; margin-top: 6px; line-height: 1.6;">
+      <p style="margin: 2px 0;"><strong>事業者名：</strong> 株式会社SUZUSAN</p>
+      <p style="margin: 2px 0;"><strong>所在地：</strong> 〒252-0243 神奈川県相模原市中央区上溝3-1-31</p>
+      <p style="margin: 2px 0;"><strong>電話番号：</strong> 045-381-1444</p>
+      <p style="margin: 2px 0;"><strong>販売価格：</strong> 照度シミュレーションに基づく個別お見積り</p>
+      <p style="margin: 2px 0;"><strong>支払方法：</strong> 銀行振込、各種指定決済</p>
+    </div>
+  </details>
+
+  <!-- 折りたたみ：プライバシーポリシー -->
+  <details style="margin: 6px auto 16px; max-width: 600px; text-align: left; background: rgba(255, 255, 255, 0.6); border-radius: 6px; padding: 4px 8px; font-size: 12px;">
+    <summary style="cursor: pointer; font-weight: bold; padding: 4px; text-align: center;">
+      ▶ プライバシーポリシー
+    </summary>
+    <div style="padding: 10px; background: rgba(255, 255, 255, 0.9); border-radius: 4px; margin-top: 6px; line-height: 1.6;">
+      <p style="margin: 2px 0;">株式会社SUZUSANは、お問い合わせ等の際にお預かりする個人情報を適切に保護・管理し、業務連絡およびご案内の目的以外には利用いたしません。法令に基づく場合を除き、第三者への提供は行いません。</p>
+    </div>
+  </details>
+
+  <!-- コピーライト（旧HPリンクは削除・縁切り済み） -->
+  <p style="margin: 8px 0 0 0; font-size: 12px;">
+    &copy;2015-2026 株式会社SUZUSAN All Rights Reserved.
+  </p>
+  <p style="margin: 4px 0 0 0; font-size: 10px; opacity: 0.8;">
+    Powered & Secured via GitHub Pages
+  </p>
+</footer></div>
 
 </body>
 </html>
