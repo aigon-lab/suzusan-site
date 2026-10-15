@@ -19,7 +19,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; }
     body { background-color: var(--bg-base); color: var(--text); line-height: 1.6; padding-bottom: 100px; }
 
-    /* ナビゲーション */
     header { background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid var(--border); padding: 12px 20px; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -42,14 +41,12 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 20px 16px; }
 
-    /* ヒーローエリア */
     .hero-section { text-align: center; margin-bottom: 24px; }
     .badge { display: inline-block; background: linear-gradient(135deg, #0284c7, #06b6d4); color: #fff; font-size: 13px; font-weight: bold; padding: 4px 14px; border-radius: 20px; margin-bottom: 10px; }
     h1 { font-size: 26px; font-weight: 900; margin-bottom: 8px; }
     .hero-desc { color: var(--text-sub); font-size: 14px; max-width: 800px; margin: 0 auto; }
 
-    /* 業務案内＆シミュレーション設計フロー */
-    .flow-card { background: rgba(30, 41, 59, 0.7); border: 2px solid #0284c7; border-radius: 12px; padding: 18px; margin-bottom: 28px; }
+    .flow-card { background: rgba(30, 41, 59, 0.7); border: 2px solid #0284c7; border-radius: 12px; padding: 18px; margin-bottom: 34px; }
     .flow-title { font-size: 17px; font-weight: bold; color: #38bdf8; margin-bottom: 10px; }
     .flow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
     .flow-item { background: #0b1329; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
@@ -57,14 +54,35 @@
     .flow-head { font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 4px; }
     .flow-txt { font-size: 12px; color: var(--text-sub); line-height: 1.5; }
 
-    /* 12枚カタロググリッド */
-    .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+    /* ★ カテゴリ専用大見出し帯 ★ */
+    .category-section-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: #fff;
+      background: linear-gradient(90deg, #1e293b, #0f172a);
+      border-left: 6px solid #38bdf8;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 6px;
+      margin: 36px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .category-section-title span.cat-en {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* カタロググリッド */
+    .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 20px; }
     .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
     
-    /* 写真枠（クリックできることを示す虫眼鏡アイコン） */
     .card-img-wrap {
       width: 100%;
-      height: 210px;
+      height: 220px;
       background: #070d1e;
       overflow: hidden;
       cursor: zoom-in;
@@ -82,7 +100,6 @@
       padding: 3px 8px;
       border-radius: 4px;
       pointer-events: none;
-      transition: opacity 0.2s;
     }
     .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
     .card-img-wrap:hover img { transform: scale(1.05); }
@@ -92,127 +109,28 @@
     .card-title { font-size: 15px; font-weight: bold; color: #fff; margin-bottom: 6px; line-height: 1.4; }
     .card-desc { font-size: 12px; color: var(--text-sub); line-height: 1.5; }
 
-    /* ★★★ パッと広がるA5サイズ相当の画像拡大モーダル ★★★ */
+    /* モーダル拡大 */
     .image-modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.88);
-      z-index: 10000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      backdrop-filter: blur(4px);
-      animation: fadeIn 0.15s ease-out;
+      display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.88); z-index: 10000; align-items: center; justify-content: center;
+      padding: 20px; backdrop-filter: blur(4px);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .modal-content-wrap {
-      position: relative;
-      max-width: 650px; /* A5横サイズ相当 */
-      width: 90%;
-      max-height: 85vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .modal-img {
-      width: 100%;
-      max-height: 75vh;
-      object-fit: contain;
-      border-radius: 8px;
-      border: 2px solid var(--accent);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.9);
-    }
-    .modal-caption {
-      margin-top: 10px;
-      color: #fff;
-      font-size: 14px;
-      font-weight: bold;
-      text-align: center;
-      background: rgba(15, 23, 42, 0.85);
-      padding: 6px 16px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-    }
-    .modal-close-btn {
-      position: absolute;
-      top: -16px;
-      right: -16px;
-      background: #ec4899;
-      color: #fff;
-      border: none;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
+    .modal-content-wrap { position: relative; max-width: 650px; width: 90%; max-height: 85vh; display: flex; flex-direction: column; align-items: center; }
+    .modal-img { width: 100%; max-height: 75vh; object-fit: contain; border-radius: 8px; border: 2px solid var(--accent); box-shadow: 0 10px 40px rgba(0,0,0,0.9); }
+    .modal-caption { margin-top: 10px; color: #fff; font-size: 14px; font-weight: bold; text-align: center; background: rgba(15, 23, 42, 0.85); padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border); }
+    .modal-close-btn { position: absolute; top: -16px; right: -16px; background: #ec4899; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
     /* 最下部電話相談バナー */
-    .contact-banner {
-      margin-top: 40px;
-      background: #0d152a;
-      border: 3px solid #ec4899;
-      border-radius: 16px;
-      padding: 28px 16px;
-      text-align: center;
-      box-shadow: 0 0 25px rgba(236, 72, 153, 0.25);
-    }
+    .contact-banner { margin-top: 40px; background: #0d152a; border: 3px solid #ec4899; border-radius: 16px; padding: 28px 16px; text-align: center; box-shadow: 0 0 25px rgba(236, 72, 153, 0.25); }
     .contact-lead { font-size: 15px; color: #cbd5e1; margin-bottom: 16px; font-weight: bold; }
-    
-    .call-box {
-      display: inline-block;
-      background: #060a17;
-      border: 2px solid #ec4899;
-      border-radius: 14px;
-      padding: 16px 28px;
-      text-decoration: none;
-      color: #fff;
-      transition: 0.2s;
-    }
-    .call-box:hover { background: #16203b; }
+    .call-box { display: inline-block; background: #060a17; border: 2px solid #ec4899; border-radius: 14px; padding: 16px 28px; text-decoration: none; color: #fff; }
     .call-head { font-size: 22px; font-weight: 900; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .call-icon { color: #ec4899; font-size: 26px; }
-    .call-number {
-      font-size: 38px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: #ffffff;
-      font-family: Impact, -apple-system, sans-serif;
-      margin: 4px 0;
-    }
+    .call-number { font-size: 38px; font-weight: 900; letter-spacing: 2px; color: #ffffff; font-family: Impact, -apple-system, sans-serif; margin: 4px 0; }
     .call-hours { font-size: 15px; color: #cbd5e1; font-weight: bold; }
 
-    /* スマホ追従電話ボタン */
     .mobile-floating-tel {
-      position: fixed;
-      bottom: 12px;
-      left: 12px;
-      right: 12px;
-      background: #090e1f;
-      border: 2px solid #ec4899;
-      border-radius: 30px;
-      padding: 10px 16px;
-      text-align: center;
-      text-decoration: none;
-      color: #ffffff;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.9);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      position: fixed; bottom: 12px; left: 12px; right: 12px; background: #090e1f; border: 2px solid #ec4899; border-radius: 30px; padding: 10px 16px; text-align: center; text-decoration: none; color: #ffffff; box-shadow: 0 8px 25px rgba(0,0,0,0.9); z-index: 9999; display: flex; align-items: center; justify-content: center; gap: 10px;
     }
     .mobile-floating-tel .m-tel-num { font-size: 22px; font-weight: 900; color: #fff; font-family: Impact, sans-serif; letter-spacing: 1px; }
     .mobile-floating-tel .m-tel-label { font-size: 12px; color: #f472b6; font-weight: 900; }
@@ -251,18 +169,19 @@
       <span class="badge">全国対応｜光学照度（lux）シミュレーション設計</span>
       <h1>産業用・高天井LED照明 ＆ 特殊プラント施工・実験実績</h1>
       <p class="hero-desc">
-        天井クレーン完備の自社エージング検査工場から、水産養殖レースウェイ水槽、特殊高密度照射ベンチ、屋外高所投光器まで。<br>
+        水産養殖レースウェイ水槽から、天井クレーン完備の自社エージング検査工場、特殊マトリクス照射、屋外高所投光器まで。<br>
         「空間寸法（W×D×H）」と「要求照度（lux）」に基づき、精密なシミュレーションで無駄のない最適台数をご提案します。
       </p>
     </div>
 
+    <!-- 設計フロー -->
     <div class="flow-card">
       <div class="flow-title">📐 照度（lux）シミュレーションからお見積り提示までの流れ</div>
       <div class="flow-grid">
         <div class="flow-item">
           <div class="flow-step">STEP 01</div>
           <div class="flow-head">お電話でのご相談・ヒアリング</div>
-          <div class="flow-txt">設置予定の場所の寸法（幅 W × 奥行 D × 天井高 H）と、使用目的・作業内容に応じた要求照度（lux）をお伺いします。</div>
+          <div class="flow-txt">設置場所の寸法（幅 W × 奥行 D × 天井高 H）と、使用目的・作業内容に応じた要求照度（lux）をお伺いします。</div>
         </div>
         <div class="flow-item">
           <div class="flow-step">STEP 02</div>
@@ -272,7 +191,7 @@
         <div class="flow-item">
           <div class="flow-step">STEP 03</div>
           <div class="flow-head">全国対応・最適プランとお見積り提示</div>
-          <div class="flow-txt">過剰な台数を省き、省エネ効果と導入費用を両立した明快なお見積りを提示。電話対応を基本とすることで全国均一の品質でご案内します。</div>
+          <div class="flow-txt">過剰な台数を省き、省エネ効果と導入費用を両立した明快なお見積りを提示。電話対応を基本として全国均一の品質でご案内します。</div>
         </div>
       </div>
       <div style="margin-top: 12px; font-size: 13px; color: var(--text-sub); display: flex; flex-wrap: wrap; gap: 16px; border-top: 1px dashed var(--border); padding-top: 10px;">
@@ -282,26 +201,20 @@
       </div>
     </div>
 
-    <!-- カタロググリッド（画像クリックで拡大発動） -->
-    <div class="catalog-grid">
-      <!-- 1 -->
-      <div class="card">
-        <div class="card-img-wrap" onclick="openModal('gazou.jpg', '自社天井クレーン完備の検査・エージング工場')">
-          <img src="gazou.jpg" alt="クレーン付きLED自社検査工場">
-        </div>
-        <div class="card-body">
-          <div>
-            <div class="card-tag">【自社設備・品質管理】</div>
-            <div class="card-title">自社天井クレーン完備の検査・エージング工場</div>
-            <div class="card-desc">天井走行クレーンと多連点灯ラックを備え、出荷前の高天井LEDを一斉エージング点検。初期不良を徹底排除する厳格な品質管理体制です。</div>
-          </div>
-        </div>
-      </div>
 
-      <!-- 2 -->
+    <!-- ======================================================== -->
+    <!-- ■ カテゴリ1：水産養殖・バイオ閉鎖循環プラント（水は水） -->
+    <!-- ======================================================== -->
+    <div class="category-section-title">
+      <span>🐟 1. 水産養殖・バイオ閉鎖循環プラント設備</span>
+      <span class="cat-en">AQUACULTURE & BIO PLANT</span>
+    </div>
+
+    <div class="catalog-grid">
+      <!-- gazou1jpg.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou1jpg.jpg', '大規模水槽プラント向け高天井LED照射設備')">
-          <img src="gazou1jpg.jpg" alt="水産養殖プラントLED照射設備">
+          <img src="gazou1jpg.jpg" alt="大規模水槽プラント向け高天井LED照射設備">
         </div>
         <div class="card-body">
           <div>
@@ -312,38 +225,10 @@
         </div>
       </div>
 
-      <!-- 3 -->
-      <div class="card">
-        <div class="card-img-wrap" onclick="openModal('gazou4.jpg', '天井全面グリッド配線・超高密度照射システム')">
-          <img src="gazou4.jpg" alt="高天井LED超高密度照射グリッド">
-        </div>
-        <div class="card-body">
-          <div>
-            <div class="card-tag">【特殊照射設計・検証施設】</div>
-            <div class="card-title">天井全面グリッド配線・超高密度照射システム</div>
-            <div class="card-desc">天井全面に緻密なピッチで配線・吊り下げられた高出力LED群。光のムラや影を徹底排除し、特殊研究や極限照度を再現するための実験設備です。</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4 -->
-      <div class="card">
-        <div class="card-img-wrap" onclick="openModal('gazou5.jpg', '屋外サイン・高所照射用アーム投光器設備')">
-          <img src="gazou5.jpg" alt="屋外高所投光器・特殊アーム架台">
-        </div>
-        <div class="card-body">
-          <div>
-            <div class="card-tag">【屋外投光器・特殊架台】</div>
-            <div class="card-title">屋外サイン・高所照射用アーム投光器設備</div>
-            <div class="card-desc">風圧荷重や耐候性を計算した専用架台アームに高出力LED投光器を設置。広範囲を均一にライトアップし、夜間の視認性と省エネを両立します。</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5 -->
+      <!-- gazou2.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou2.jpg', '広域水面均一照射・防湿LEDシステム設計')">
-          <img src="gazou2.jpg" alt="水槽プラントLED照明レイアウト">
+          <img src="gazou2.jpg" alt="広域水面均一照射・防湿LEDシステム設計">
         </div>
         <div class="card-body">
           <div>
@@ -354,24 +239,63 @@
         </div>
       </div>
 
-      <!-- 6 -->
+      <!-- gazou14.jpg -->
       <div class="card">
-        <div class="card-img-wrap" onclick="openModal('gazou6.jpg', '高所ツインアーム街路・エリア投光器')">
-          <img src="gazou6.jpg" alt="鉄塔・屋外高所ポールLED投光器">
+        <div class="card-img-wrap" onclick="openModal('gazou14.jpg', '循環式レースウェイ水槽専用・直上照射フレーム')">
+          <img src="gazou14.jpg" alt="循環式レースウェイ水槽専用・直上照射フレーム">
         </div>
         <div class="card-body">
           <div>
-            <div class="card-tag">【高所・屋外ポール照明】</div>
-            <div class="card-title">高所ツインアーム街路・エリア投光器</div>
-            <div class="card-desc">送電鉄塔や屋外ヤードに隣接する敷地を強力に照らし出すポールトップ型LED。長寿命設計により高所交換メンテナンス費用を大幅に削減します。</div>
+            <div class="card-tag">【水産バイオ・特殊照明】</div>
+            <div class="card-title">循環式レースウェイ水槽専用・直上照射フレーム</div>
+            <div class="card-desc">水流を起こす特殊水槽の直上に頑丈な門型フレームを設置し、超高出力LEDを連続配列。藻類培養や特殊養殖に必要な高ルクスを水面直下へ届けます。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ======================================================== -->
+    <!-- ■ カテゴリ2：自社検査工場・通電エージング設備（試験は試験） -->
+    <!-- ======================================================== -->
+    <div class="category-section-title">
+      <span>🔬 2. 自社検査工場・通電負荷エージング設備</span>
+      <span class="cat-en">QUALITY & AGING TEST</span>
+    </div>
+
+    <div class="catalog-grid">
+      <!-- gazou.jpg -->
+      <div class="card">
+        <div class="card-img-wrap" onclick="openModal('gazou.jpg', '自社天井クレーン完備の検査・エージング工場')">
+          <img src="gazou.jpg" alt="自社天井クレーン完備の検査・エージング工場">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【自社設備・品質管理】</div>
+            <div class="card-title">自社天井クレーン完備の検査・エージング工場</div>
+            <div class="card-desc">天井走行クレーンと多連点灯ラックを備え、出荷前の高天井LEDを一斉エージング点検。初期不良を徹底排除する厳格な品質管理体制です。</div>
           </div>
         </div>
       </div>
 
-      <!-- 7 -->
+      <!-- gazou9.jpg -->
+      <div class="card">
+        <div class="card-img-wrap" onclick="openModal('gazou9.jpg', '移動式多連エージング台車・配電制御ユニット')">
+          <img src="gazou9.jpg" alt="移動式多連エージング台車・配電制御ユニット">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【自社検査・量産管理】</div>
+            <div class="card-title">移動式多連エージング台車・配電制御ユニット</div>
+            <div class="card-desc">移動式キャスター架台に専用配電ボックスを組み込み、大量の灯具を同時に長時間負荷テスト。現場搬入前に全ての初期不具合を洗い出します。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- gazou7.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou7.jpg', '高効率アルミダイカスト放熱フィン＆通電試験')">
-          <img src="gazou7.jpg" alt="LED放熱フィン・通電エージング検査">
+          <img src="gazou7.jpg" alt="高効率アルミダイカスト放熱フィン＆通電試験">
         </div>
         <div class="card-body">
           <div>
@@ -381,8 +305,33 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- 8 -->
+
+    <!-- ======================================================== -->
+    <!-- ■ カテゴリ3：光学実験ベンチ・高密度照射設計（実験・検証） -->
+    <!-- ======================================================== -->
+    <div class="category-section-title">
+      <span>📐 3. 光学特性試験・高密度照射シミュレーション</span>
+      <span class="cat-en">OPTICAL LAB & GRID DESIGN</span>
+    </div>
+
+    <div class="catalog-grid">
+      <!-- gazou10.jpg -->
+      <div class="card">
+        <div class="card-img-wrap" onclick="openModal('gazou10.jpg', '水柱アクリルベンチ ＆ 養殖水槽シミュレーションライン')">
+          <img src="gazou10.jpg" alt="水柱アクリルベンチ ＆ 養殖水槽シミュレーションライン">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【光学実験・研究プラント】</div>
+            <div class="card-title">水柱アクリルベンチ ＆ 養殖水槽シミュレーションライン</div>
+            <div class="card-desc">垂直アクリルタワーによる光の透過・屈折測定設備と、後方の実験水槽を直結。水深ごとの減衰率を実測し、最適な波長と照射角を割り出します。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- gazou8.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou8.jpg', '特殊アクリル防護・光学照射テストベンチ')">
           <img src="gazou8.jpg" alt="特殊アクリル防護・光学照射テストベンチ">
@@ -396,52 +345,63 @@
         </div>
       </div>
 
-      <!-- 9 -->
+      <!-- gazou4.jpg -->
       <div class="card">
-        <div class="card-img-wrap" onclick="openModal('gazou9.jpg', '移動式多連エージング台車・配電制御ユニット')">
-          <img src="gazou9.jpg" alt="移動式多連エージング台車ラック">
+        <div class="card-img-wrap" onclick="openModal('gazou4.jpg', '天井全面グリッド配線・超高密度照射システム')">
+          <img src="gazou4.jpg" alt="天井全面グリッド配線・超高密度照射システム">
         </div>
         <div class="card-body">
           <div>
-            <div class="card-tag">【自社検査・量産管理】</div>
-            <div class="card-title">移動式多連エージング台車・配電制御ユニット</div>
-            <div class="card-desc">移動式キャスター架台に専用配電ボックスを組み込み、大量の灯具を同時に長時間負荷テスト。現場搬入前に全ての初期不具合を洗い出します。</div>
+            <div class="card-tag">【特殊照射設計・検証施設】</div>
+            <div class="card-title">天井全面グリッド配線・超高密度照射システム</div>
+            <div class="card-desc">天井全面に緻密なピッチで配線・吊り下げられた高出力LED群。光のムラや影を徹底排除し、特殊研究や極限照度を再現するための実験設備です。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ======================================================== -->
+    <!-- ■ カテゴリ4：屋外投光器・高所ポール・鉄塔照明（外は外） -->
+    <!-- ======================================================== -->
+    <div class="category-section-title">
+      <span>🏗️ 4. 屋外高所投光器・ポール架台・鉄塔設備</span>
+      <span class="cat-en">OUTDOOR & HIGH MAST FLOODLIGHT</span>
+    </div>
+
+    <div class="catalog-grid">
+      <!-- gazou5.jpg -->
+      <div class="card">
+        <div class="card-img-wrap" onclick="openModal('gazou5.jpg', '屋外サイン・高所照射用アーム投光器設備')">
+          <img src="gazou5.jpg" alt="屋外サイン・高所照射用アーム投光器設備">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【屋外投光器・特殊架台】</div>
+            <div class="card-title">屋外サイン・高所照射用アーム投光器設備</div>
+            <div class="card-desc">風圧荷重や耐候性を計算した専用架台アームに高出力LED投光器を設置。広範囲を均一にライトアップし、夜間の視認性と省エネを両立します。</div>
           </div>
         </div>
       </div>
 
-      <!-- 10 -->
+      <!-- gazou6.jpg -->
       <div class="card">
-        <div class="card-img-wrap" onclick="openModal('gazou10.jpg', '水柱アクリルベンチ ＆ 養殖水槽シミュレーションライン')">
-          <img src="gazou10.jpg" alt="アクリル水柱テストベンチ＆水槽連結ライン">
+        <div class="card-img-wrap" onclick="openModal('gazou6.jpg', '高所ツインアーム街路・エリア投光器')">
+          <img src="gazou6.jpg" alt="高所ツインアーム街路・エリア投光器">
         </div>
         <div class="card-body">
           <div>
-            <div class="card-tag">【光学実験・研究プラント】</div>
-            <div class="card-title">水柱アクリルベンチ ＆ 養殖水槽シミュレーションライン</div>
-            <div class="card-desc">垂直アクリルタワーによる光の透過・屈折測定設備と、後方の実験水槽を直結。水深ごとの減衰率を実測し、最適な波長と照射角を割り出します。</div>
+            <div class="card-tag">【高所・屋外ポール照明】</div>
+            <div class="card-title">高所ツインアーム街路・エリア投光器</div>
+            <div class="card-desc">送電鉄塔や屋外ヤードに隣接する敷地を強力に照らし出すポールトップ型LED。長寿命設計により高所交換メンテナンス費用を大幅に削減します。</div>
           </div>
         </div>
       </div>
 
-      <!-- 11 -->
-      <div class="card">
-        <div class="card-img-wrap" onclick="openModal('gazou14.jpg', '循環式レースウェイ水槽専用・直上照射フレーム')">
-          <img src="gazou14.jpg" alt="レースウェイ循環水槽用高出力LED照射架台">
-        </div>
-        <div class="card-body">
-          <div>
-            <div class="card-tag">【水産バイオ・特殊照明】</div>
-            <div class="card-title">循環式レースウェイ水槽専用・直上照射フレーム</div>
-            <div class="card-desc">水流を起こす特殊水槽の直上に頑丈な門型フレームを設置し、超高出力LEDを連続配列。藻類培養や特殊養殖に必要な高ルクスを水面直下へ届けます。</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 12 -->
+      <!-- gazpou3.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazpou3.jpg', '天井埋込高密度マトリクス配線 ＆ 照射検証ルーム')">
-          <img src="gazpou3.jpg" alt="天井高密度マトリクス配線・照射検証室">
+          <img src="gazpou3.jpg" alt="天井埋込高密度マトリクス配線 ＆ 照射検証ルーム">
         </div>
         <div class="card-body">
           <div>
@@ -453,7 +413,8 @@
       </div>
     </div>
 
-    <!-- 最下部電話相談バナー -->
+
+    <!-- ★ 最下部電話相談バナー ★ -->
     <div class="contact-banner">
       <p class="contact-lead">
         設置場所の寸法（幅 W × 奥行 D × 天井高 H）と使用目的をお伺いし、<br>
@@ -481,7 +442,7 @@
     </div>
   </a>
 
-  <!-- ★★★ 画像ポップアップ拡大用モーダル構造 ★★★ -->
+  <!-- モーダル拡大構造 -->
   <div id="imageModal" class="image-modal-overlay" onclick="closeModal()">
     <div class="modal-content-wrap" onclick="event.stopPropagation()">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
@@ -491,26 +452,22 @@
   </div>
 
   <script>
-    // 写真をクリックしたときにA5サイズ相当でパッと拡大する処理
     function openModal(src, title) {
       const modal = document.getElementById('imageModal');
       const img = document.getElementById('modalImg');
       const caption = document.getElementById('modalCaption');
-      
       img.src = src;
       caption.textContent = title;
       modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // 背景スクロール停止
+      document.body.style.overflow = 'hidden';
     }
 
-    // 閉じる処理（バツボタンまたは黒背景タップ）
     function closeModal() {
       const modal = document.getElementById('imageModal');
       modal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // スクロール復帰
+      document.body.style.overflow = 'auto';
     }
 
-    // エスケープキーでも閉じられる安心設計
     window.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
     });
