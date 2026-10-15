@@ -77,59 +77,64 @@
       font-weight: 600;
     }
 
-/* クイックアクションバー */
-  .quick-action-bar {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    padding: 6px 10px;
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  }
-  .quick-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 6px 4px;
-    border-radius: 6px;
-    text-decoration: none;
-    text-align: center;
-    line-height: 1.2;
-  }
-  .quick-btn-tel { background: var(--primary); color: #fff; }
-  .quick-btn-contact { background: var(--grad-bg); color: #0f172a; border: 1px solid #cbd5e1; }
-  
-  .btn-label { font-size: 13px; font-weight: 800; }
-  .btn-sub { font-size: 11px; font-weight: 700; opacity: 0.95; margin-top: 2px; }
-    /* ナビゲーション（各ボタンに綺麗なグラデーションを均等に配置） */
+    /* クイックアクションバー */
+    .quick-action-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 6px 10px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .quick-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 4px;
+      border-radius: 6px;
+      text-decoration: none;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .quick-btn-tel { background: var(--primary); color: #fff; }
+    .quick-btn-contact { background: var(--grad-bg); color: #0f172a; border: 1px solid #cbd5e1; }
+    
+    .btn-label { font-size: 13px; font-weight: 800; }
+    .btn-sub { font-size: 11px; font-weight: 700; opacity: 0.95; margin-top: 2px; }
+
+    /* ナビゲーション（カタログリンクを追加して5列均等配置） */
     .nav-bar {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       background: #fff;
       border-bottom: 3px solid #ff6347;
     }
     .nav-item {
       color: #0f172a;
       text-align: center;
-      padding: 10px 4px;
-      font-size: 12px;
+      padding: 10px 2px;
+      font-size: 11px;
       font-weight: 900;
       text-decoration: none;
       border-right: 1px solid rgba(15, 23, 42, 0.15);
       background: var(--grad-bg);
       box-shadow: inset 0 1px 4px rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .nav-item:last-child { border-right: none; }
     .nav-item:hover, .nav-item.active { background: #ff6347; color: #ffffff; }
+    .nav-highlight { background: linear-gradient(135deg, #fed7aa, #fb923c) !important; color: #7c2d12 !important; }
 
     /* セクション共通見出し */
     .section {
-      padding: 36px 24px;
+      padding: 24px 16px !important;
       border-bottom: 1px solid var(--border);
     }
     .sec-title-bar {
@@ -139,7 +144,8 @@
       font-size: 14px;
       font-weight: 900;
       border-radius: 6px;
-      margin-bottom: 20px;
+      margin-top: 16px !important;
+      margin-bottom: 12px !important;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       border-left: 4px solid #ff6347;
     }
@@ -159,12 +165,12 @@
     .info-item:last-child { border-bottom: none; }
     .info-date { font-size: 11px; color: var(--text-sub); margin-right: 8px; }
 
-   /* スペックテーブル */
+    /* スペックテーブル */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch; /* スマホで滑らかにスクロール */
-      margin-bottom: 24px;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 16px !important;
       border-radius: 8px;
       border: 1px solid var(--border);
     }
@@ -182,7 +188,6 @@
     }
     .spec-table th { background: #f1f5f9; color: var(--primary); font-weight: 700; }
     
-    /* スマホ用のスクロール案内注記 */
     .table-scroll-hint {
       display: none;
       font-size: 11px;
@@ -191,9 +196,7 @@
       text-align: right;
     }
     @media (max-width: 768px) {
-      .table-scroll-hint {
-        display: block;
-      }
+      .table-scroll-hint { display: block; }
     }
 
     /* 各種資料 */
@@ -201,6 +204,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 10px;
+      margin-bottom: 16px !important;
     }
     .doc-link {
       display: block;
@@ -224,7 +228,7 @@
       border-radius: 8px;
       overflow: hidden;
       border: 1px solid var(--border);
-      margin-bottom: 20px;
+      margin-bottom: 16px !important;
     }
     .company-table th, .company-table td {
       padding: 12px 16px;
@@ -241,23 +245,7 @@
     }
     .map-container iframe { width: 100%; height: 100%; border: none; }
 
-    <!-- 照度シミュレーション & 台湾開発の案内枠 -->
-<div style="background:#eff6ff; border:2px solid #3b82f6; border-radius:8px; padding:20px; margin:24px auto; max-width:900px; text-align:left;">
-  <h3 style="font-size:17px; color:#1e3a8a; margin-bottom:8px; font-weight:bold;">
-    📐 【無料】現場に合わせた照度（lux）シミュレーション実施中
-  </h3>
-  <p style="font-size:14px; color:#1e40af; line-height:1.7; margin-bottom:12px;">
-    「LEDに変えて現場が暗くならないか不安」「何台つければいいか分からない」というお客様へ。<br>
-    設置予定場所の寸法（<strong>幅 W × 奥行 D × 天井高 H</strong>）とご希望の明るさ・作業内容をお電話にてお伺いし、最適な照度（lux）計算を行い、必要台数とお見積もりを迅速にご提示いたします。<br>
-    ※無駄な出張費を抑えメーカー直販価格を実現するため、全国からのお問い合わせをお電話にて迅速にヒアリング対応しております。
-  </p>
-  <div style="background:#ffffff; border-left:4px solid #3b82f6; padding:10px 14px; font-size:13px; color:#334155;">
-    <strong>【開発へのこだわり】</strong><br>
-    当社の高天井LEDは、世界の先端エレクトロニクス拠点である台湾の提携工場へ直接赴き、日本の工場・倉庫の過酷な環境に耐えうる専用設計を一から共同開発。自社測定データに基づく高精度な照度シミュレーションと、全数点灯エージング検査をクリアした製品のみをお届けしています。
-  </div>
-</div>
-
-    /* お問い合わせフォーム送信ボタン */
+    /* フォーム送信ボタン */
     .form-submit-btn {
       background: var(--grad-bg);
       color: #0f172a;
@@ -270,51 +258,12 @@
     }
     .form-submit-btn:hover { opacity: 0.9; }
 
-    /* フッター */
-    .footer {
-      background: var(--grad-bg);
-      color: #1e293b;
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 12px;
-      border-top: 3px solid #ff6347;
-    }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    .footer-links a { color: #0f172a; font-weight: 700; text-decoration: none; }
-    .footer-links a:hover { text-decoration: underline; }
-    .old-site-link { margin-top: 16px; font-size: 11px; color: #334155; }
-    .old-site-link a { color: #0f172a; font-weight: 700; text-decoration: underline; }
-    /* スマホ用の会社概要テーブル調整 */
+    /* スマホ対応 */
     @media (max-width: 600px) {
-      .company-table th {
-        width: 30%;
-        font-size: 11px;
-        padding: 8px 6px;
-      }
-      .company-table td {
-        font-size: 12px;
-        padding: 8px 10px;
-      }
+      .company-table th { width: 30%; font-size: 11px; padding: 8px 6px; }
+      .company-table td { font-size: 12px; padding: 8px 10px; }
+      .nav-item { font-size: 10px; padding: 8px 1px; }
     }
-    /* 各セクション・ブロックの無駄な上下余白を一括カット */
-  .section {
-    padding: 24px 16px !important; /* 広すぎる上下余白をコンパクトに短縮 */
-  }
-  .company-table,
-  .table-container,
-  .docs-grid {
-    margin-bottom: 16px !important; /* 下側の広すぎる隙間を半分に */
-  }
-  .sec-title-bar {
-    margin-top: 16px !important;
-    margin-bottom: 12px !important;
-  }
   </style>
 </head>
 <body>
@@ -326,76 +275,82 @@
     <img src="common/img/product_banner.png" alt="高天井用LED照明 BWHシリーズ" class="hero-product-img">
   </header>
 
-<!-- 薄めオレンジグラデーションのキャッチコピー帯 -->
+  <!-- 薄めオレンジグラデーションのキャッチコピー帯 -->
   <div class="hero-info-banner" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 8px; min-height: auto; width: 100%; box-sizing: border-box;">
-    <!-- メインキャッチ：完全中央揃え -->
     <div class="hero-catch" style="font-size: clamp(14px, 3.8vw, 20px); font-weight: 800; color: #7c2d12; margin: 0 auto; padding: 0; text-align: center; width: 100%; line-height: 1.3;">
       現場の明るさ維持・電気代を劇的削減
     </div>
     
-   <!-- サブキャッチ：完全中央揃え -->
     <p class="hero-desc" style="font-size: clamp(11px, 2.7vw, 14px); font-weight: 600; color: #1e3a8a; margin: 4px auto 0 auto; padding: 0; text-align: center; width: 100%; line-height: 1.2;">
       工場・大型施設のLED化支援（創業1973年）
     </p>
 
-   <!-- 会社名：完全中央揃え -->
-  <div class="hero-company-name" style="font-size: 11px; font-weight: bold; color: #475569; margin: 4px auto 0 auto; padding: 0; text-align: center; width: 100%; line-height: 1.2;">
-    株式会社SUZUSAN
+    <div class="hero-company-name" style="font-size: 11px; font-weight: bold; color: #475569; margin: 4px auto 0 auto; padding: 0; text-align: center; width: 100%; line-height: 1.2;">
+      株式会社SUZUSAN
+    </div>
   </div>
- </div>
- <!-- クイックアクションバー -->
+
+  <!-- クイックアクションバー -->
   <div class="quick-action-bar">
     <a href="tel:0453811444" class="quick-btn quick-btn-tel" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none;">
       <span class="btn-label">📞 電話で相談</span>
       <span class="btn-sub">045-381-1444</span>
       <span style="font-size: 10px; color: #cbd5e1; margin-top: 2px;">平日 9:00〜18:00（土日祝休）</span>
     </a>
+    
+    <!-- ★ 白文字で見えなくなっていた部分を、濃紺（#0f172a）でハッキリ表示 ★ -->
     <a href="#contact" class="quick-btn quick-btn-contact" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none;">
-      <span class="btn-label">✉️ お問い合わせ</span>
-      <span class="btn-sub">見積・照度シミュレーション</span>
-      <span style="font-size: 10px; color: #cbd5e1; margin-top: 2px;">全国対応・Web受付24h</span>
+      <span class="btn-label" style="color: #0f172a;">✉️ お問い合わせ</span>
+      <span class="btn-sub" style="color: #0f172a; font-weight: 800;">見積・照度シミュレーション</span>
+      <span style="font-size: 11px; color: #0f172a; font-weight: 900; margin-top: 2px;">全国対応・Web受付24h</span>
     </a>
   </div>
 
-  <!-- ナビゲーション -->
+  <!-- ナビゲーション（施工カタログへのリンクを追加） -->
   <nav class="nav-bar">
     <a href="#home" class="nav-item active">ホーム</a>
     <a href="#products" class="nav-item">LED照明</a>
+    <a href="catalog.html" class="nav-item nav-highlight">⚡ 施工カタログ</a>
     <a href="#company" class="nav-item">会社概要</a>
     <a href="#contact" class="nav-item">お問合わせ</a>
   </nav>
-<!-- 提案PDFへの誘導バナー -->
-<div style="max-width: 1000px; margin: 25px auto; padding: 0 15px; box-sizing: border-box;">
-  <div style="background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%); border: 2px solid #ff6b35; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-    <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: bold; color: #d9480f; letter-spacing: 1px;">
-      【現場の電気代・水銀灯交換でお困りの工場長・オーナー様へ】
-    </p>
-    <h2 style="margin: 0 0 15px 0; font-size: 20px; color: #2b2b2b; line-height: 1.4;">
-      水銀灯からLEDへ！電気代最大70%削減シミュレーション＆導入提案書
-    </h2>
-    <!-- 比較ビジュアル画像 -->
-    <div style="margin: 20px auto; max-width: 900px;">
-      <img src="led-compare.jpg" alt="水銀灯と高天井LEDの比較" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+
+  <!-- 提案PDFへの誘導バナー -->
+  <div style="max-width: 1000px; margin: 20px auto 10px; padding: 0 15px; box-sizing: border-box;">
+    <div style="background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%); border: 2px solid #ff6b35; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+      <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: bold; color: #d9480f; letter-spacing: 1px;">
+        【現場の電気代・水銀灯交換でお困りの工場長・オーナー様へ】
+      </p>
+      <h2 style="margin: 0 0 15px 0; font-size: 20px; color: #2b2b2b; line-height: 1.4;">
+        水銀灯からLEDへ！電気代最大70%削減シミュレーション＆導入提案書
+      </h2>
+      <div style="margin: 20px auto; max-width: 900px;">
+        <img src="led-compare.jpg" alt="水銀灯と高天井LEDの比較" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+      </div>
+      <a href="led_plan.pdf" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #ff5722; color: #ffffff; text-decoration: none; font-size: 18px; font-weight: bold; padding: 14px 32px; border-radius: 50px; box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4); transition: all 0.3s ease;">
+        📄 導入提案書スライド（PDF）を今すぐ見る
+      </a>
+      <p style="margin: 10px 0 0 0; font-size: 12px; color: #666;">
+        ※クリックすると新しいタブで資料（PDF）が開きます。ダウンロード・印刷も可能です。
+      </p>
     </div>
-    <a href="led_plan.pdf" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #ff5722; color: #ffffff; text-decoration: none; font-size: 18px; font-weight: bold; padding: 14px 32px; border-radius: 50px; box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4); transition: all 0.3s ease;">
-      📄 導入提案書スライド（PDF）を今すぐ見る
-    </a>
-    <p style="margin: 10px 0 0 0; font-size: 12px; color: #666;">
-      ※クリックすると新しいタブで資料（PDF）が開きます。ダウンロード・印刷も可能です。
-    </p>
   </div>
-</div>
+
   <!-- ホームセクション -->
- <section id="home" class="section" style="margin-bottom: 0px; padding-bottom: 0px;">
+  <section id="home" class="section" style="margin-bottom: 0px; padding-bottom: 0px;">
     <div class="sec-title-bar">インフォメーション / 最新情報</div>
     <div class="info-list">
+      <div class="info-item">
+        <span class="info-date">2026/10/15</span>
+        <strong>【新着】</strong> 産業用高天井LED・特殊養殖プラントの <a href="catalog.html" style="color:#0284c7; font-weight:800; text-decoration:underline;">施工・実験実績カタログ（12実例）</a> を公開しました。
+      </div>
       <div class="info-item"><span class="info-date">2016/8/1</span> 本社を移転いたしました。</div>
       <div class="info-item"><span class="info-date">2015/8/11</span> LED照明「BWHシリーズ」の資料を掲載しました。 <a href="#products" style="color:#b45309; font-weight:700;">製品詳細はこちら</a></div>
-      <div class="info-item"><span class="info-date">2015/8/11</span> 弊社ホームページをリニューアルしました。</div>
     </div>
   </section>
-　　<!-- LED照明セクション -->
- <section id="products" class="section" style="margin-top: 0px; padding-top: 0px;">
+
+  <!-- LED照明セクション -->
+  <section id="products" class="section" style="margin-top: 0px; padding-top: 0px;">
     <div class="sec-title-bar">高天井用LED照明「BWHシリーズ」（水銀灯タイプLED照明）</div>
 
     <p style="font-size:13px; color:var(--text-sub); margin-bottom:16px;">
@@ -403,8 +358,24 @@
       <strong>※電源内蔵タイプまたは電源外付けタイプをお選びいただけます。</strong>
     </p>
 
+    <!-- 照度シミュレーション案内枠 -->
+    <div style="background:#eff6ff; border:2px solid #3b82f6; border-radius:8px; padding:18px; margin:16px auto 24px; text-align:left;">
+      <h3 style="font-size:16px; color:#1e3a8a; margin-bottom:6px; font-weight:bold;">
+        📐 【無料】現場に合わせた照度（lux）シミュレーション実施中
+      </h3>
+      <p style="font-size:13px; color:#1e40af; line-height:1.7; margin-bottom:10px;">
+        「LEDに変えて現場が暗くならないか不安」「何台つければいいか分からない」というお客様へ。<br>
+        設置予定場所の寸法（<strong>幅 W × 奥行 D × 天井高 H</strong>）とご希望の明るさ・作業内容をお電話にてお伺いし、最適な照度（lux）計算を行い、必要台数とお見積もりを迅速にご提示いたします。<br>
+        ※無駄な出張費を抑えメーカー直販価格を実現するため、全国からのお問い合わせをお電話にて迅速にヒアリング対応しております。
+      </p>
+      <div style="background:#ffffff; border-left:4px solid #3b82f6; padding:10px 14px; font-size:12px; color:#334155;">
+        <strong>【開発へのこだわり】</strong><br>
+        当社の高天井LEDは、世界の先端エレクトロニクス拠点である台湾の提携工場へ直接赴き、日本の工場・倉庫の過酷な環境に耐えうる専用設計を一から共同開発。自社測定データに基づく高精度な照度シミュレーションと、全数点灯エージング検査をクリアした製品のみをお届けしています。
+      </div>
+    </div>
+
     <h3 style="font-size:14px; font-weight:800; margin: 16px 0 8px; color:var(--primary);">■ E39ソケットタイプ</h3>
-   <p class="table-scroll-hint">※ 横にスクロールできます ⇄</p>
+    <p class="table-scroll-hint">※ 横にスクロールできます ⇄</p>
     <div class="table-container">
       <table class="spec-table">
         <tr>
@@ -467,7 +438,7 @@
     </div>
   </section>
 
-<!-- 会社概要セクション -->
+  <!-- 会社概要セクション -->
   <section id="company" class="section">
     <div class="sec-title-bar">会社概要</div>
     <table class="company-table">
@@ -505,13 +476,14 @@
       <tr><th>2009年3月</th><td>ミサワホーム松本工場にて大型LED照明の開発に成功。BWHシリーズ完成。</td></tr>
       <tr><th>2009年6月</th><td>実用新案登録「ＬＥＤ蛍光灯」登録第3153538号</td></tr>
       <tr><th>2009年8月</th><td>Anteya Technology Corpにて委託生産開始。</td></tr>
-      <tr><th>2009年11月</th><td>ミサワホームと共同で意匠登録「発光ダイオード照明」</td></tr>
+      <tr><th>2009年11月</th><td>ミサワホームと共同で意壌登録「発光ダイオード照明」</td></tr>
       <tr><th>2010年4月</th><td>株式会社ＳＵＺＵＳＡＮに社名変更、LED照明事業本格参入。</td></tr>
       <tr><th>2010年5〜12月</th><td>外付けコンバータ、分割蛍光灯型、リング状等の実用新案を多数登録。</td></tr>
       <tr><th>2011〜2014年</th><td>ライティングジャパン、メッセナゴヤ等に出展。特許登録「ＬＥＤ蛍光灯」（特許第5558273号）</td></tr>
       <tr><th>現在</th><td>現在に至る</td></tr>
     </table>
   </section>
+
   <!-- お問い合わせセクション -->
   <section id="contact" class="section">
     <div class="sec-title-bar">お問合わせ</div>
@@ -524,6 +496,7 @@
           <option value="未選択" selected>下記からお選びください。</option>
           <option value="●資料請求を希望">●資料請求を希望</option>
           <option value="●詳しい説明をしてほしい">●詳しい説明をしてほしい</option>
+          <option value="●照度シミュレーション・見積希望">●照度シミュレーション・見積希望</option>
         </select>
       </div>
 
@@ -558,7 +531,7 @@
       </div>
 
       <div style="margin-bottom:20px;">
-        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">その他のお問い合せ</label>
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">その他のお問い合せ（設置場所寸法 W×D×H など）</label>
         <textarea name="その他" rows="5" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;"></textarea>
       </div>
 
@@ -569,66 +542,65 @@
     </form>
   </section>
 
-<footer style="background: linear-gradient(135deg, #fffbeb 0%, #ff8058 100%); color: #1e293b; text-align: center; padding: 36px 16px 24px; font-size: 13px; line-height: 1.8; border-top: 2px solid #f97316;">
-  <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+  <!-- フッター -->
+  <footer style="background: linear-gradient(135deg, #fffbeb 0%, #ff8058 100%); color: #1e293b; text-align: center; padding: 36px 16px 24px; font-size: 13px; line-height: 1.8; border-top: 2px solid #f97316;">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
 
-    <!-- ナビゲーションバー（中央揃え・くっきり黒文字） -->
-    <nav style="margin-bottom: 16px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-      <a href="#" style="font-weight: bold; color: #1e293b; text-decoration: none; font-size: 15px;">ホーム</a>
-      <a href="#led" style="font-weight: bold; color: #1e293b; text-decoration: none; font-size: 15px;">LED照明</a>
-      <a href="#company" style="font-weight: bold; color: #1e293b; text-decoration: none; font-size: 15px;">会社概要</a>
-      <a href="#contact" style="font-weight: bold; color: #1e293b; text-decoration: none; font-size: 15px;">お問合せ</a>
-    </nav>
+      <!-- ナビゲーションバー -->
+      <nav style="margin-bottom: 16px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
+        <a href="#" style="font-weight: bold; color: #1e293b; text-decoration: none; font-size: 14px;">ホーム</a>
+        <a href="#products" style="font-weight: bold; color: #1e293b; text-decoration: none; font-size: 14px;">LED照明</a>
+        <a href="catalog.html" style="font-weight: bold; color: #7c2d12; text-decoration: underline; font-size: 14px;">⚡ 施工カタログ</a>
+        <a href="#company" style="font-weight: bold; color: #1e293b; text-decoration: none; font-size: 14px;">会社概要</a>
+        <a href="#contact" style="font-weight: bold; color: #1e293b; text-decoration: none; font-size: 14px;">お問合せ</a>
+      </nav>
 
-    <!-- 営業時間・連絡先（完全中央揃え） -->
-    <div style="margin: 14px auto; text-align: center; font-size: 13px; color: #334155;">
-      <p style="margin: 0; font-weight: bold; font-size: 14px; color: #0f172a;">株式会社SUZUSAN</p>
-      <p style="margin: 4px 0 0 0;">
-        〒252-0243 神奈川県相模原市中央区上溝3-1-31<br>
-        TEL: 045-381-1444 / FAX: 045-381-1445<br>
-        <strong>営業時間:</strong> 平日 9:00〜18:00（定休日: 土曜・日曜・祝日）
+      <div style="margin: 14px auto; text-align: center; font-size: 13px; color: #334155;">
+        <p style="margin: 0; font-weight: bold; font-size: 14px; color: #0f172a;">株式会社SUZUSAN</p>
+        <p style="margin: 4px 0 0 0;">
+          〒252-0243 神奈川県相模原市中央区上溝3-1-31<br>
+          TEL: 045-381-1444 / FAX: 045-381-1445<br>
+          <strong>営業時間:</strong> 平日 9:00〜18:00（定休日: 土曜・日曜・祝日）
+        </p>
+      </div>
+
+      <details style="margin: 12px auto; max-width: 600px; background: rgba(255, 255, 255, 0.85); border: 1px solid #fdba74; border-radius: 6px; text-align: left; font-size: 12px; color: #334155;">
+        <summary style="padding: 8px 14px; font-weight: bold; cursor: pointer; color: #c2410c; background: rgba(255, 247, 237, 0.9); border-radius: 5px; text-align: center;">
+          ▶ 特定商取引法に基づく表記（クリックで展開）
+        </summary>
+        <div style="padding: 12px 16px; border-top: 1px solid #fed7aa; background: #ffffff; border-radius: 0 0 5px 5px; line-height: 1.7;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr><td style="padding: 4px 0; font-weight: bold; width: 110px;">販売事業者</td><td>株式会社SUZUSAN</td></tr>
+            <tr><td style="padding: 4px 0; font-weight: bold;">所在地</td><td>〒252-0243 神奈川県相模原市中央区上溝3-1-31</td></tr>
+            <tr><td style="padding: 4px 0; font-weight: bold;">連絡先</td><td>TEL: 045-381-1444 / FAX: 045-381-1445</td></tr>
+            <tr><td style="padding: 4px 0; font-weight: bold;">営業時間</td><td>平日 9:00〜18:00（定休日: 土曜・日曜・祝日）</td></tr>
+            <tr><td style="padding: 4px 0; font-weight: bold;">販売価格</td><td>各商品ページ・照度シミュレーション見積に準ずる</td></tr>
+            <tr><td style="padding: 4px 0; font-weight: bold;">お支払い方法</td><td>銀行振込・各種取引条件に準ずる</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details style="margin: 8px auto 20px; max-width: 600px; background: rgba(255, 255, 255, 0.85); border: 1px solid #fdba74; border-radius: 6px; text-align: left; font-size: 12px; color: #334155;">
+        <summary style="padding: 8px 14px; font-weight: bold; cursor: pointer; color: #c2410c; background: rgba(255, 247, 237, 0.9); border-radius: 5px; text-align: center;">
+          ▶ プライバシーポリシー（クリックで展開）
+        </summary>
+        <div style="padding: 12px 16px; border-top: 1px solid #fed7aa; background: #ffffff; border-radius: 0 0 5px 5px; line-height: 1.7;">
+          <p style="margin: 0 0 6px 0;">株式会社SUZUSANは、お客様からお預かりした個人情報を適切に保護・管理し、法令に基づく場合を除き第三者への提供は行いません。</p>
+          <strong>1. 利用目的:</strong> お問い合わせ対応、LED導入見積・照度計算の送付、製品のご案内。<br>
+          <strong>2. 管理窓口:</strong> 株式会社SUZUSAN 個人情報担当（TEL: 045-381-1444）
+        </div>
+      </details>
+
+      <p style="margin: 12px 0 0 0; font-size: 12px; color: #1e293b;">
+        &copy;2015-2026 株式会社SUZUSAN All Rights Reserved.
       </p>
+      <p style="margin: 4px 0 0 0; font-size: 11px; color: #64748b;">
+        Powered & Secured via GitHub Pages
+      </p>
+
     </div>
+  </footer>
 
-    <!-- 折りたたみ：特定商取引法に基づく表記 -->
-    <details style="margin: 12px auto; max-width: 600px; background: rgba(255, 255, 255, 0.85); border: 1px solid #fdba74; border-radius: 6px; text-align: left; font-size: 12px; color: #334155;">
-      <summary style="padding: 8px 14px; font-weight: bold; cursor: pointer; color: #c2410c; background: rgba(255, 247, 237, 0.9); border-radius: 5px; text-align: center;">
-        ▶ 特定商取引法に基づく表記（クリックで展開）
-      </summary>
-      <div style="padding: 12px 16px; border-top: 1px solid #fed7aa; background: #ffffff; border-radius: 0 0 5px 5px; line-height: 1.7;">
-        <table style="width: 100%; border-collapse: collapse;">
-          <tr><td style="padding: 4px 0; font-weight: bold; width: 110px;">販売事業者</td><td>株式会社SUZUSAN</td></tr>
-          <tr><td style="padding: 4px 0; font-weight: bold;">所在地</td><td>〒252-0243 神奈川県相模原市中央区上溝3-1-31</td></tr>
-          <tr><td style="padding: 4px 0; font-weight: bold;">連絡先</td><td>TEL: 045-381-1444 / FAX: 045-381-1445</td></tr>
-          <tr><td style="padding: 4px 0; font-weight: bold;">営業時間</td><td>平日 9:00〜18:00（定休日: 土曜・日曜・祝日）</td></tr>
-          <tr><td style="padding: 4px 0; font-weight: bold;">販売価格</td><td>各商品ページ・照度シミュレーション見積に準ずる</td></tr>
-          <tr><td style="padding: 4px 0; font-weight: bold;">お支払い方法</td><td>銀行振込・各種取引条件に準ずる</td></tr>
-        </table>
-      </div>
-    </details>
-
-    <!-- 折りたたみ：プライバシーポリシー -->
-    <details style="margin: 8px auto 20px; max-width: 600px; background: rgba(255, 255, 255, 0.85); border: 1px solid #fdba74; border-radius: 6px; text-align: left; font-size: 12px; color: #334155;">
-      <summary style="padding: 8px 14px; font-weight: bold; cursor: pointer; color: #c2410c; background: rgba(255, 247, 237, 0.9); border-radius: 5px; text-align: center;">
-        ▶ プライバシーポリシー（クリックで展開）
-      </summary>
-      <div style="padding: 12px 16px; border-top: 1px solid #fed7aa; background: #ffffff; border-radius: 0 0 5px 5px; line-height: 1.7;">
-        <p style="margin: 0 0 6px 0;">株式会社SUZUSANは、お客様からお預かりした個人情報を適切に保護・管理し、法令に基づく場合を除き第三者への提供は行いません。</p>
-        <strong>1. 利用目的:</strong> お問い合わせ対応、LED導入見積・照度計算の送付、製品のご案内。<br>
-        <strong>2. 管理窓口:</strong> 株式会社SUZUSAN 個人情報担当（TEL: 045-381-1444）
-      </div>
-    </details>
-
-    <!-- コピーライト（旧HPリンクは完全削除・縁切り済み） -->
-    <p style="margin: 12px 0 0 0; font-size: 12px; color: #1e293b;">
-      &copy;2015-2026 株式会社SUZUSAN All Rights Reserved.
-    </p>
-    <p style="margin: 4px 0 0 0; font-size: 11px; color: #64748b;">
-      Powered & Secured via GitHub Pages
-    </p>
-
-  </div>
-</footer>
 </div>
 
 </body>
