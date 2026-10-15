@@ -3,125 +3,316 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カタログ風ギャラリー</title>
+  <title>技術・施工実績カタログ｜産業用・高天井LED照明シミュレーション設計【すずさん】</title>
   <style>
-    body {
-      font-family: sans-serif;
-      background: #f1f5f9;
-      margin: 0;
-      padding: 24px;
-      color: #0f172a;
-    }
-    
-    /* 全体のコンテナ：パソコンでは広く、スマホでは画面幅いっぱいに */
-    .catalog-container {
-      max-width: 1000px;
-      margin: 0 auto;
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #f59e0b;
+      --bg-base: #0b1329;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-sub: #94a3b8;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 22px;
-      margin-bottom: 24px;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; }
+    body { background-color: var(--bg-base); color: var(--text); line-height: 1.6; padding-bottom: 60px; }
 
-    /* ★ ここが肝心！タイル状に並べるグリッド設定 */
-    .grid-gallery {
-      display: grid;
-      /* 画面幅に合わせて自動で列数が変わる魔法の指定 (最小220px幅のカードを並べる) */
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px; /* タイル同士の間隔 */
-    }
+    /* ナビゲーション（三ツ鈴ロゴ入り） */
+    header { background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid var(--border); padding: 12px 20px; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo { width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.4)); }
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-name { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: 0.5px; }
+    .brand-name span { color: var(--accent); }
+    .brand-sub { font-size: 11px; color: var(--text-sub); font-weight: bold; letter-spacing: 0.5px; }
 
-    /* 各タイルのカードデザイン */
-    .card {
-      background: #ffffff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
+    .back-btn { color: var(--text-sub); text-decoration: none; font-size: 14px; font-weight: bold; border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px; transition: 0.2s; }
+    .back-btn:hover { color: #fff; border-color: var(--accent); background: rgba(245, 158, 11, 0.1); }
 
-    /* ホバーしたときに少し浮き上がる演出 */
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
 
-    .card-img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      background: #e2e8f0;
-    }
+    /* ヒーローエリア */
+    .hero-section { text-align: center; margin-bottom: 28px; }
+    .badge { display: inline-block; background: linear-gradient(135deg, #0284c7, #06b6d4); color: #fff; font-size: 13px; font-weight: bold; padding: 5px 16px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 1px; }
+    h1 { font-size: 28px; font-weight: 900; margin-bottom: 10px; letter-spacing: 1px; }
+    .hero-desc { color: var(--text-sub); font-size: 15px; max-width: 840px; margin: 0 auto; }
 
-    .card-body {
-      padding: 14px;
-    }
+    /* 業務案内＆シミュレーション設計フロー */
+    .flow-card { background: rgba(30, 41, 59, 0.7); border: 2px solid #0284c7; border-radius: 14px; padding: 22px; margin-bottom: 36px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .flow-title { font-size: 18px; font-weight: bold; color: #38bdf8; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .flow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 14px; }
+    .flow-item { background: #0b1329; border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .flow-step { font-size: 12px; font-weight: 900; color: var(--accent); margin-bottom: 4px; }
+    .flow-head { font-size: 15px; font-weight: bold; color: #fff; margin-bottom: 4px; }
+    .flow-txt { font-size: 13px; color: var(--text-sub); line-height: 1.5; }
 
-    .card-title {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
+    /* 12枚カタロググリッド */
+    .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
+    .card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .card-img-wrap { width: 100%; height: 220px; background: #070d1e; overflow: hidden; position: relative; }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .card:hover .card-img-wrap img { transform: scale(1.04); }
+    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-tag { font-size: 11px; font-weight: bold; color: #38bdf8; margin-bottom: 4px; }
+    .card-title { font-size: 16px; font-weight: bold; color: #fff; margin-bottom: 8px; line-height: 1.4; }
+    .card-desc { font-size: 13px; color: var(--text-sub); line-height: 1.55; }
 
-    .card-desc {
-      font-size: 12px;
-      color: #64748b;
-      line-height: 1.4;
+    /* お問い合わせバナー */
+    .contact-banner { margin-top: 50px; background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid var(--accent); border-radius: 14px; padding: 26px; text-align: center; }
+    .contact-banner h2 { font-size: 22px; color: var(--accent); margin-bottom: 8px; }
+    .contact-info { font-size: 14px; color: var(--text-sub); margin-bottom: 12px; }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 22px; }
+      .catalog-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<div class="catalog-container">
-  <h1>作品・展示カタログ</h1>
+  <header>
+    <div class="header-inner">
+      <a href="./" class="brand-wrap">
+        <img src="Code_Generated_Image.png" alt="すずさん ロゴ" class="brand-logo" onerror="this.style.display='none'">
+        <div class="brand-text">
+          <div class="brand-name">すずさん <span>LED Engineering</span></div>
+          <div class="brand-sub">産業用・高天井LED 照度シミュレーション設計</div>
+        </div>
+      </a>
+      <a href="./" class="back-btn">← トップページへ戻る</a>
+    </div>
+  </header>
 
-  <!-- タイルを並べるグリッドの箱 -->
-  <div class="grid-gallery">
-    
-    <!-- タイル1 -->
-    <a href="#" class="card">
-      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80" alt="サンプル1" class="card-img">
-      <div class="card-body">
-        <div class="card-title">特選 和牛の炭火焼き</div>
-        <div class="card-desc">職人の技が光る看板メニューのこだわりをご紹介します。</div>
-      </div>
-    </a>
+  <div class="container">
 
-    <!-- タイル2 -->
-    <a href="#" class="card">
-      <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80" alt="サンプル2" class="card-img">
-      <div class="card-body">
-        <div class="card-title">地魚のお刺身盛り合わせ</div>
-        <div class="card-desc">早川港から毎朝直送される新鮮な海の幸。</div>
-      </div>
-    </a>
+    <div class="hero-section">
+      <span class="badge">全国対応｜光学照度（lux）シミュレーション設計</span>
+      <h1>産業用・高天井LED照明 ＆ 特殊プラント施工・実験実績</h1>
+      <p class="hero-desc">
+        天井クレーン完備の自社エージング検査工場から、水産養殖レースウェイ水槽、特殊高密度照射ベンチ、屋外高所投光器まで。<br>
+        「空間寸法（W×D×H）」と「要求照度（lux）」に基づき、精密なシミュレーションで無駄のない最適台数をご提案します。
+      </p>
+    </div>
 
-    <!-- タイル3 -->
-    <a href="#" class="card">
-      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80" alt="サンプル3" class="card-img">
-      <div class="card-body">
-        <div class="card-title">店内の雰囲気</div>
-        <div class="card-desc">お一人様からご家族まで落ち着いて過ごせる空間。</div>
+    <!-- 営業案内＆シミュレーション設計フロー -->
+    <div class="flow-card">
+      <div class="flow-title">
+        <span>📐 照度（lux）シミュレーションからお見積り提示までの流れ</span>
       </div>
-    </a>
+      <div class="flow-grid">
+        <div class="flow-item">
+          <div class="flow-step">STEP 01</div>
+          <div class="flow-head">お電話でのご相談・ヒアリング</div>
+          <div class="flow-txt">設置予定の場所の寸法（幅 W × 奥行 D × 天井高 H）と、使用目的・作業内容に応じた要求照度（lux）をお伺いします。</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-step">STEP 02</div>
+          <div class="flow-head">光学照度シミュレーション解析</div>
+          <div class="flow-txt">空間寸法から無駄のない光の広がり・床面照度を専用ソフトで計算。適正な設置台数と照射角度をピンポイントで算出します。</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-step">STEP 03</div>
+          <div class="flow-head">全国対応・最適プランとお見積り提示</div>
+          <div class="flow-txt">過剰な台数を省き、省エネ効果と導入費用を両立した明快なお見積りを提示。電話対応を基本とすることで全国均一の品質でご案内します。</div>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-size: 13px; color: var(--text-sub); display: flex; flex-wrap: wrap; gap: 16px; border-top: 1px dashed var(--border); padding-top: 10px;">
+        <span>🕒 <strong>営業時間：</strong>9:00〜18:00</span>
+        <span>🗓️ <strong>定休日：</strong>土曜・日曜・祝日</span>
+        <span>🌐 <strong>対応エリア：</strong>全国対応（電話・シミュレーション受付）</span>
+      </div>
+    </div>
 
-    <!-- タイル4 -->
-    <a href="#" class="card">
-      <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80" alt="サンプル4" class="card-img">
-      <div class="card-body">
-        <div class="card-title">季節の釜飯</div>
-        <div class="card-desc">炊き立て熱々、出汁の香りが広がる自慢の逸品。</div>
+    <!-- ★ 12枚フル実装カタロググリッド ★ -->
+    <div class="catalog-grid">
+
+      <!-- 1. gazou.jpg -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou.jpg" alt="クレーン付きLED自社検査工場">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【自社設備・品質管理】</div>
+            <div class="card-title">自社天井クレーン完備の検査・エージング工場</div>
+            <div class="card-desc">天井走行クレーンと多連点灯ラックを備え、出荷前の高天井LEDを一斉エージング点検。初期不良を徹底排除する厳格な品質管理体制です。</div>
+          </div>
+        </div>
       </div>
-    </a>
+
+      <!-- 2. gazou1jpg.jpg -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou1jpg.jpg" alt="水産養殖プラントLED照射設備">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【特殊プラント・水産養殖】</div>
+            <div class="card-title">大規模水槽プラント向け高天井LED照射設備</div>
+            <div class="card-desc">広大な水面全体へ均一な光を行き渡らせる光学配置設計。高湿度・水飛沫に耐える堅牢な耐環境仕様の高出力LED器具を採用しています。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. gazou4.jpg -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou4.jpg" alt="高天井LED超高密度照射グリッド">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【特殊照射設計・検証施設】</div>
+            <div class="card-title">天井全面グリッド配線・超高密度照射システム</div>
+            <div class="card-desc">天井全面に緻密なピッチで配線・吊り下げられた高出力LED群。光のムラや影を徹底排除し、特殊研究や極限照度を再現するための実験設備です。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. gazou5.jpg -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou5.jpg" alt="屋外高所投光器・特殊アーム架台">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【屋外投光器・特殊架台】</div>
+            <div class="card-title">屋外サイン・高所照射用アーム投光器設備</div>
+            <div class="card-desc">風圧荷重や耐候性を計算した専用架台アームに高出力LED投光器を設置。広範囲を均一にライトアップし、夜間の視認性と省エネを両立します。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. gazou2.jpg -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou2.jpg" alt="水槽プラントLED照明レイアウト">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【養殖・栽培設備】</div>
+            <div class="card-title">広域水面均一照射・防湿LEDシステム設計</div>
+            <div class="card-desc">天井高と水槽幅（W×D×H）から算出した配光角で死角を無くし、生体育成に最適なルクス環境を低消費電力で24時間安定供給します。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. gazou6.jpg -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou6.jpg" alt="鉄塔・屋外高所ポールLED投光器">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【高所・屋外ポール照明】</div>
+            <div class="card-title">高所ツインアーム街路・エリア投光器</div>
+            <div class="card-desc">送電鉄塔や屋外ヤードに隣接する敷地を強力に照らし出すポールトップ型LED。長寿命設計により高所交換メンテナンス費用を大幅に削減します。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. gazou7.jpg -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou7.jpg" alt="LED放熱フィン・通電エージング検査">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【製品構造・冷却技術】</div>
+            <div class="card-title">高効率アルミダイカスト放熱フィン＆通電試験</div>
+            <div class="card-desc">LEDの寿命を決定づける熱対策。重厚なアルミヒートシンク構造を採用し、連続点灯試験で温度上昇・消費電力を1基ずつ厳密に測定します。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. gazou8.jpg -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou8.jpg" alt="特殊アクリル防護・光学照射テストベンチ">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【試験設備・遮蔽ベンチ】</div>
+            <div class="card-title">特殊アクリル防護・光学照射テストベンチ</div>
+            <div class="card-desc">厚手のアクリルシールドで仕切られた専用テストベンチ。耐水・防塵性能の検証や、反射・透過特性を正確に測定するための独自検査設備です。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. gazou9.jpg（新） -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou9.jpg" alt="移動式多連エージング台車ラック">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【自社検査・量産管理】</div>
+            <div class="card-title">移動式多連エージング台車・配電制御ユニット</div>
+            <div class="card-desc">移動式キャスター架台に専用配電ボックスを組み込み、大量の灯具を同時に長時間負荷テスト。現場搬入前に全ての初期不具合を洗い出します。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. gazou10.jpg（新） -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou10.jpg" alt="アクリル水柱テストベンチ＆水槽連結ライン">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【光学実験・研究プラント】</div>
+            <div class="card-title">水柱アクリルベンチ ＆ 養殖水槽シミュレーションライン</div>
+            <div class="card-desc">垂直アクリルタワーによる光の透過・屈折測定設備と、後方の実験水槽を直結。水深ごとの減衰率を実測し、最適な波長と照射角を割り出します。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. gazou14.jpg（新） -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazou14.jpg" alt="レースウェイ循環水槽用高出力LED照射架台">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【水産バイオ・特殊照明】</div>
+            <div class="card-title">循環式レースウェイ水槽専用・直上照射フレーム</div>
+            <div class="card-desc">水流を起こす特殊水槽の直上に頑丈な門型フレームを設置し、超高出力LEDを連続配列。藻類培養や特殊養殖に必要な高ルクスを水面直下へ届けます。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. gazpou3.jpg（新） -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="gazpou3.jpg" alt="天井高密度マトリクス配線・照射検証室">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag">【特殊設計・マトリクス照射】</div>
+            <div class="card-title">天井埋込高密度マトリクス配線 ＆ 照射検証ルーム</div>
+            <div class="card-desc">天井面に整然と張り巡らされた専用配管と受電ソケット群。任意の位置・密度で灯具を脱着でき、顧客の求めるあらゆる空間照度を実証可能です。</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- お問い合わせバナー -->
+    <div class="contact-banner">
+      <h2>📞 照度シミュレーション・お見積りのご相談</h2>
+      <p class="contact-info">
+        設置予定場所の寸法（幅 W × 奥行 D × 天井高 H）と用途をお伝えいただければ、即座に必要台数と適正ルクス（lux）を計算いたします。<br>
+        遠隔電話対応により、全国どこからでも同一の高品質設計でお見積りを提示いたします。
+      </p>
+      <div style="font-size: 15px; color: #fff;">
+        受付時間：<strong>9:00〜18:00</strong>（定休日：土曜・日曜・祝日）／ <strong>全国対応</strong>
+      </div>
+    </div>
 
   </div>
-</div>
 
 </body>
 </html>
