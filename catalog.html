@@ -19,7 +19,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; }
     body { background-color: var(--bg-base); color: var(--text); line-height: 1.6; padding-bottom: 100px; }
 
-    /* ナビゲーション（suzusan 英語表記） */
+    /* ナビゲーション */
     header { background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid var(--border); padding: 12px 20px; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -60,14 +60,106 @@
     /* 12枚カタロググリッド */
     .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
     .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
-    .card-img-wrap { width: 100%; height: 210px; background: #070d1e; overflow: hidden; }
-    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    
+    /* 写真枠（クリックできることを示す虫眼鏡アイコン） */
+    .card-img-wrap {
+      width: 100%;
+      height: 210px;
+      background: #070d1e;
+      overflow: hidden;
+      cursor: zoom-in;
+      position: relative;
+    }
+    .card-img-wrap::after {
+      content: "🔍 タップで拡大";
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 4px;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .card-img-wrap:hover img { transform: scale(1.05); }
+
     .card-body { padding: 14px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .card-tag { font-size: 11px; font-weight: bold; color: #38bdf8; margin-bottom: 4px; }
     .card-title { font-size: 15px; font-weight: bold; color: #fff; margin-bottom: 6px; line-height: 1.4; }
     .card-desc { font-size: 12px; color: var(--text-sub); line-height: 1.5; }
 
-    /* ★★★ 最下部の特大電話相談バナー ★★★ */
+    /* ★★★ パッと広がるA5サイズ相当の画像拡大モーダル ★★★ */
+    .image-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.15s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .modal-content-wrap {
+      position: relative;
+      max-width: 650px; /* A5横サイズ相当 */
+      width: 90%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-img {
+      width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+    }
+    .modal-caption {
+      margin-top: 10px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      background: rgba(15, 23, 42, 0.85);
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      background: #ec4899;
+      color: #fff;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    /* 最下部電話相談バナー */
     .contact-banner {
       margin-top: 40px;
       background: #0d152a;
@@ -90,15 +182,7 @@
       transition: 0.2s;
     }
     .call-box:hover { background: #16203b; }
-    .call-head {
-      font-size: 22px;
-      font-weight: 900;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
+    .call-head { font-size: 22px; font-weight: 900; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .call-icon { color: #ec4899; font-size: 26px; }
     .call-number {
       font-size: 38px;
@@ -108,13 +192,9 @@
       font-family: Impact, -apple-system, sans-serif;
       margin: 4px 0;
     }
-    .call-hours {
-      font-size: 15px;
-      color: #cbd5e1;
-      font-weight: bold;
-    }
+    .call-hours { font-size: 15px; color: #cbd5e1; font-weight: bold; }
 
-    /* ★★★ スマホ画面の下にずっと固定される追従電話ボタン ★★★ */
+    /* スマホ追従電話ボタン */
     .mobile-floating-tel {
       position: fixed;
       bottom: 12px;
@@ -134,22 +214,10 @@
       justify-content: center;
       gap: 10px;
     }
-    .mobile-floating-tel .m-tel-num {
-      font-size: 22px;
-      font-weight: 900;
-      color: #fff;
-      font-family: Impact, sans-serif;
-      letter-spacing: 1px;
-    }
-    .mobile-floating-tel .m-tel-label {
-      font-size: 12px;
-      color: #f472b6;
-      font-weight: 900;
-    }
+    .mobile-floating-tel .m-tel-num { font-size: 22px; font-weight: 900; color: #fff; font-family: Impact, sans-serif; letter-spacing: 1px; }
+    .mobile-floating-tel .m-tel-label { font-size: 12px; color: #f472b6; font-weight: 900; }
 
-    @media (min-width: 769px) {
-      .mobile-floating-tel { display: none; }
-    }
+    @media (min-width: 769px) { .mobile-floating-tel { display: none; } }
     @media (max-width: 768px) {
       .header-tel-btn { display: none; }
       .call-box { width: 100%; padding: 14px 6px; }
@@ -159,7 +227,6 @@
 </head>
 <body>
 
-  <!-- ヘッダー（suzusan LED Engineering） -->
   <header>
     <div class="header-inner">
       <a href="./" class="brand-wrap">
@@ -189,7 +256,6 @@
       </p>
     </div>
 
-    <!-- 営業案内＆シミュレーション設計フロー -->
     <div class="flow-card">
       <div class="flow-title">📐 照度（lux）シミュレーションからお見積り提示までの流れ</div>
       <div class="flow-grid">
@@ -216,11 +282,13 @@
       </div>
     </div>
 
-    <!-- 12枚写真グリッド -->
+    <!-- カタロググリッド（画像クリックで拡大発動） -->
     <div class="catalog-grid">
       <!-- 1 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou.jpg" alt="クレーン付きLED自社検査工場"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou.jpg', '自社天井クレーン完備の検査・エージング工場')">
+          <img src="gazou.jpg" alt="クレーン付きLED自社検査工場">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【自社設備・品質管理】</div>
@@ -229,9 +297,12 @@
           </div>
         </div>
       </div>
+
       <!-- 2 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou1jpg.jpg" alt="水産養殖プラントLED照射設備"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou1jpg.jpg', '大規模水槽プラント向け高天井LED照射設備')">
+          <img src="gazou1jpg.jpg" alt="水産養殖プラントLED照射設備">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【特殊プラント・水産養殖】</div>
@@ -240,9 +311,12 @@
           </div>
         </div>
       </div>
+
       <!-- 3 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou4.jpg" alt="高天井LED超高密度照射グリッド"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou4.jpg', '天井全面グリッド配線・超高密度照射システム')">
+          <img src="gazou4.jpg" alt="高天井LED超高密度照射グリッド">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【特殊照射設計・検証施設】</div>
@@ -251,9 +325,12 @@
           </div>
         </div>
       </div>
+
       <!-- 4 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou5.jpg" alt="屋外高所投光器・特殊アーム架台"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou5.jpg', '屋外サイン・高所照射用アーム投光器設備')">
+          <img src="gazou5.jpg" alt="屋外高所投光器・特殊アーム架台">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【屋外投光器・特殊架台】</div>
@@ -262,9 +339,12 @@
           </div>
         </div>
       </div>
+
       <!-- 5 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou2.jpg" alt="水槽プラントLED照明レイアウト"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou2.jpg', '広域水面均一照射・防湿LEDシステム設計')">
+          <img src="gazou2.jpg" alt="水槽プラントLED照明レイアウト">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【養殖・栽培設備】</div>
@@ -273,9 +353,12 @@
           </div>
         </div>
       </div>
+
       <!-- 6 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou6.jpg" alt="鉄塔・屋外高所ポールLED投光器"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou6.jpg', '高所ツインアーム街路・エリア投光器')">
+          <img src="gazou6.jpg" alt="鉄塔・屋外高所ポールLED投光器">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【高所・屋外ポール照明】</div>
@@ -284,9 +367,12 @@
           </div>
         </div>
       </div>
+
       <!-- 7 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou7.jpg" alt="LED放熱フィン・通電エージング検査"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou7.jpg', '高効率アルミダイカスト放熱フィン＆通電試験')">
+          <img src="gazou7.jpg" alt="LED放熱フィン・通電エージング検査">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【製品構造・冷却技術】</div>
@@ -295,9 +381,12 @@
           </div>
         </div>
       </div>
+
       <!-- 8 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou8.jpg" alt="特殊アクリル防護・光学照射テストベンチ"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou8.jpg', '特殊アクリル防護・光学照射テストベンチ')">
+          <img src="gazou8.jpg" alt="特殊アクリル防護・光学照射テストベンチ">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【試験設備・遮蔽ベンチ】</div>
@@ -306,9 +395,12 @@
           </div>
         </div>
       </div>
+
       <!-- 9 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou9.jpg" alt="移動式多連エージング台車ラック"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou9.jpg', '移動式多連エージング台車・配電制御ユニット')">
+          <img src="gazou9.jpg" alt="移動式多連エージング台車ラック">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【自社検査・量産管理】</div>
@@ -317,9 +409,12 @@
           </div>
         </div>
       </div>
+
       <!-- 10 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou10.jpg" alt="アクリル水柱テストベンチ＆水槽連結ライン"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou10.jpg', '水柱アクリルベンチ ＆ 養殖水槽シミュレーションライン')">
+          <img src="gazou10.jpg" alt="アクリル水柱テストベンチ＆水槽連結ライン">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【光学実験・研究プラント】</div>
@@ -328,9 +423,12 @@
           </div>
         </div>
       </div>
+
       <!-- 11 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazou14.jpg" alt="レースウェイ循環水槽用高出力LED照射架台"></div>
+        <div class="card-img-wrap" onclick="openModal('gazou14.jpg', '循環式レースウェイ水槽専用・直上照射フレーム')">
+          <img src="gazou14.jpg" alt="レースウェイ循環水槽用高出力LED照射架台">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【水産バイオ・特殊照明】</div>
@@ -339,9 +437,12 @@
           </div>
         </div>
       </div>
+
       <!-- 12 -->
       <div class="card">
-        <div class="card-img-wrap"><img src="gazpou3.jpg" alt="天井高密度マトリクス配線・照射検証室"></div>
+        <div class="card-img-wrap" onclick="openModal('gazpou3.jpg', '天井埋込高密度マトリクス配線 ＆ 照射検証ルーム')">
+          <img src="gazpou3.jpg" alt="天井高密度マトリクス配線・照射検証室">
+        </div>
         <div class="card-body">
           <div>
             <div class="card-tag">【特殊設計・マトリクス照射】</div>
@@ -352,14 +453,13 @@
       </div>
     </div>
 
-    <!-- ★★★ 最下部の特大電話相談バナー ★★★ -->
+    <!-- 最下部電話相談バナー -->
     <div class="contact-banner">
       <p class="contact-lead">
         設置場所の寸法（幅 W × 奥行 D × 天井高 H）と使用目的をお伺いし、<br>
         要求照度（lux）に応じた最適台数と明快なお見積りをご提示いたします。
       </p>
 
-      <!-- タップで発信できる特大ボタン -->
       <a href="tel:0453811444" class="call-box">
         <div class="call-head">
           <span class="call-icon">📞</span>
@@ -372,7 +472,7 @@
 
   </div>
 
-  <!-- ★★★ スマホ画面の下にずっと固定される追従電話ボタン ★★★ -->
+  <!-- スマホ用追従電話ボタン -->
   <a href="tel:0453811444" class="mobile-floating-tel">
     <span style="font-size: 20px;">📞</span>
     <div>
@@ -380,6 +480,41 @@
       <div class="m-tel-num">045-381-1444</div>
     </div>
   </a>
+
+  <!-- ★★★ 画像ポップアップ拡大用モーダル構造 ★★★ -->
+  <div id="imageModal" class="image-modal-overlay" onclick="closeModal()">
+    <div class="modal-content-wrap" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      <img id="modalImg" class="modal-img" src="" alt="拡大写真">
+      <div id="modalCaption" class="modal-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    // 写真をクリックしたときにA5サイズ相当でパッと拡大する処理
+    function openModal(src, title) {
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImg');
+      const caption = document.getElementById('modalCaption');
+      
+      img.src = src;
+      caption.textContent = title;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // 背景スクロール停止
+    }
+
+    // 閉じる処理（バツボタンまたは黒背景タップ）
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // スクロール復帰
+    }
+
+    // エスケープキーでも閉じられる安心設計
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
 
 </body>
 </html>
