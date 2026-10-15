@@ -8,7 +8,7 @@
     :root {
       --primary: #0284c7;
       --accent: #f59e0b;
-      --accent-pink: #ec4899;
+      --accent-orange: #ea580c;
       --bg-base: #0b1329;
       --card-bg: #1e293b;
       --border: #334155;
@@ -32,11 +32,11 @@
     .header-tel-btn {
       display: inline-flex; align-items: center; gap: 6px;
       background: #090e1f;
-      border: 2px solid #ec4899; color: #fff;
+      border: 2px solid #f97316; color: #fff;
       padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 900; font-size: 15px;
       transition: 0.2s;
     }
-    .header-tel-btn:hover { background: #ec4899; }
+    .header-tel-btn:hover { background: #f97316; color: #000; }
     .back-btn { color: var(--text-sub); text-decoration: none; font-size: 14px; font-weight: bold; border: 1px solid var(--border); padding: 8px 14px; border-radius: 6px; }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 20px 16px; }
@@ -54,13 +54,12 @@
     .flow-head { font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 4px; }
     .flow-txt { font-size: 12px; color: var(--text-sub); line-height: 1.5; }
 
-    /* ★ カテゴリ専用大見出し帯 ★ */
     .category-section-title {
       font-size: 19px;
       font-weight: 900;
       color: #fff;
       background: linear-gradient(90deg, #1e293b, #0f172a);
-      border-left: 6px solid #38bdf8;
+      border-left: 6px solid #f97316;
       border-bottom: 1px solid var(--border);
       padding: 10px 16px;
       border-radius: 6px;
@@ -76,7 +75,6 @@
       letter-spacing: 1px;
     }
 
-    /* カタロググリッド */
     .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 20px; }
     .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
     
@@ -118,22 +116,62 @@
     .modal-content-wrap { position: relative; max-width: 650px; width: 90%; max-height: 85vh; display: flex; flex-direction: column; align-items: center; }
     .modal-img { width: 100%; max-height: 75vh; object-fit: contain; border-radius: 8px; border: 2px solid var(--accent); box-shadow: 0 10px 40px rgba(0,0,0,0.9); }
     .modal-caption { margin-top: 10px; color: #fff; font-size: 14px; font-weight: bold; text-align: center; background: rgba(15, 23, 42, 0.85); padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border); }
-    .modal-close-btn { position: absolute; top: -16px; right: -16px; background: #ec4899; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .modal-close-btn { position: absolute; top: -16px; right: -16px; background: #f97316; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
-    /* 最下部電話相談バナー */
-    .contact-banner { margin-top: 40px; background: #0d152a; border: 3px solid #ec4899; border-radius: 16px; padding: 28px 16px; text-align: center; box-shadow: 0 0 25px rgba(236, 72, 153, 0.25); }
+    /* ★★★ ピンク完全追放・信頼のオレンジ統一バナー ★★★ */
+    .contact-banner {
+      margin-top: 40px;
+      background: #0d152a;
+      border: 3px solid #f97316;
+      border-radius: 16px;
+      padding: 28px 16px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(249, 115, 22, 0.25);
+    }
     .contact-lead { font-size: 15px; color: #cbd5e1; margin-bottom: 16px; font-weight: bold; }
-    .call-box { display: inline-block; background: #060a17; border: 2px solid #ec4899; border-radius: 14px; padding: 16px 28px; text-decoration: none; color: #fff; }
+    
+    .call-box {
+      display: inline-block;
+      background: #060a17;
+      border: 2px solid #f97316;
+      border-radius: 14px;
+      padding: 16px 28px;
+      text-decoration: none;
+      color: #fff;
+      transition: 0.2s;
+    }
+    .call-box:hover { background: #16203b; border-color: #f59e0b; }
     .call-head { font-size: 22px; font-weight: 900; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .call-icon { color: #ec4899; font-size: 26px; }
-    .call-number { font-size: 38px; font-weight: 900; letter-spacing: 2px; color: #ffffff; font-family: Impact, -apple-system, sans-serif; margin: 4px 0; }
+    .call-icon { color: #f97316; font-size: 26px; }
+    .call-number {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #ffffff;
+      font-family: Impact, -apple-system, sans-serif;
+      margin: 4px 0;
+    }
     .call-hours { font-size: 15px; color: #cbd5e1; font-weight: bold; }
 
+    /* スマホ追従電話ボタン（オレンジ仕様） */
     .mobile-floating-tel {
-      position: fixed; bottom: 12px; left: 12px; right: 12px; background: #090e1f; border: 2px solid #ec4899; border-radius: 30px; padding: 10px 16px; text-align: center; text-decoration: none; color: #ffffff; box-shadow: 0 8px 25px rgba(0,0,0,0.9); z-index: 9999; display: flex; align-items: center; justify-content: center; gap: 10px;
+      position: fixed; bottom: 12px; left: 12px; right: 12px;
+      background: #090e1f;
+      border: 2px solid #f97316;
+      border-radius: 30px;
+      padding: 10px 16px;
+      text-align: center;
+      text-decoration: none;
+      color: #ffffff;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.9);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
     .mobile-floating-tel .m-tel-num { font-size: 22px; font-weight: 900; color: #fff; font-family: Impact, sans-serif; letter-spacing: 1px; }
-    .mobile-floating-tel .m-tel-label { font-size: 12px; color: #f472b6; font-weight: 900; }
+    .mobile-floating-tel .m-tel-label { font-size: 12px; color: #f59e0b; font-weight: 900; }
 
     @media (min-width: 769px) { .mobile-floating-tel { display: none; } }
     @media (max-width: 768px) {
@@ -156,7 +194,7 @@
       </a>
       <div class="header-right">
         <a href="tel:0453811444" class="header-tel-btn">
-          <span style="color:#ec4899;">📞</span> 045-381-1444
+          <span style="color:#f97316;">📞</span> 045-381-1444
         </a>
         <a href="./" class="back-btn">← トップページへ</a>
       </div>
@@ -202,16 +240,13 @@
     </div>
 
 
-    <!-- ======================================================== -->
     <!-- ■ カテゴリ1：水産養殖・バイオ閉鎖循環プラント（水は水） -->
-    <!-- ======================================================== -->
     <div class="category-section-title">
       <span>🐟 1. 水産養殖・バイオ閉鎖循環プラント設備</span>
       <span class="cat-en">AQUACULTURE & BIO PLANT</span>
     </div>
 
     <div class="catalog-grid">
-      <!-- gazou1jpg.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou1jpg.jpg', '大規模水槽プラント向け高天井LED照射設備')">
           <img src="gazou1jpg.jpg" alt="大規模水槽プラント向け高天井LED照射設備">
@@ -225,7 +260,6 @@
         </div>
       </div>
 
-      <!-- gazou2.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou2.jpg', '広域水面均一照射・防湿LEDシステム設計')">
           <img src="gazou2.jpg" alt="広域水面均一照射・防湿LEDシステム設計">
@@ -239,7 +273,6 @@
         </div>
       </div>
 
-      <!-- gazou14.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou14.jpg', '循環式レースウェイ水槽専用・直上照射フレーム')">
           <img src="gazou14.jpg" alt="循環式レースウェイ水槽専用・直上照射フレーム">
@@ -255,16 +288,13 @@
     </div>
 
 
-    <!-- ======================================================== -->
     <!-- ■ カテゴリ2：自社検査工場・通電エージング設備（試験は試験） -->
-    <!-- ======================================================== -->
     <div class="category-section-title">
       <span>🔬 2. 自社検査工場・通電負荷エージング設備</span>
       <span class="cat-en">QUALITY & AGING TEST</span>
     </div>
 
     <div class="catalog-grid">
-      <!-- gazou.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou.jpg', '自社天井クレーン完備の検査・エージング工場')">
           <img src="gazou.jpg" alt="自社天井クレーン完備の検査・エージング工場">
@@ -278,7 +308,6 @@
         </div>
       </div>
 
-      <!-- gazou9.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou9.jpg', '移動式多連エージング台車・配電制御ユニット')">
           <img src="gazou9.jpg" alt="移動式多連エージング台車・配電制御ユニット">
@@ -292,7 +321,6 @@
         </div>
       </div>
 
-      <!-- gazou7.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou7.jpg', '高効率アルミダイカスト放熱フィン＆通電試験')">
           <img src="gazou7.jpg" alt="高効率アルミダイカスト放熱フィン＆通電試験">
@@ -308,16 +336,13 @@
     </div>
 
 
-    <!-- ======================================================== -->
     <!-- ■ カテゴリ3：光学実験ベンチ・高密度照射設計（実験・検証） -->
-    <!-- ======================================================== -->
     <div class="category-section-title">
       <span>📐 3. 光学特性試験・高密度照射シミュレーション</span>
       <span class="cat-en">OPTICAL LAB & GRID DESIGN</span>
     </div>
 
     <div class="catalog-grid">
-      <!-- gazou10.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou10.jpg', '水柱アクリルベンチ ＆ 養殖水槽シミュレーションライン')">
           <img src="gazou10.jpg" alt="水柱アクリルベンチ ＆ 養殖水槽シミュレーションライン">
@@ -331,7 +356,6 @@
         </div>
       </div>
 
-      <!-- gazou8.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou8.jpg', '特殊アクリル防護・光学照射テストベンチ')">
           <img src="gazou8.jpg" alt="特殊アクリル防護・光学照射テストベンチ">
@@ -345,7 +369,6 @@
         </div>
       </div>
 
-      <!-- gazou4.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou4.jpg', '天井全面グリッド配線・超高密度照射システム')">
           <img src="gazou4.jpg" alt="天井全面グリッド配線・超高密度照射システム">
@@ -361,16 +384,13 @@
     </div>
 
 
-    <!-- ======================================================== -->
     <!-- ■ カテゴリ4：屋外投光器・高所ポール・鉄塔照明（外は外） -->
-    <!-- ======================================================== -->
     <div class="category-section-title">
       <span>🏗️ 4. 屋外高所投光器・ポール架台・鉄塔設備</span>
       <span class="cat-en">OUTDOOR & HIGH MAST FLOODLIGHT</span>
     </div>
 
     <div class="catalog-grid">
-      <!-- gazou5.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou5.jpg', '屋外サイン・高所照射用アーム投光器設備')">
           <img src="gazou5.jpg" alt="屋外サイン・高所照射用アーム投光器設備">
@@ -384,7 +404,6 @@
         </div>
       </div>
 
-      <!-- gazou6.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazou6.jpg', '高所ツインアーム街路・エリア投光器')">
           <img src="gazou6.jpg" alt="高所ツインアーム街路・エリア投光器">
@@ -398,7 +417,6 @@
         </div>
       </div>
 
-      <!-- gazpou3.jpg -->
       <div class="card">
         <div class="card-img-wrap" onclick="openModal('gazpou3.jpg', '天井埋込高密度マトリクス配線 ＆ 照射検証ルーム')">
           <img src="gazpou3.jpg" alt="天井埋込高密度マトリクス配線 ＆ 照射検証ルーム">
@@ -414,7 +432,7 @@
     </div>
 
 
-    <!-- ★ 最下部電話相談バナー ★ -->
+    <!-- ★ 最下部電話相談バナー（オレンジ＆ゴールド仕様） ★ -->
     <div class="contact-banner">
       <p class="contact-lead">
         設置場所の寸法（幅 W × 奥行 D × 天井高 H）と使用目的をお伺いし、<br>
@@ -433,7 +451,7 @@
 
   </div>
 
-  <!-- スマホ用追従電話ボタン -->
+  <!-- スマホ用追従電話ボタン（オレンジ仕様） -->
   <a href="tel:0453811444" class="mobile-floating-tel">
     <span style="font-size: 20px;">📞</span>
     <div>
