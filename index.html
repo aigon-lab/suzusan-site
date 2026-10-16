@@ -242,32 +242,32 @@
       border-radius: 4px;
     }
 
-    /* シミュレーター専用スタイル（直貼り用） */
+    /* シミュレーター専用スタイル（完全収まり版・余地最適化） */
     .sim-container {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       border: 3px solid var(--gold-frame);
-      border-radius: 14px;
-      padding: 20px 14px;
+      border-radius: 12px;
+      padding: 16px 14px;
       color: #ffffff;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
-    .sim-header { text-align: center; margin-bottom: 16px; }
-    .sim-badge { display: inline-block; background: #ea580c; color: #fff; font-size: 11px; font-weight: 900; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; }
-    .sim-title { font-size: 17px; color: #ffffff; margin-top: 8px; font-weight: 900; }
-    .sim-desc { font-size: 12px; color: #cbd5e1; margin-top: 4px; }
-    .sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .sim-input-panel { background: #1e293b; color: #ffffff; padding: 14px; border-radius: 10px; border: 1px solid #334155; }
-    .sim-form-group { margin-bottom: 12px; }
-    .sim-label { display: block; font-size: 12px; font-weight: bold; color: #ffffff; margin-bottom: 4px; }
-    .sim-input-val { color: #ffffff; font-size: 14px; font-weight: 900; }
+    .sim-header { text-align: center; margin-bottom: 12px; }
+    .sim-badge { display: inline-block; background: #ea580c; color: #fff; font-size: 11px; font-weight: 900; padding: 3px 12px; border-radius: 20px; letter-spacing: 1px; }
+    .sim-title { font-size: 16px; color: #ffffff; margin-top: 6px; font-weight: 900; }
+    .sim-desc { font-size: 11px; color: #cbd5e1; margin-top: 2px; line-height: 1.4; }
+    .sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .sim-input-panel { background: #1e293b; color: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #334155; }
+    .sim-form-group { margin-bottom: 10px; }
+    .sim-label { display: block; font-size: 11px; font-weight: bold; color: #ffffff; margin-bottom: 3px; }
+    .sim-input-val { color: #ffffff; font-size: 13px; font-weight: 900; }
     .sim-range { width: 100%; accent-color: #ffffff; }
-    .sim-select { width: 100%; padding: 8px; border: 1px solid #475569; border-radius: 6px; font-size: 12px; background: #0f172a; color: #ffffff; }
-    .sim-result-panel { background: #0b1329; border: 2px solid var(--gold-frame); color: #ffffff; padding: 16px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between; }
-    .sim-result-title { font-size: 11px; color: #ffffff; font-weight: bold; }
-    .sim-result-value { font-size: 20px; font-weight: 900; color: #ffffff; margin: 4px 0 10px; }
-    .sim-footer-note { margin-top: 10px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.4); padding: 8px; border-radius: 6px; font-size: 10px; color: #ffffff; line-height: 1.4; }
-    .sim-submit-btn { text-align: center; margin-top: 14px; }
-    .sim-btn-link { display: inline-block; background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; font-weight: 900; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-size: 13px; box-shadow: 0 4px 15px rgba(249,115,22,0.5); transition: filter 0.2s; }
+    .sim-select { width: 100%; padding: 6px; border: 1px solid #475569; border-radius: 6px; font-size: 11px; background: #0f172a; color: #ffffff; }
+    .sim-result-panel { background: #0b1329; border: 2px solid var(--gold-frame); color: #ffffff; padding: 12px; border-radius: 8px; display: flex; flex-direction: column; justify-content: space-between; }
+    .sim-result-title { font-size: 10px; color: #ffffff; font-weight: bold; }
+    .sim-result-value { font-size: 18px; font-weight: 900; color: #ffffff; margin: 3px 0 8px; }
+    .sim-footer-note { margin-top: 8px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.4); padding: 6px; border-radius: 6px; font-size: 9px; color: #ffffff; line-height: 1.3; }
+    .sim-submit-btn { text-align: center; margin-top: 10px; }
+    .sim-btn-link { display: inline-block; background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; font-weight: 900; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 12px; box-shadow: 0 4px 15px rgba(249,115,22,0.5); transition: filter 0.2s; }
     .sim-btn-link:hover { filter: brightness(1.1); }
     @media (max-width: 600px) { .sim-grid { grid-template-columns: 1fr; } }
 
@@ -382,7 +382,7 @@
     </a>
   </div>
 
-  <!-- 無料経費節減シミュレーター（トグル格納用バー＆直貼り本体） -->
+  <!-- 無料経費節減シミュレーター（トグル格納用バー＆直貼り本体・完全収まり版） -->
   <section class="section" style="margin-top: 0px; padding-top: 0px;">
     <div class="sec-title-bar" onclick="toggleSection('simulator-content', this.querySelector('.toggle-icon'))">
       <span>⚡ 無料経費節減シミュレーター（水銀灯の損失ロス算定）</span>
@@ -437,16 +437,16 @@
             <div>
               <div class="sim-result-title">【このまま水銀灯を使い続けた場合の「年間ロス（損失）」】</div>
               <div class="sim-result-value">
-                年間 約 <span id="sim_res_loss" style="font-size: 24px;">1,785,600</span> 円 の無駄な出費
+                年間 約 <span id="sim_res_loss" style="font-size: 22px;">1,785,600</span> 円 の無駄な出費
               </div>
 
-              <div class="sim-result-title" style="border-top: 1px solid #334155; padding-top: 8px;">【LED（BWHシリーズ）に変えた場合の年間削減額】</div>
-              <div style="font-size: 18px; font-weight: 900; color: #ffffff; margin: 2px 0 6px;">
-                毎年 約 <span id="sim_res_saving" style="font-size: 22px;">1,116,000</span> 円 が利益として残る！
+              <div class="sim-result-title" style="border-top: 1px solid #334155; padding-top: 6px;">【LED（BWHシリーズ）に変えた場合の年間削減額】</div>
+              <div style="font-size: 16px; font-weight: 900; color: #ffffff; margin: 2px 0 4px;">
+                毎年 約 <span id="sim_res_saving" style="font-size: 20px;">1,116,000</span> 円 が利益として残る！
               </div>
 
-              <div style="font-size: 11px; color: #ffffff; border-top: 1px solid #334155; padding-top: 6px; font-weight: bold;">
-                初期投資の回収：約 <span id="sim_res_months" style="font-size: 13px;">15</span> ヶ月で全額回収完了
+              <div style="font-size: 10px; color: #ffffff; border-top: 1px solid #334155; padding-top: 5px; font-weight: bold;">
+                初期投資の回収：約 <span id="sim_res_months" style="font-size: 12px;">15</span> ヶ月で全額回収完了
               </div>
             </div>
 
@@ -494,7 +494,6 @@
     document.getElementById('sim_res_saving').innerText = yearlySaving.toLocaleString();
     document.getElementById('sim_res_months').innerText = paybackMonths;
   }
-  // ページ読み込み時に一度計算を実行
   runSim();
   </script>
 
