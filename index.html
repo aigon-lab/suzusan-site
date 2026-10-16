@@ -17,6 +17,7 @@
     "telephone": "045-381-1444",
     "address": {
       "@type": "PostalAddress",
+      "@type": "PostalAddress",
       "postalCode": "252-0243",
       "addressRegion": "神奈川県",
       "addressLocality": "相模原市中央区",
@@ -25,7 +26,8 @@
     }
   }
   </script>
-  <style>    :root {
+  <style>
+    :root {
       --primary: #0f172a;       /* 落ち着いたネイビー */
       --grad-bg: linear-gradient(135deg, #fafad2, #ff6347); /* 薄めオレンジグラデーション */
       --accent-orange: #f97316;
@@ -129,7 +131,7 @@
     .btn-label { font-size: 13px; font-weight: 800; }
     .btn-sub { font-size: 11px; font-weight: 700; opacity: 0.95; margin-top: 2px; }
 
-    /* ナビゲーションバー（全5枠を完全な同系色グラデーションで統一） */
+    /* ナビゲーションバー */
     .nav-bar {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -154,7 +156,7 @@
     .nav-item:last-child { border-right: none; }
     .nav-item:hover, .nav-item.active { background: #ff6347; color: #ffffff; }
 
-    /* ★★★ トップページ新設：大々的な施工カタログ案内看板 ★★★ */
+    /* 施工カタログ案内看板 */
     .catalog-super-banner {
       margin: 20px 14px;
       background: linear-gradient(135deg, #0b1329 0%, #1e293b 100%);
@@ -213,7 +215,7 @@
     .sec-title-bar {
       background: var(--grad-bg);
       color: #0f172a;
-      padding: 8px 14px;
+      padding: 10px 14px;
       font-size: 14px;
       font-weight: 900;
       border-radius: 6px;
@@ -221,6 +223,23 @@
       margin-bottom: 12px !important;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       border-left: 4px solid #ff6347;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: filter 0.2s;
+    }
+    .sec-title-bar:hover {
+      filter: brightness(0.97);
+    }
+    .toggle-icon {
+      font-size: 13px;
+      font-weight: 900;
+      background: rgba(255,255,255,0.7);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #0f172a;
     }
 
     /* インフォメーションリスト */
@@ -371,20 +390,20 @@
       <span style="font-size: 10px; color: #cbd5e1; margin-top: 2px;">平日 9:00〜18:00（土日祝休）</span>
     </a>
     
-    <a href="#contact" class="quick-btn quick-btn-contact" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none;">
+    <a href="#contact" class="quick-btn quick-btn-contact" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none;" onclick="toggleSection('contact-content', this.querySelector('.toggle-icon') || document.getElementById('contact-toggle'))">
       <span class="btn-label" style="color: #0f172a;">✉️ お問い合わせ</span>
       <span class="btn-sub" style="color: #0f172a; font-weight: 800;">見積・照度シミュレーション</span>
       <span style="font-size: 11px; color: #0f172a; font-weight: 900; margin-top: 2px;">全国対応・Web受付24h</span>
     </a>
   </div>
 
-  <!-- ナビゲーション（全5項目・完全同色グラデーション統一） -->
+  <!-- ナビゲーション（全5項目） -->
   <nav class="nav-bar">
     <a href="#home" class="nav-item active">ホーム</a>
-    <a href="#products" class="nav-item">LED照明</a>
+    <a href="#products" class="nav-item" onclick="document.getElementById('products-content').style.display='block';">LED照明</a>
     <a href="catalog.html" class="nav-item">施工カタログ</a>
     <a href="#company" class="nav-item">会社概要</a>
-    <a href="#contact" class="nav-item">お問合わせ</a>
+    <a href="#contact" class="nav-item" onclick="document.getElementById('contact-content').style.display='block';">お問合わせ</a>
   </nav>
 
   <!-- 提案PDFへの誘導バナー -->
@@ -408,7 +427,7 @@
     </div>
   </div>
 
-  <!-- ★★★ ここに大々的な「技術・施工カタログ」案内看板を新設 ★★★ -->
+  <!-- 技術・施工カタログ案内看板 -->
   <div class="catalog-super-banner">
     <span class="csb-badge">全12実例・自社プラント現場写真を公開</span>
     <h3 class="csb-title">自社クレーン検査工場 ＆ 特殊プラント施工実績カタログ</h3>
@@ -421,111 +440,130 @@
     </a>
   </div>
 
-  <!-- ホームセクション -->
+  <!-- ホームセクション（開きっぱなしの初期画面） -->
   <section id="home" class="section" style="margin-bottom: 0px; padding-bottom: 0px;">
-    <div class="sec-title-bar">インフォメーション / 最新情報</div>
+    <div class="sec-title-bar" style="cursor: default; border-left: 4px solid #ff6347;">
+      <span>インフォメーション / 最新情報</span>
+      <span style="font-size: 11px; font-weight: normal; color: #475569;">（常時表示）</span>
+    </div>
     <div class="info-list">
       <div class="info-item">
         <span class="info-date">2026/10/15</span>
         <strong>【最新】</strong> 産業用高天井LED・特殊養殖プラントの <a href="catalog.html" style="color:#f97316; font-weight:800; text-decoration:underline;">施工・実験実績カタログ（12実例）</a> を公開しました。
       </div>
       <div class="info-item"><span class="info-date">2016/8/1</span> 本社を移転いたしました。</div>
-      <div class="info-item"><span class="info-date">2015/8/11</span> LED照明「BWHシリーズ」の資料を掲載しました。 <a href="#products" style="color:#b45309; font-weight:700;">製品詳細はこちら</a></div>
+      <div class="info-item"><span class="info-date">2015/8/11</span> LED照明「BWHシリーズ」の資料を掲載しました。 <a href="#products" onclick="document.getElementById('products-content').style.display='block';" style="color:#b45309; font-weight:700;">製品詳細はこちら</a></div>
     </div>
   </section>
 
-  <!-- LED照明セクション -->
+  <!-- LED照明セクション（トグル化） -->
   <section id="products" class="section" style="margin-top: 0px; padding-top: 0px;">
-    <div class="sec-title-bar">高天井用LED照明「BWHシリーズ」（水銀灯タイプLED照明）</div>
-
-    <p style="font-size:13px; color:var(--text-sub); margin-bottom:16px;">
-      用途：工場・施設向けの業務用。倉庫・工場・店舗などの省エネ・コスト削減対策を支援します。<br>
-      <strong>※電源内蔵タイプまたは電源外付けタイプをお選びいただけます。</strong>
-    </p>
-
-    <!-- 照度シミュレーション案内枠 -->
-    <div style="background:#eff6ff; border:2px solid #3b82f6; border-radius:8px; padding:18px; margin:16px auto 24px; text-align:left;">
-      <h3 style="font-size:16px; color:#1e3a8a; margin-bottom:6px; font-weight:bold;">
-        📐 【無料】現場に合わせた照度（lux）シミュレーション実施中
-      </h3>
-      <p style="font-size:13px; color:#1e40af; line-height:1.7; margin-bottom:10px;">
-        「LEDに変えて現場が暗くならないか不安」「何台つければいいか分からない」というお客様へ。<br>
-        設置予定場所の寸法（<strong>幅 W × 奥行 D × 天井高 H</strong>）とご希望の明るさ・作業内容をお電話にてお伺いし、最適な照度（lux）計算を行い、必要台数とお見積もりを迅速にご提示いたします。<br>
-        ※無駄な出張費を抑えメーカー直販価格を実現するため、全国からのお問い合わせをお電話にて迅速にヒアリング対応しております。
+    <div class="sec-title-bar" onclick="toggleSection('products-content', this.querySelector('.toggle-icon'))">
+      <span>高天井用LED照明「BWHシリーズ」（水銀灯タイプLED照明）</span>
+      <span class="toggle-icon" id="products-toggle">∧ 閉じる</span>
+    </div>
+    
+    <div id="products-content" style="display: block; transition: all 0.3s ease;">
+      <p style="font-size:13px; color:var(--text-sub); margin-bottom:16px;">
+        用途：工場・施設向けの業務用。倉庫・工場・店舗などの省エネ・コスト削減対策を支援します。<br>
+        <strong>※電源内蔵タイプまたは電源外付けタイプをお選びいただけます。</strong>
       </p>
-      <div style="background:#ffffff; border-left:4px solid #3b82f6; padding:10px 14px; font-size:12px; color:#334155;">
-        <strong>【開発へのこだわり】</strong><br>
-        当社の高天井LEDは、世界の先端エレクトロニクス拠点である台湾の提携工場へ直接赴き、日本の工場・倉庫の過酷な環境に耐えうる専用設計を一から共同開発。自社測定データに基づく高精度な照度シミュレーションと、全数点灯エージング検査をクリアした製品のみをお届けしています。
+
+      <!-- 照度シミュレーション案内枠 -->
+      <div style="background:#eff6ff; border:2px solid #3b82f6; border-radius:8px; padding:18px; margin:16px auto 24px; text-align:left;">
+        <h3 style="font-size:16px; color:#1e3a8a; margin-bottom:6px; font-weight:bold;">
+          📐 【無料】現場に合わせた照度（lux）シミュレーション実施中
+        </h3>
+        <p style="font-size:13px; color:#1e40af; line-height:1.7; margin-bottom:10px;">
+          「LEDに変えて現場が暗くならないか不安」「何台つければいいか分からない」というお客様へ。<br>
+          設置予定場所の寸法（<strong>幅 W × 奥行 D × 天井高 H</strong>）とご希望の明るさ・作業内容をお電話にてお伺いし、最適な照度（lux）計算を行い、必要台数とお見積もりを迅速にご提示いたします。<br>
+          ※無駄な出張費を抑えメーカー直販価格を実現するため、全国からのお問い合わせをお電話にて迅速にヒアリング対応しております。
+        </p>
+        <div style="background:#ffffff; border-left:4px solid #3b82f6; padding:10px 14px; font-size:12px; color:#334155;">
+          <strong>【開発へのこだわり】</strong><br>
+          当社の高天井LEDは、世界の先端エレクトロニクス拠点である台湾の提携工場へ直接赴き、日本の工場・倉庫の過酷な環境に耐えうる専用設計を一から共同開発。自社測定データに基づく高精度な照度シミュレーションと、全数点灯エージング検査をクリアした製品のみをお届けしています。
+        </div>
+      </div>
+
+      <h3 style="font-size:14px; font-weight:800; margin: 16px 0 8px; color:var(--primary);">■ E39ソケットタイプ</h3>
+      <p class="table-scroll-hint">※ 横にスクロールできます ⇄</p>
+      <div class="table-container">
+        <table class="spec-table">
+          <tr>
+            <th rowspan="2">型名</th>
+            <th rowspan="2">光源色</th>
+            <th colspan="2">サイズ(mm)</th>
+            <th rowspan="2">重量(kg)</th>
+            <th rowspan="2">配光角</th>
+            <th rowspan="2">定格出力(W)</th>
+            <th rowspan="2">全光束(lm)</th>
+            <th rowspan="2">定格寿命(h)</th>
+            <th rowspan="2">色温度(K)</th>
+            <th rowspan="2">相当電球</th>
+          </tr>
+          <tr><th>直径</th><th>高さ</th></tr>
+          <tr><td>BWH-WRN060</td><td rowspan="8">白色</td><td>φ200</td><td>268</td><td>1.45</td><td rowspan="8">120°</td><td>60</td><td>8400</td><td rowspan="8">40,000</td><td rowspan="8">6000</td><td>250W水銀灯</td></tr>
+          <tr><td>BWH-WRN090</td><td>φ200</td><td>268</td><td>1.45</td><td>90</td><td>12600</td><td>400W水銀灯</td></tr>
+          <tr><td>BWH-WRN100</td><td>φ200</td><td>268</td><td>1.45</td><td>100</td><td>13500</td><td>170Wメタハラ</td></tr>
+          <tr><td>BWH-WRN120</td><td>φ300</td><td>360</td><td>3.20</td><td>120</td><td>16800</td><td>500W水銀灯</td></tr>
+          <tr><td>BWH-WRN150</td><td>φ300</td><td>360</td><td>3.50</td><td>150</td><td>21000</td><td>700W水銀灯</td></tr>
+          <tr><td>BWH-WRN180</td><td>φ300</td><td>360</td><td>3.50</td><td>180</td><td>25200</td><td>1000W水銀灯</td></tr>
+          <tr><td>BWH-WRN200</td><td>φ300</td><td>360</td><td>3.50</td><td>200</td><td>28000</td><td>1000W水銀灯以上</td></tr>
+          <tr><td>BWH-WRN250</td><td>φ300</td><td>360</td><td>3.50</td><td>250</td><td>35000</td><td>1500W水銀灯</td></tr>
+        </table>
+      </div>
+
+      <h3 style="font-size:14px; font-weight:800; margin: 20px 0 8px; color:var(--primary);">■ 防水（ステイ）タイプ</h3>
+      <div class="table-container">
+        <table class="spec-table">
+          <tr>
+            <th rowspan="2">型名</th>
+            <th rowspan="2">光源色</th>
+            <th colspan="2">サイズ(mm)</th>
+            <th rowspan="2">重量(kg)</th>
+            <th rowspan="2">配光角</th>
+            <th rowspan="2">定格出力(W)</th>
+            <th rowspan="2">全光束(lm)</th>
+            <th rowspan="2">定格寿命(h)</th>
+            <th rowspan="2">色温度(K)</th>
+            <th rowspan="2">相当電球</th>
+          </tr>
+          <tr><th>直径</th><th>高さ</th></tr>
+          <tr><td>BWH-WRN060WP</td><td rowspan="7">白色</td><td>φ200</td><td>260</td><td>2.78</td><td rowspan="7">120°</td><td>60</td><td>8400</td><td rowspan="7">40,000</td><td rowspan="7">6000</td><td>250W水銀灯</td></tr>
+          <tr><td>BWH-WRN090WP</td><td>φ200</td><td>260</td><td>2.78</td><td>90</td><td>12600</td><td>400W水銀灯</td></tr>
+          <tr><td>BWH-WRN120WP</td><td>φ300</td><td>360</td><td>4.0</td><td>120</td><td>16800</td><td>500W水銀灯</td></tr>
+          <tr><td>BWH-WRN150WP</td><td>φ300</td><td>360</td><td>4.2</td><td>150</td><td>21000</td><td>700W水銀灯</td></tr>
+          <tr><td>BWH-WRN180WP</td><td>φ300</td><td>360</td><td>4.2</td><td>180</td><td>25200</td><td>1000W水銀灯</td></tr>
+          <tr><td>BWH-WRN200WP</td><td>φ300</td><td>360</td><td>4.2</td><td>200</td><td>28000</td><td>1000W水銀灯以上</td></tr>
+          <tr><td>BWH-WRN250WP</td><td>φ300</td><td>360</td><td>4.2</td><td>250</td><td>35000</td><td>1500W水銀灯</td></tr>
+        </table>
       </div>
     </div>
+  </section>
 
-    <h3 style="font-size:14px; font-weight:800; margin: 16px 0 8px; color:var(--primary);">■ E39ソケットタイプ</h3>
-    <p class="table-scroll-hint">※ 横にスクロールできます ⇄</p>
-    <div class="table-container">
-      <table class="spec-table">
-        <tr>
-          <th rowspan="2">型名</th>
-          <th rowspan="2">光源色</th>
-          <th colspan="2">サイズ(mm)</th>
-          <th rowspan="2">重量(kg)</th>
-          <th rowspan="2">配光角</th>
-          <th rowspan="2">定格出力(W)</th>
-          <th rowspan="2">全光束(lm)</th>
-          <th rowspan="2">定格寿命(h)</th>
-          <th rowspan="2">色温度(K)</th>
-          <th rowspan="2">相当電球</th>
-        </tr>
-        <tr><th>直径</th><th>高さ</th></tr>
-        <tr><td>BWH-WRN060</td><td rowspan="8">白色</td><td>φ200</td><td>268</td><td>1.45</td><td rowspan="8">120°</td><td>60</td><td>8400</td><td rowspan="8">40,000</td><td rowspan="8">6000</td><td>250W水銀灯</td></tr>
-        <tr><td>BWH-WRN090</td><td>φ200</td><td>268</td><td>1.45</td><td>90</td><td>12600</td><td>400W水銀灯</td></tr>
-        <tr><td>BWH-WRN100</td><td>φ200</td><td>268</td><td>1.45</td><td>100</td><td>13500</td><td>170Wメタハラ</td></tr>
-        <tr><td>BWH-WRN120</td><td>φ300</td><td>360</td><td>3.20</td><td>120</td><td>16800</td><td>500W水銀灯</td></tr>
-        <tr><td>BWH-WRN150</td><td>φ300</td><td>360</td><td>3.50</td><td>150</td><td>21000</td><td>700W水銀灯</td></tr>
-        <tr><td>BWH-WRN180</td><td>φ300</td><td>360</td><td>3.50</td><td>180</td><td>25200</td><td>1000W水銀灯</td></tr>
-        <tr><td>BWH-WRN200</td><td>φ300</td><td>360</td><td>3.50</td><td>200</td><td>28000</td><td>1000W水銀灯以上</td></tr>
-        <tr><td>BWH-WRN250</td><td>φ300</td><td>360</td><td>3.50</td><td>250</td><td>35000</td><td>1500W水銀灯</td></tr>
-      </table>
+  <!-- 各種資料ダウンロードセクション（トグル化） -->
+  <section class="section" style="margin-top: 0px; padding-top: 0px;">
+    <div class="sec-title-bar" onclick="toggleSection('docs-content', this.querySelector('.toggle-icon'))">
+      <span>各種資料ダウンロード</span>
+      <span class="toggle-icon" id="docs-toggle">∧ 閉じる</span>
     </div>
-
-    <h3 style="font-size:14px; font-weight:800; margin: 20px 0 8px; color:var(--primary);">■ 防水（ステイ）タイプ</h3>
-    <div class="table-container">
-      <table class="spec-table">
-        <tr>
-          <th rowspan="2">型名</th>
-          <th rowspan="2">光源色</th>
-          <th colspan="2">サイズ(mm)</th>
-          <th rowspan="2">重量(kg)</th>
-          <th rowspan="2">配光角</th>
-          <th rowspan="2">定格出力(W)</th>
-          <th rowspan="2">全光束(lm)</th>
-          <th rowspan="2">定格寿命(h)</th>
-          <th rowspan="2">色温度(K)</th>
-          <th rowspan="2">相当電球</th>
-        </tr>
-        <tr><th>直径</th><th>高さ</th></tr>
-        <tr><td>BWH-WRN060WP</td><td rowspan="7">白色</td><td>φ200</td><td>260</td><td>2.78</td><td rowspan="7">120°</td><td>60</td><td>8400</td><td rowspan="7">40,000</td><td rowspan="7">6000</td><td>250W水銀灯</td></tr>
-        <tr><td>BWH-WRN090WP</td><td>φ200</td><td>260</td><td>2.78</td><td>90</td><td>12600</td><td>400W水銀灯</td></tr>
-        <tr><td>BWH-WRN120WP</td><td>φ300</td><td>360</td><td>4.0</td><td>120</td><td>16800</td><td>500W水銀灯</td></tr>
-        <tr><td>BWH-WRN150WP</td><td>φ300</td><td>360</td><td>4.2</td><td>150</td><td>21000</td><td>700W水銀灯</td></tr>
-        <tr><td>BWH-WRN180WP</td><td>φ300</td><td>360</td><td>4.2</td><td>180</td><td>25200</td><td>1000W水銀灯</td></tr>
-        <tr><td>BWH-WRN200WP</td><td>φ300</td><td>360</td><td>4.2</td><td>200</td><td>28000</td><td>1000W水銀灯以上</td></tr>
-        <tr><td>BWH-WRN250WP</td><td>φ300</td><td>360</td><td>4.2</td><td>250</td><td>35000</td><td>1500W水銀灯</td></tr>
-      </table>
-    </div>
-
-    <div class="sec-title-bar" style="margin-top:24px;">各種資料ダウンロード</div>
-    <div class="docs-grid">
-      <a href="led_catalog.pdf" target="_blank" class="doc-link">📁 BWHシリーズ パンフレット（PDF）</a>
-      <a href="led_plan.pdf" target="_blank" class="doc-link">📁 ＬＥＤ照明のご提案（PDF）</a>
-      <a href="led_plan2.pdf" target="_blank" class="doc-link">📁 コスト削減・償却資料（PDF）</a>
-      <a href="led_guidebook.pdf" target="_blank" class="doc-link">📁 ガイドブック（PDF）</a>
-      <a href="led_b-cube_data.pdf" target="_blank" class="doc-link">📁 直下照度資料（PDF）</a>
+    <div id="docs-content" style="display: block;">
+      <div class="docs-grid">
+        <a href="led_catalog.pdf" target="_blank" class="doc-link">📁 BWHシリーズ パンフレット（PDF）</a>
+        <a href="led_plan.pdf" target="_blank" class="doc-link">📁 ＬＥＤ照明のご提案（PDF）</a>
+        <a href="led_plan2.pdf" target="_blank" class="doc-link">📁 コスト削減・償却資料（PDF）</a>
+        <a href="led_guidebook.pdf" target="_blank" class="doc-link">📁 ガイドブック（PDF）</a>
+        <a href="led_b-cube_data.pdf" target="_blank" class="doc-link">📁 直下照度資料（PDF）</a>
+      </div>
     </div>
   </section>
 
-  <!-- 会社概要セクション -->
+  <!-- 会社概要セクション（マップは常時表示、沿革をトグル化） -->
   <section id="company" class="section">
-    <div class="sec-title-bar">会社概要</div>
+    <div class="sec-title-bar" style="cursor: default; border-left: 4px solid #ff6347;">
+      <span>会社概要</span>
+      <span style="font-size: 11px; font-weight: normal; color: #475569;">（常時表示）</span>
+    </div>
     <table class="company-table">
       <tr><th>名称</th><td>株式会社SUZUSAN</td></tr>
       <tr>
@@ -554,88 +592,97 @@
       <iframe src="https://maps.google.co.jp/maps?output=embed&q=神奈川県相模原市南区相南1-2-2" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
-    <div class="sec-title-bar" style="margin-top:24px;">沿革</div>
-    <table class="company-table">
-      <tr><th>1973年6月</th><td>有限会社鈴三物流設立。東芝物流・トヨタホーム・ミサワホームなどの物流事業を行う。</td></tr>
-      <tr><th>2008年12月</th><td>ミサワホーム株式会社と大型ＬＥＤ照明の開発に着手。</td></tr>
-      <tr><th>2009年3月</th><td>ミサワホーム松本工場にて大型LED照明の開発に成功。BWHシリーズ完成。</td></tr>
-      <tr><th>2009年6月</th><td>実用新案登録「ＬＥＤ蛍光灯」登録第3153538号</td></tr>
-      <tr><th>2009年8月</th><td>Anteya Technology Corpにて委託生産開始。</td></tr>
-      <tr><th>2009年11月</th><td>ミサワホームと共同で意匠登録「発光ダイオード照明」</td></tr>
-      <tr><th>2010年4月</th><td>株式会社ＳＵＺＵＳＡＮに社名変更、LED照明事業本格参入。</td></tr>
-      <tr><th>2010年5〜12月</th><td>外付けコンバータ、分割蛍光灯型、リング状等の実用新案を多数登録。</td></tr>
-      <tr><th>2011〜2014年</th><td>ライティングジャパン、メッセナゴヤ等に出展。特許登録「ＬＥＤ蛍光灯」（特許第5558273号）</td></tr>
-      <tr><th>現在</th><td>現在に至る</td></tr>
-    </table>
+    <!-- 沿革（トグル化） -->
+    <div class="sec-title-bar" style="margin-top:24px;" onclick="toggleSection('history-content', this.querySelector('.toggle-icon'))">
+      <span>沿革</span>
+      <span class="toggle-icon" id="history-toggle">∧ 閉じる</span>
+    </div>
+    <div id="history-content" style="display: block;">
+      <table class="company-table" style="margin-top: 12px;">
+        <tr><th>1973年6月</th><td>有限会社鈴三物流設立。東芝物流・トヨタホーム・ミサワホームなどの物流事業を行う。</td></tr>
+        <tr><th>2008年12月</th><td>ミサワホーム株式会社と大型ＬＥＤ照明の開発に着手。</td></tr>
+        <tr><th>2009年3月</th><td>ミサワホーム松本工場にて大型LED照明の開発に成功。BWHシリーズ完成。</td></tr>
+        <tr><th>2009年6月</th><td>実用新案登録「ＬＥＤ蛍光灯」登録第3153538号</td></tr>
+        <tr><th>2009年8月</th><td>Anteya Technology Corpにて委託生産開始。</td></tr>
+        <tr><th>2009年11月</th><td>ミサワホームと共同で意匠登録「発光ダイオード照明」</td></tr>
+        <tr><th>2010年4月</th><td>株式会社ＳＵＺＵＳＡＮに社名変更、LED照明事業本格参入。</td></tr>
+        <tr><th>2010年5〜12月</th><td>外付けコンバータ、分割蛍光灯型、リング状等の実用新案を多数登録。</td></tr>
+        <tr><th>2011〜2014年</th><td>ライティングジャパン、メッセナゴヤ等に出展。特許登録「ＬＥＤ蛍光灯」（特許第5558273号）</td></tr>
+        <tr><th>現在</th><td>現在に至る</td></tr>
+      </table>
+    </div>
   </section>
 
-  <!-- お問い合わせセクション -->
+  <!-- お問い合わせセクション（トグル化） -->
   <section id="contact" class="section">
-    <div class="sec-title-bar">お問合わせ</div>
-    <p style="font-size:13px; margin-bottom:16px;">お気軽にお問合せください。資料請求や詳しい説明のご依頼はこちらからどうぞ。</p>
+    <div class="sec-title-bar" onclick="toggleSection('contact-content', this.querySelector('.toggle-icon'))">
+      <span>お問合わせ</span>
+      <span class="toggle-icon" id="contact-toggle">∧ 閉じる</span>
+    </div>
     
-    <form action="http://www.suzusan.co.jp/postmail/postmail.cgi" method="POST" target="_parent" style="background:#f8fafc; border:1px solid var(--border); padding:20px; border-radius:8px;">
-      <div style="margin-bottom:14px;">
-        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">ご依頼内容</label>
-        <select name="内容" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
-          <option value="未選択" selected>下記からお選びください。</option>
-          <option value="●資料請求を希望">●資料請求を希望</option>
-          <option value="●詳しい説明をしてほしい">●詳しい説明をしてほしい</option>
-          <option value="●照度シミュレーション・見積希望">●照度シミュレーション・見積希望</option>
-        </select>
-      </div>
+    <div id="contact-content" style="display: block;">
+      <p style="font-size:13px; margin-bottom:16px;">お気軽にお問合せください。資料請求や詳しい説明のご依頼はこちらからどうぞ。</p>
+      
+      <form action="http://www.suzusan.co.jp/postmail/postmail.cgi" method="POST" target="_parent" style="background:#f8fafc; border:1px solid var(--border); padding:20px; border-radius:8px;">
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">ご依頼内容</label>
+          <select name="内容" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+            <option value="未選択" selected>下記からお選びください。</option>
+            <option value="●資料請求を希望">●資料請求を希望</option>
+            <option value="●詳しい説明をしてほしい">●詳しい説明をしてほしい</option>
+            <option value="●照度シミュレーション・見積希望">●照度シミュレーション・見積希望</option>
+          </select>
+        </div>
 
-      <div style="margin-bottom:14px;">
-        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">お名前（全角）</label>
-        <input type="text" name="_お名前" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
-      </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">お名前（全角）</label>
+          <input type="text" name="_お名前" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
+        </div>
 
-      <div style="margin-bottom:14px;">
-        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">フリガナ（全角）</label>
-        <input type="text" name="フリガナ" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
-      </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">フリガナ（全角）</label>
+          <input type="text" name="フリガナ" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
+        </div>
 
-      <div style="margin-bottom:14px;">
-        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">郵便番号（半角数字 例：221-0064）</label>
-        <input type="text" name="郵便番号" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
-      </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">郵便番号（半角数字 例：221-0064）</label>
+          <input type="text" name="郵便番号" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+        </div>
 
-      <div style="margin-bottom:14px;">
-        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">ご住所</label>
-        <input type="text" name="_ご住所" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
-      </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">ご住所</label>
+          <input type="text" name="_ご住所" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+        </div>
 
-      <div style="margin-bottom:14px;">
-        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">電話番号（半角数字）</label>
-        <input type="text" name="電話番号" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
-      </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">電話番号（半角数字）</label>
+          <input type="text" name="電話番号" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+        </div>
 
-      <div style="margin-bottom:14px;">
-        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">E-mail（半角英数字）</label>
-        <input type="text" name="_email" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
-      </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">E-mail（半角英数字）</label>
+          <input type="text" name="_email" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+        </div>
 
-      <div style="margin-bottom:20px;">
-        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">その他のお問い合せ（設置場所寸法 W×D×H など）</label>
-        <textarea name="その他" rows="5" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;"></textarea>
-      </div>
+        <div style="margin-bottom:20px;">
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">その他のお問い合せ（設置場所寸法 W×D×H など）</label>
+          <textarea name="その他" rows="5" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;"></textarea>
+        </div>
 
-      <div style="text-align:center; display:flex; gap:10px; justify-content:center;">
-        <input type="submit" name="submit" value="上記の内容で送信する" class="form-submit-btn">
-        <input type="reset" value="リセット" style="background:#cbd5e1; color:#334155; border:none; padding:12px 20px; font-size:14px; font-weight:700; border-radius:6px; cursor:pointer;">
-      </div>
-    </form>
+        <div style="text-align:center; display:flex; gap:10px; justify-content:center;">
+          <input type="submit" name="submit" value="上記の内容で送信する" class="form-submit-btn">
+          <input type="reset" value="リセット" style="background:#cbd5e1; color:#334155; border:none; padding:12px 20px; font-size:14px; font-weight:700; border-radius:6px; cursor:pointer;">
+        </div>
+      </form>
+    </div>
   </section>
 
   <!-- フッター -->
- <!-- フッター（右端の深みあるオレンジでビシッと引き締めたグラデーション版） -->
   <footer style="background: linear-gradient(180deg, #ff8c69 0%, #ea580c 100%); color: #ffffff; padding: 40px 16px 28px; font-size: 13px; line-height: 1.8; border-top: 4px solid #c2410c; box-shadow: inset 0 4px 12px rgba(0,0,0,0.15);">
     <div style="max-width: 820px; margin: 0 auto;">
 
-      <!-- 上段：QRコード ＆ ナビ・会社情報エリア -->
       <div class="footer-main-layout" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 32px; margin-bottom: 24px;">
 
-        <!-- 左側：大きめQRコードブロック -->
         <div style="background: #ffffff; padding: 14px 16px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); text-align: center; border: 2px solid #ffffff; width: 190px; flex-shrink: 0;">
           <div style="position: relative; width: 140px; height: 140px; margin: 0 auto;">
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://aigon-lab.github.io/suzusan-site/&ecc=H" alt="suzusan 公式サイトQRコード" style="width: 100%; height: 100%; display: block;">
@@ -647,15 +694,13 @@
           </div>
         </div>
 
-        <!-- 右側：ナビゲーション ＆ 会社連絡先（白＆濃紺でクッキリ） -->
         <div style="flex: 1; min-width: 280px; text-align: center;">
-          <!-- ナビゲーションバー -->
           <nav style="margin-bottom: 14px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
             <a href="#" style="font-weight: 900; color: #ffffff; text-decoration: none; font-size: 14px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">ホーム</a>
-            <a href="#products" style="font-weight: 900; color: #ffffff; text-decoration: none; font-size: 14px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">LED照明</a>
+            <a href="#products" onclick="document.getElementById('products-content').style.display='block';" style="font-weight: 900; color: #ffffff; text-decoration: none; font-size: 14px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">LED照明</a>
             <a href="catalog.html" style="font-weight: 900; color: #fef08a; text-decoration: underline; font-size: 14px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">⚡ 施工カタログ</a>
             <a href="#company" style="font-weight: 900; color: #ffffff; text-decoration: none; font-size: 14px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">会社概要</a>
-            <a href="#contact" style="font-weight: 900; color: #ffffff; text-decoration: none; font-size: 14px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">お問合せ</a>
+            <a href="#contact" onclick="document.getElementById('contact-content').style.display='block';" style="font-weight: 900; color: #ffffff; text-decoration: none; font-size: 14px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">お問合せ</a>
           </nav>
 
           <p style="margin: 0; font-weight: 900; font-size: 18px; color: #ffffff; letter-spacing: 0.5px; text-shadow: 0 1px 3px rgba(0,0,0,0.4);">株式会社SUZUSAN</p>
@@ -668,7 +713,6 @@
 
       </div>
 
-      <!-- 下段：特定商取引法 ＆ プライバシーポリシー -->
       <details style="margin: 10px auto; max-width: 600px; background: rgba(255, 255, 255, 0.95); border: 2px solid #c2410c; border-radius: 8px; text-align: left; font-size: 12px; color: #334155; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
         <summary style="padding: 10px 14px; font-weight: 900; cursor: pointer; color: #9a3412; background: #fff7ed; border-radius: 6px; text-align: center;">
           ▶ 特定商取引法に基づく表記（クリックで展開）
@@ -709,6 +753,20 @@
   </footer>
 
 </div>
+
+<!-- トグル開閉用のJavaScript -->
+<script>
+function toggleSection(contentId, iconElem) {
+  const content = document.getElementById(contentId);
+  if (content.style.display === "none") {
+    content.style.display = "block";
+    if (iconElem) iconElem.innerHTML = "∧ 閉じる";
+  } else {
+    content.style.display = "none";
+    if (iconElem) iconElem.innerHTML = "∨ 開く";
+  }
+}
+</script>
 
 </body>
 </html>
