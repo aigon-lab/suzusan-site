@@ -369,7 +369,7 @@
   <!-- キャッチコピー帯 -->
   <div class="hero-info-banner" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 8px; min-height: auto; width: 100%; box-sizing: border-box;">
     <div class="hero-catch" style="font-size: clamp(14px, 3.8vw, 20px); font-weight: 800; color: #7c2d12; margin: 0 auto; padding: 0; text-align: center; width: 100%; line-height: 1.3;">
-      現場の明るさ維持・電気代を劇的削減
+      現場の明るさ維持・電気代を劇적削減
     </div>
     
     <p class="hero-desc" style="font-size: clamp(11px, 2.7vw, 14px); font-weight: 600; color: #1e3a8a; margin: 4px auto 0 auto; padding: 0; text-align: center; width: 100%; line-height: 1.2;">
@@ -438,7 +438,8 @@
       ⚡ 現場写真カタログ（全12実例）を見る →
     </a>
   </div>
-<!-- 無料経費節減シミュレーター（トグル格納用バー） -->
+
+  <!-- 無料経費節減シミュレーター（トグル格納用バー：iframe埋め込み版） -->
   <section class="section" style="margin-top: 0px; padding-top: 0px;">
     <div class="sec-title-bar" onclick="toggleSection('simulator-content', this.querySelector('.toggle-icon'))">
       <span>⚡ 無料経費節減シミュレーター（水銀灯の損失ロス算定）</span>
@@ -446,269 +447,10 @@
     </div>
     
     <div id="simulator-content" style="display: none; padding-top: 10px;">
-      <<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>水銀灯継続使用時の経費節減・損失ロス算定シミュレーター【suzusan】</title>
-  <style>
-    :root {
-      --bg-base: #0f172a;
-      --card-bg: #1e293b;
-      --border: #334155;
-      --gold-frame: #d4af37;
-      --text: #ffffff;
-      --text-sub: #cbd5e1;
-      --accent-orange: #f97316;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    
-    .sim-container {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      border: 3px solid var(--gold-frame);
-      border-radius: 14px;
-      padding: 24px 18px;
-      max-width: 800px;
-      margin: 0 auto;
-      color: #ffffff;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-    .sim-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .sim-badge {
-      display: inline-block;
-      background: #ea580c;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 900;
-      padding: 4px 14px;
-      border-radius: 20px;
-      letter-spacing: 1px;
-    }
-    .sim-title {
-      font-size: 19px;
-      color: #ffffff;
-      margin-top: 8px;
-      font-weight: 900;
-    }
-    .sim-desc {
-      font-size: 12px;
-      color: #cbd5e1;
-      margin-top: 4px;
-    }
-    .sim-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .sim-input-panel {
-      background: #1e293b;
-      color: #ffffff;
-      padding: 16px;
-      border-radius: 10px;
-      border: 1px solid #334155;
-    }
-    .sim-form-group {
-      margin-bottom: 14px;
-    }
-    .sim-label {
-      display: block;
-      font-size: 12px;
-      font-weight: bold;
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
-    .sim-input-val {
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: 900;
-    }
-    .sim-range {
-      width: 100%;
-      accent-color: #ffffff;
-    }
-    .sim-select {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid #475569;
-      border-radius: 6px;
-      font-size: 12px;
-      background: #0f172a;
-      color: #ffffff;
-    }
-    .sim-result-panel {
-      background: #0b1329;
-      border: 2px solid var(--gold-frame);
-      color: #ffffff;
-      padding: 18px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .sim-result-title {
-      font-size: 11px;
-      color: #ffffff;
-      font-weight: bold;
-    }
-    .sim-result-value {
-      font-size: 22px;
-      font-weight: 900;
-      color: #ffffff;
-      margin: 4px 0 12px;
-    }
-    .sim-footer-note {
-      margin-top: 12px;
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      padding: 8px;
-      border-radius: 6px;
-      font-size: 10px;
-      color: #ffffff;
-      line-height: 1.4;
-    }
-    .sim-submit-btn {
-      text-align: center;
-      margin-top: 16px;
-    }
-    .sim-btn-link {
-      display: inline-block;
-      background: linear-gradient(135deg, #f97316, #ea580c);
-      color: #fff;
-      font-weight: 900;
-      padding: 12px 28px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 14px;
-      box-shadow: 0 4px 15px rgba(249,115,22,0.5);
-      transition: filter 0.2s;
-    }
-    .sim-btn-link:hover {
-      filter: brightness(1.1);
-    }
-
-    @media (max-width: 600px) {
-      .sim-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body style="background: #0b1329; padding: 20px;">
-
-  <div class="sim-container">
-    <div class="sim-header">
-      <span class="sim-badge">無料経費節減シミュレーター</span>
-      <h3 class="sim-title">「水銀灯のまま」で垂れ流している損失額・一発計算</h3>
-      <p class="sim-desc">「安いから」と水銀灯を使い続けることが、会社にどれだけの致命的なコストを発生させているか、ご自身の工場条件で今すぐお確かめください。</p>
-    </div>
-
-    <div class="sim-grid">
-      <!-- 入力エリア -->
-      <div class="sim-input-panel">
-        <div class="sim-form-group">
-          <label class="sim-label">
-            工場・倉庫の水銀灯の台数：<span id="sim_count_val" class="sim-input-val">30</span> 台
-          </label>
-          <input type="range" id="sim_lamps" min="5" max="150" value="30" class="sim-range" oninput="runSim()">
-        </div>
-
-        <div class="sim-form-group">
-          <label class="sim-label">水銀灯の種類</label>
-          <select id="sim_old_type" class="sim-select" onchange="runSim()">
-            <option value="400" selected>水銀灯 400W（実消費約440W）</option>
-            <option value="700">水銀灯 700W（実消費約760W）</option>
-            <option value="1000">水銀灯 1000W（実消費約1100W）</option>
-          </select>
-        </div>
-
-        <div class="sim-form-group">
-          <label class="sim-label">
-            1日の点灯時間：<span id="sim_hours_val" class="sim-input-val">16</span> 時間/日
-          </label>
-          <input type="range" id="sim_hours" min="8" max="24" value="16" class="sim-range" oninput="runSim()">
-        </div>
-
-        <div class="sim-form-group" style="margin-bottom: 0;">
-          <label class="sim-label">工事の選び方（交換費用目安）</label>
-          <select id="sim_work_type" class="sim-select" onchange="runSim()">
-            <option value="bracket">器具ごと交換（本体＋基本工事）</option>
-            <option value="bypass">バイパス工事（既存器具を活かした配線改修）</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- 結果表示エリア（金枠＆数値すべて白） -->
-      <div class="sim-result-panel">
-        <div>
-          <div class="sim-result-title">【このまま水銀灯を使い続けた場合の「年間ロス（損失）」】</div>
-          <div class="sim-result-value">
-            年間 約 <span id="sim_res_loss" style="font-size: 28px;">1,785,600</span> 円 の無駄な出費
-          </div>
-
-          <div class="sim-result-title" style="border-top: 1px solid #334155; padding-top: 10px;">【LED（BWHシリーズ）に変えた場合の年間削減額】</div>
-          <div style="font-size: 20px; font-weight: 900; color: #ffffff; margin: 2px 0 8px;">
-            毎年 約 <span id="sim_res_saving" style="font-size: 24px;">1,116,000</span> 円 が利益として残る！
-          </div>
-
-          <div style="font-size: 11px; color: #ffffff; border-top: 1px solid #334155; padding-top: 8px; font-weight: bold;">
-            初期投資の回収：約 <span id="sim_res_months" style="font-size: 14px;">15</span> ヶ月で全額回収完了
-          </div>
-        </div>
-
-        <div class="sim-footer-note">
-          ※300日稼働・電気料金31円/kWhで試算。何度でも納得いくまでシミュレーション可能です。
-        </div>
-      </div>
-    </div>
-
-    <div class="sim-submit-btn">
-      <a href="index.html#contact" class="sim-btn-link">
-        🔒 この試算を基に、損失を止める正式な無料見積もりを依頼する →
-      </a>
-    </div>
-  </div>
-
-  <script>
-  function runSim() {
-    const lamps = parseInt(document.getElementById('sim_lamps').value);
-    const oldWatt = parseInt(document.getElementById('sim_old_type').value);
-    const hours = parseInt(document.getElementById('sim_hours').value);
-    const workType = document.getElementById('sim_work_type').value;
-
-    document.getElementById('sim_count_val').innerText = lamps;
-    document.getElementById('sim_hours_val').innerText = hours;
-
-    const newWatt = oldWatt === 400 ? 150 : (oldWatt === 700 ? 200 : 250);
-
-    const oldKwTotal = (oldWatt * lamps) / 1000;
-    const newKwTotal = (newWatt * lamps) / 1000;
-    const yearlyOldCost = oldKwTotal * hours * 300 * 31;
-    const yearlyNewCost = newKwTotal * hours * 300 * 31;
-    
-    const yearlyLoss = Math.round(yearlyOldCost);
-    const yearlySaving = Math.round(yearlyOldCost - yearlyNewCost);
-
-    let unitCost = workType === 'bracket' ? 45000 : 28000;
-    let totalCost = unitCost * lamps;
-    let paybackMonths = Math.max(1, Math.round((totalCost / (yearlySaving / 12))));
-
-    document.getElementById('sim_res_loss').innerText = yearlyLoss.toLocaleString();
-    document.getElementById('sim_res_saving').innerText = yearlySaving.toLocaleString();
-    document.getElementById('sim_res_months').innerText = paybackMonths;
-  }
-  runSim();
-  </script>
-
-</body>
-</html>>
-      <div style="text-align: center; padding: 20px; background: #0f172a; border: 3px solid #d4af37; border-radius: 10px; color: #ffffff;">
-        <p style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">金枠のプロ仕様シミュレーターパーツをここに挿入できます</p>
-        <p style="font-size: 12px; color: #cbd5e1;">（※iframeなどで別ファイルのシミュレーターを呼び出す形にすると、index.html本体を汚さず完全に独立させられます）</p>
-      </div>
+      <iframe src="suzusan_sim.html" style="width: 100%; height: 540px; border: none; border-radius: 10px;" scrolling="no"></iframe>
     </div>
   </section>
+
   <!-- 最新情報セクション -->
   <section id="home" class="section" style="margin-bottom: 0px; padding-bottom: 0px;">
     <div class="sec-title-bar" style="cursor: default; border-left: 4px solid #ff6347;">
@@ -727,7 +469,7 @@
   <section id="products" class="section" style="margin-top: 0px; padding-top: 0px;">
     <div class="sec-title-bar" onclick="toggleSection('products-content', this.querySelector('.toggle-icon'))">
       <span>高天井用LED照明「BWHシリーズ」（水銀灯タイプLED照明）</span>
-      <span class="toggle-icon" id="products-toggle">▲ 開く</span>
+      <span class="toggle-icon" id="products-toggle">▼ 開く</span>
     </div>
     
     <div id="products-content" style="display: none;">
@@ -1025,7 +767,7 @@
 
 </div>
 
-<!-- トグル開閉用のJavaScript（閉じているとき▼開く、開いているとき▲閉じる） -->
+<!-- トグル開閉用のJavaScript -->
 <script>
 function toggleSection(contentId, iconElem) {
   const content = document.getElementById(contentId);
