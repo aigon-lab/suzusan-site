@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>空間寸法・要求照度からの最適台数算定シミュレーター【suzusan】</title>
+  <style>
+    :root {
+      --bg-base: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --gold-frame: #d4af37;
+      --text: #ffffff;
+      --text-sub: #cbd5e1;
+      --accent-orange: #f97316;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    
+    .sim-container {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border: 3px solid var(--gold-frame);
+      border-radius: 14px;
+      padding: 24px 18px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .sim-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sim-badge {
+      display: inline-block;
+      background: #ea580c;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+    }
+    .sim-title {
+      font-size: 19px;
+      color: #ffffff;
+      margin-top: 8px;
+      font-weight: 900;
+    }
+    .sim-desc {
+      font-size: 12px;
+      color: #cbd5e1;
+      margin-top: 4px;
+    }
+    .sim-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .sim-input-panel {
+      background: #1e293b;
+      color: #ffffff;
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid #334155;
+    }
+    .sim-form-group {
+      margin-bottom: 14px;
+    }
+    .sim-label {
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .sim-input-val {
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 900;
+    }
+    .sim-range {
+      width: 100%;
+      accent-color: #ffffff;
+    }
+    .sim-select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #475569;
+      border-radius: 6px;
+      font-size: 12px;
+      background: #0f172a;
+      color: #ffffff;
+    }
+    .sim-result-panel {
+      background: #0b1329;
+      border: 2px solid var(--gold-frame);
+      color: #ffffff;
+      padding: 18px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sim-result-title {
+      font-size: 11px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+    .sim-result-value {
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 4px 0 12px;
+    }
+    .sim-footer-note {
+      margin-top: 12px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      color: #ffffff;
+      line-height: 1.4;
+    }
+    .sim-submit-btn {
+      text-align: center;
+      margin-top: 16px;
+    }
+    .sim-btn-link {
+      display: inline-block;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #fff;
+      font-weight: 900;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 14px;
+      box-shadow: 0 4px 15px rgba(249,115,22,0.5);
+      transition: filter 0.2s;
+    }
+    .sim-btn-link:hover {
+      filter: brightness(1.1);
+    }
+
+    @media (max-width: 600px) {
+      .sim-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body style="background: #0b1329; padding: 20px;">
+
+  <div class="sim-container">
+    <div class="sim-header">
+      <span class="sim-badge">無料精密照度シミュレーター</span>
+      <h3 class="sim-title">空間寸法（W×D×H）＆ 要求照度からの最適台数算定</h3>
+      <p class="sim-desc">水産養殖レースウェイ水槽からエージング検査工場まで。現場の広さと必要な明るさから、最適なBWHシリーズの必要台数を導き出します。</p>
+    </div>
+
+    <div class="sim-grid">
+      <!-- 入力エリア -->
+      <div class="sim-input-panel">
+        <div class="sim-form-group">
+          <label class="sim-label">
+            空間の幅 (W)：<span id="room_w_val" class="sim-input-val">15</span> m
+          </label>
+          <input type="range" id="room_w" min="5" max="50" value="15" class="sim-range" oninput="runLuxSim()">
+        </div>
+
+        <div class="sim-form-group">
+          <label class="sim-label">
+            空間の奥行 (D)：<span id="room_d_val" class="sim-input-val">20</span> m
+          </label>
+          <input type="range" id="room_d" min="5" max="100" value="20" class="sim-range" oninput="runLuxSim()">
+        </div>
+
+        <div class="sim-form-group">
+          <label class="sim-label">
+            天井の高さ (H)：<span id="room_h_val" class="sim-input-val">8</span> m
+          </label>
+          <input type="range" id="room_h" min="4" max="20" value="8" class="sim-range" oninput="runLuxSim()">
+        </div>
+
+        <div class="sim-form-group" style="margin-bottom: 0;">
+          <label class="sim-label">要求照度（JIS基準）</label>
+          <select id="target_lux" class="sim-select" onchange="runLuxSim()">
+            <option value="150">150 lx（倉庫・資材置場）</option>
+            <option value="300" selected>300 lx（一般的な工場・機械加工）</option>
+            <option value="500">500 lx（精密検査・エージング工場）</option>
+            <option value="750">750 lx（厳密な色判定・微細組立）</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 結果表示エリア -->
+      <div class="sim-result-panel">
+        <div>
+          <div class="sim-result-title">【算出された推奨モデル（BWHシリーズ）】</div>
+          <div id="sim_model_name" style="font-size: 18px; font-weight: 900; color: #ffffff; margin: 4px 0 8px;">
+            BWH-WRN150 (150W)
+          </div>
+
+          <div class="sim-result-title" style="border-top: 1px solid #334155; padding-top: 10px;">【必要設置台数（推計）】</div>
+          <div class="sim-result-value">
+            約 <span id="sim_calc_count" style="font-size: 28px;">12</span> 台 の配置が最適
+          </div>
+
+          <div style="font-size: 11px; color: #ffffff; border-top: 1px solid #334155; padding-top: 8px; font-weight: bold;">
+            床面積：<span id="sim_area_val">300</span> m² ／ 推奨グリッド：<span id="sim_layout_val">3 × 4</span> 列
+          </div>
+        </div>
+
+        <div class="sim-footer-note">
+          ※1個からのご相談や特殊環境（防水・クレーン検査等）もお気軽にお問い合わせください。何度でも納得いくまで算定可能です。
+        </div>
+      </div>
+    </div>
+
+    <div class="sim-submit-btn">
+      <a href="index.html#contact" class="sim-btn-link">
+        📞 この計算結果を基に、1台からの相談・無料見積もりをする →
+      </a>
+    </div>
+  </div>
+
+  <script>
+  function runLuxSim() {
+    const w = parseFloat(document.getElementById('room_w').value);
+    const d = parseFloat(document.getElementById('room_d').value);
+    const h = parseFloat(document.getElementById('room_h').value);
+    const lux = parseInt(document.getElementById('target_lux').value);
+
+    document.getElementById('room_w_val').innerText = w;
+    document.getElementById('room_d_val').innerText = d;
+    document.getElementById('room_h_val').innerText = h;
+
+    const area = w * d;
+    document.getElementById('sim_area_val').innerText = area;
+
+    let model = "BWH-WRN090 (90W)";
+    let lm = 12600;
+    if (h >= 12) { model = "BWH-WRN250 (250W)"; lm = 35000; }
+    else if (h >= 9) { model = "BWH-WRN200 (200W)"; lm = 28000; }
+    else if (h >= 7) { model = "BWH-WRN150 (150W)"; lm = 21000; }
+    else if (h >= 5) { model = "BWH-WRN120 (120W)"; lm = 16800; }
+
+    let rawCount = (lux * area) / (lm * 0.6 * 0.7);
+    let count = Math.max(2, Math.round(rawCount));
+
+    let cols = Math.max(1, Math.round(Math.sqrt(count * (w / d))));
+    let rows = Math.max(1, Math.ceil(count / cols));
+    let finalCount = cols * rows;
+
+    document.getElementById('sim_model_name').innerText = model;
+    document.getElementById('sim_calc_count').innerText = finalCount;
+    document.getElementById('sim_layout_val').innerText = cols + " × " + rows + " 列";
+  }
+  runLuxSim();
+  </script>
+
+</body>
+</html>
