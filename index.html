@@ -382,14 +382,15 @@
     </a>
   </div>
 
-  <!-- 1. 【電気代削減シミュレーター】 -->
+<!-- 1. 【電気代削減シミュレーター】最初から開いておく -->
   <section class="section" style="margin-top: 0px; padding-top: 0px;">
     <div class="sec-title-bar" onclick="toggleSection('simulator-content', this.querySelector('.toggle-icon'))">
       <span>⚡ 無料経費節減シミュレーター（水銀灯の損失ロス算定）</span>
-      <span class="toggle-icon" id="simulator-toggle">▼ 開く</span>
+      <span class="toggle-icon" id="simulator-toggle">▲ 閉じる</span>
     </div>
     
-    <div id="simulator-content" style="display: none; padding-top: 10px;">
+    <!-- ★ここを block にして最初から開くようにします -->
+    <div id="simulator-content" style="display: block; padding-top: 10px;">
       <div class="sim-container">
         <div class="sim-header">
           <span class="sim-badge">無料経費節減シミュレーター</span>
@@ -465,13 +466,14 @@
     </div>
   </section>
 
-  <!-- 2. 【新設：ルクス計算機シミュレーター】 -->
+  <!-- 2. 【ルクス計算機シミュレーター】こちらは従来通り閉じておく -->
   <section class="section" style="margin-top: 0px; padding-top: 0px;">
     <div class="sec-title-bar" onclick="toggleSection('lux-simulator-content', this.querySelector('.toggle-icon'))">
       <span>⚡ 【無料】空間寸法・要求照度から出す最適台数シミュレーター</span>
       <span class="toggle-icon" id="lux-simulator-toggle">▼ 開く</span>
     </div>
     
+    <!-- ★こちらは従来通り none のまま閉じておきます -->
     <div id="lux-simulator-content" style="display: none; padding-top: 10px;">
       <div class="sim-container">
         <div class="sim-header">
