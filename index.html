@@ -242,7 +242,7 @@
       border-radius: 4px;
     }
 
-    /* シミュレーター専用スタイル（完全収まり版） */
+    /* シミュレーター専用スタイル */
     .sim-container {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       border: 3px solid var(--gold-frame);
@@ -290,8 +290,9 @@
     .company-table th { background: #f1f5f9; color: var(--text-sub); width: 25%; text-align: center; font-weight: 700; }
     .map-container { margin-top: 16px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); height: 280px; }
     .map-container iframe { width: 100%; height: 100%; border: none; }
-    .form-submit-btn { background: var(--grad-bg); color: #0f172a; border: 1px solid #cbd5e1; padding: 12px 24px; font-size: 14px; font-weight: 900; border-radius: 6px; cursor: pointer; }
+    .form-submit-btn { background: var(--grad-bg); color: #0f172a; border: 1px solid #cbd5e1; padding: 12px 24px; font-size: 14px; font-weight: 900; border-radius: 6px; cursor: pointer; transition: opacity 0.2s; }
     .form-submit-btn:hover { opacity: 0.9; }
+    .form-submit-btn:disabled { background: #cbd5e1; color: #64748b; cursor: not-allowed; }
     @media (max-width: 600px) {
       .company-table th { width: 30%; font-size: 11px; padding: 8px 6px; }
       .company-table td { font-size: 12px; padding: 8px 10px; }
@@ -332,7 +333,7 @@
       <span style="font-size: 10px; color: #cbd5e1; margin-top: 2px;">平日 9:00〜18:00（土日祝休）</span>
     </a>
     
-    <a href="#contact" class="quick-btn quick-btn-contact" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none;" onclick="document.getElementById('contact-content').style.display='block'; document.getElementById('contact-toggle').innerHTML='▼ 閉じる';">
+    <a href="#contact" class="quick-btn quick-btn-contact" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none;" onclick="document.getElementById('contact-content').style.display='block'; document.getElementById('contact-toggle').innerHTML='▲ 閉じる';">
       <span class="btn-label" style="color: #0f172a;">✉️ お問い合わせ</span>
       <span class="btn-sub" style="color: #0f172a; font-weight: 800;">見積・照度シミュレーション</span>
       <span style="font-size: 11px; color: #0f172a; font-weight: 900; margin-top: 2px;">全国対応・Web受付24h</span>
@@ -382,14 +383,13 @@
     </a>
   </div>
 
-<!-- 1. 【電気代削減シミュレーター】最初から開いておく -->
+  <!-- 1. 【電気代削減シミュレーター】 -->
   <section class="section" style="margin-top: 0px; padding-top: 0px;">
     <div class="sec-title-bar" onclick="toggleSection('simulator-content', this.querySelector('.toggle-icon'))">
       <span>⚡ 無料経費節減シミュレーター（水銀灯の損失ロス算定）</span>
       <span class="toggle-icon" id="simulator-toggle">▲ 閉じる</span>
     </div>
     
-    <!-- ★ここを block にして最初から開くようにします -->
     <div id="simulator-content" style="display: block; padding-top: 10px;">
       <div class="sim-container">
         <div class="sim-header">
@@ -399,7 +399,6 @@
         </div>
 
         <div class="sim-grid">
-          <!-- 入力エリア -->
           <div class="sim-input-panel">
             <div class="sim-form-group">
               <label class="sim-label">
@@ -433,7 +432,6 @@
             </div>
           </div>
 
-          <!-- 結果表示エリア -->
           <div class="sim-result-panel">
             <div>
               <div class="sim-result-title">【このまま水銀灯を使い続けた場合の「年間ロス（損失）」】</div>
@@ -466,14 +464,13 @@
     </div>
   </section>
 
-  <!-- 2. 【ルクス計算機シミュレーター】こちらは従来通り閉じておく -->
+  <!-- 2. 【ルクス計算機シミュレーター】 -->
   <section class="section" style="margin-top: 0px; padding-top: 0px;">
     <div class="sec-title-bar" onclick="toggleSection('lux-simulator-content', this.querySelector('.toggle-icon'))">
       <span>⚡ 【無料】空間寸法・要求照度から出す最適台数シミュレーター</span>
       <span class="toggle-icon" id="lux-simulator-toggle">▼ 開く</span>
     </div>
     
-    <!-- ★こちらは従来通り none のまま閉じておきます -->
     <div id="lux-simulator-content" style="display: none; padding-top: 10px;">
       <div class="sim-container">
         <div class="sim-header">
@@ -483,7 +480,6 @@
         </div>
 
         <div class="sim-grid">
-          <!-- 入力エリア -->
           <div class="sim-input-panel">
             <div class="sim-form-group">
               <label class="sim-label">
@@ -517,7 +513,6 @@
             </div>
           </div>
 
-          <!-- 結果表示エリア -->
           <div class="sim-result-panel">
             <div>
               <div class="sim-result-title">【算出された推奨モデル（BWHシリーズ）】</div>
@@ -552,7 +547,6 @@
 
   <!-- 両方のシミュレーター計算用スクリプト -->
   <script>
-  // 1. 電気代削減シミュレーター計算
   function runSim() {
     const lamps = parseInt(document.getElementById('sim_lamps').value);
     const oldWatt = parseInt(document.getElementById('sim_old_type').value);
@@ -582,7 +576,6 @@
   }
   runSim();
 
-  // 2. ルクス計算機シミュレーター計算
   function runLuxSim() {
     const w = parseFloat(document.getElementById('room_w').value);
     const d = parseFloat(document.getElementById('room_d').value);
@@ -644,7 +637,6 @@
         <strong>※電源内蔵タイプまたは電源外付けタイプをお選びいただけます。</strong>
       </p>
 
-      <!-- 照度シミュレーション案内枠 -->
       <div style="background:#eff6ff; border:2px solid #3b82f6; border-radius:8px; padding:18px; margin:16px auto 24px; text-align:left;">
         <h3 style="font-size:16px; color:#1e3a8a; margin-bottom:6px; font-weight:bold;">
           📐 【無料】現場に合わせた照度（lux）シミュレーション実施中
@@ -802,10 +794,10 @@
     <div id="contact-content" style="display: none;">
       <p style="font-size:13px; margin-bottom:16px;">お気軽にお問合せください。資料請求や詳しい説明のご依頼はこちらからどうぞ。</p>
       
-      <form action="http://www.suzusan.co.jp/postmail/postmail.cgi" method="POST" target="_parent" style="background:#f8fafc; border:1px solid var(--border); padding:20px; border-radius:8px;">
+      <form id="suzusanContactForm" style="background:#f8fafc; border:1px solid var(--border); padding:20px; border-radius:8px;">
         <div style="margin-bottom:14px;">
           <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">ご依頼内容</label>
-          <select name="内容" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+          <select id="form_category" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
             <option value="未選択" selected>下記からお選びください。</option>
             <option value="●資料請求を希望">●資料請求を希望</option>
             <option value="●詳しい説明をしてほしい">●詳しい説明をしてほしい</option>
@@ -814,42 +806,62 @@
         </div>
 
         <div style="margin-bottom:14px;">
-          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">お名前（全角）</label>
-          <input type="text" name="_お名前" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">貴社名・屋号（法人の場合）</label>
+          <input type="text" id="form_company" placeholder="例：株式会社〇〇" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
         </div>
 
         <div style="margin-bottom:14px;">
-          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">フリガナ（全角）</label>
-          <input type="text" name="フリガナ" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">お名前（全角） <span style="color:#ef4444;">*必須</span></label>
+          <input type="text" id="form_name" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">フリガナ（全角） <span style="color:#ef4444;">*必須</span></label>
+          <input type="text" id="form_kana" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
         </div>
 
         <div style="margin-bottom:14px;">
           <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">郵便番号（半角数字 例：221-0064）</label>
-          <input type="text" name="郵便番号" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+          <input type="text" id="form_zip" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
         </div>
 
         <div style="margin-bottom:14px;">
           <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">ご住所</label>
-          <input type="text" name="_ご住所" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+          <input type="text" id="form_address" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
         </div>
 
         <div style="margin-bottom:14px;">
           <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">電話番号（半角数字）</label>
-          <input type="text" name="電話番号" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+          <input type="text" id="form_tel" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
         </div>
 
         <div style="margin-bottom:14px;">
-          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">E-mail（半角英数字）</label>
-          <input type="text" name="_email" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;">
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">E-mail（半角英数字） <span style="color:#ef4444;">*必須</span></label>
+          <input type="email" id="form_email" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;" required>
         </div>
 
-        <div style="margin-bottom:20px;">
+        <div style="margin-bottom:14px;">
           <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;">その他のお問い合せ（設置場所寸法 W×D×H など）</label>
-          <textarea name="その他" rows="5" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;"></textarea>
+          <textarea id="form_other" rows="5" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:13px; background:#fff;"></textarea>
         </div>
+
+        <!-- 個人情報保護・情報共有の同意欄 -->
+        <div style="margin-bottom:18px; background:#ffffff; border:1px solid #cbd5e1; padding:12px 14px; border-radius:6px; font-size:12px; line-height:1.6;">
+          <label style="display:flex; align-items:flex-start; gap:8px; cursor:pointer;">
+            <input type="checkbox" id="form_agree" required style="margin-top:3px; transform:scale(1.2);">
+            <span>
+              <strong>【個人情報の取り扱いに関する同意】</strong><br>
+              ご入力いただいた情報は、お問い合わせ対応およびお見積もりのため、株式会社SUZUSANおよび運営窓口（AIGON）にて共有・利用いたします。法令に基づく場合を除き、第三者への提供は行いません。<br>
+              <span style="color:#ef4444; font-weight:bold;">※同意いただける場合はチェックを入れてください。</span>
+            </span>
+          </label>
+        </div>
+
+        <!-- 送信結果・進捗メッセージ表示エリア -->
+        <div id="formStatus" style="display:none; margin-bottom:16px; padding:12px 16px; border-radius:6px; font-size:13px; line-height:1.6;"></div>
 
         <div style="text-align:center; display:flex; gap:10px; justify-content:center;">
-          <input type="submit" name="submit" value="上記の内容で送信する" class="form-submit-btn">
+          <input type="submit" id="formSubmitBtn" value="上記の内容で送信する" class="form-submit-btn">
           <input type="reset" value="リセット" style="background:#cbd5e1; color:#334155; border:none; padding:12px 20px; font-size:14px; font-weight:700; border-radius:6px; cursor:pointer;">
         </div>
       </form>
@@ -945,6 +957,94 @@ function toggleSection(contentId, iconElem) {
     if (iconElem) iconElem.innerHTML = "▼ 開く";
   }
 }
+
+// フォーム送信処理（GAS連携・二重送信防止・通信結果確認）
+document.getElementById('suzusanContactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const submitBtn = document.getElementById('formSubmitBtn');
+  const statusDiv = document.getElementById('formStatus');
+
+  const agreeCheck = document.getElementById('form_agree');
+  if (!agreeCheck.checked) {
+    alert('個人情報の取り扱いに関する同意にチェックを入れてください。');
+    return;
+  }
+
+  // 二重送信防止（ボタンを送信中に変更して無効化）
+  submitBtn.disabled = true;
+  submitBtn.value = '送信処理中...';
+  statusDiv.style.display = 'block';
+  statusDiv.style.background = '#e0f2fe';
+  statusDiv.style.color = '#0369a1';
+  statusDiv.style.border = '1px solid #7dd3fc';
+  statusDiv.innerHTML = '⏳ お問い合わせを送信処理中です。少々お待ちください...';
+
+  // 入力データの集約
+  const category = document.getElementById('form_category').value;
+  const company = document.getElementById('form_company').value;
+  const name = document.getElementById('form_name').value;
+  const kana = document.getElementById('form_kana').value;
+  const zip = document.getElementById('form_zip').value;
+  const address = document.getElementById('form_address').value;
+  const tel = document.getElementById('form_tel').value;
+  const email = document.getElementById('form_email').value;
+  const other = document.getElementById('form_other').value;
+
+  const fullContent = [
+    '【ご依頼内容】' + category,
+    '【フリガナ】' + kana,
+    '【郵便番号】' + (zip || '未入力'),
+    '【ご住所】' + (address || '未入力'),
+    '【その他のお問い合せ】\n' + (other || '（特になし）')
+  ].join('\n');
+
+  const payload = {
+    company: company,
+    name: name,
+    email: email,
+    tel: tel,
+    content: fullContent,
+    agree: true
+  };
+
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbz_osqmJ5j4ozpxqDsYXrqlq6fJtDHIsFCaQT2dygNXPWcVhvQS1ij-pvFcLyqak4S9fA/exec';
+
+  fetch(GAS_URL, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'text/plain;charset=utf-8'
+    },
+    body: JSON.stringify(payload)
+  })
+  .then(function(res) {
+    if (!res.ok) {
+      throw new Error('通信エラーが発生しました (Status: ' + res.status + ')');
+    }
+    return res.json();
+  })
+  .then(function(data) {
+    if (data.success) {
+      statusDiv.style.background = '#dcfce7';
+      statusDiv.style.color = '#15803d';
+      statusDiv.style.border = '1px solid #86efac';
+      statusDiv.innerHTML = '✅ <strong>お問い合わせの送信処理が完了いたしました！</strong><br><span style="font-size:12px; color:#166534;">【受付番号】' + data.receiptNumber + '<br>内容を確認の上、担当者よりご連絡いたします。</span>';
+      document.getElementById('suzusanContactForm').reset();
+      submitBtn.value = '送信完了';
+    } else {
+      throw new Error(data.message || '送信処理に失敗しました。');
+    }
+  })
+  .catch(function(err) {
+    statusDiv.style.background = '#fee2e2';
+    statusDiv.style.color = '#b91c1c';
+    statusDiv.style.border = '1px solid #fca5a5';
+    statusDiv.innerHTML = '❌ <strong>送信に失敗しました：</strong>' + err.message + '<br><span style="font-size:11px;">お手数ですが、お電話（045-381-1444）または少し時間をおいて再度お試しください。</span>';
+    submitBtn.disabled = false;
+    submitBtn.value = '上記の内容で送信する';
+  });
+});
 </script>
 
 </body>
